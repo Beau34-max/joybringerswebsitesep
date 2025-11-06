@@ -8,6 +8,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -22,9 +24,11 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+
   </head>
   <body>
-
+<div class="page-wrapper">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
@@ -36,11 +40,11 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="causes.html" class="nav-link">What We Do</a></li>
+          <li class="nav-item"><a href="what-we-do.html" class="nav-link">What We Do</a></li>
           <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
           <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
-          <li class="nav-item"><a href="partner.html" class="nav-link">Partnerships</a></li>
-          <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+<!-- <li class="nav-item"><a href="partner.html" class="nav-link">Partnerships</a></li>-->
+           <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </div>
@@ -49,26 +53,40 @@
   <!-- END nav -->
 
   <!-- ✅ Hero Carousel -->
-  <div class="owl-carousel-wrapper">
+<div class="owl-carousel-wrapper">
+  <!-- ✅ Hero Content -->
+  <div class="box-92819 text-center">
+    <h1 class="text-white mb-3">Helping Young People<br>Believe, Belong,<br>and Become</h1>
+    <p class="text-white">Registered Charity Number 1212606</p>
 
-    <div class="box-92819 text-center">
-      <h1 class="text-white mb-3">Helping Young People Believe, Belong, and Become</h1>
-      <p>Registered Charity Number 1212606</p>
-      <p>
-        <a href="donate.html" class="btn btn-warning py-3 px-4 rounded-0">Donate Now</a>
-        <a href="volunteer.html" class="btn btn-success py-3 px-4 rounded-0">Become a Volunteer</a>
-        <a href="partner.html" class="btn btn-success py-3 px-4 rounded-0">Partner With Us</a>
-      </p>
+    <div class="hero-buttons">
+      <a href="donate.html" class="btn btn-warning py-3 px-4 rounded-0">Donate Now</a>
+      <a href="volunteer.html" class="btn btn-success py-3 px-4 rounded-0">Become a Volunteer</a>
+      <a href="contact.html" class="btn btn-success py-3 px-4 rounded-0">Partner With Us</a>
     </div>
-
-    <div class="owl-carousel owl-1">
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/joy1.jpg');"></div>
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/joy2.jpg');"></div>
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/joy3.jpg');"></div>
-    </div>
-
   </div>
 
+  <!-- ✅ Background Slides -->
+  <div class="owl-carousel owl-1">
+    <div class="ftco-cover-1 overlay">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="images/ffb.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="ftco-cover-1 overlay">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="images/ffb1.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ SPACER to clear hero overlay -->
+<div class="hero-spacer"></div>
+  
   <!-- ✅ Impact Counter -->
   <section class="ftco-counter ftco-intro" id="section-counter">
     <div class="container">
@@ -172,26 +190,109 @@
     </div>
   </section>
 
+  <section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section text-center">
+        <h2 class="mb-4" style="color:#006526; font-weight:700;">
+          SEE WHAT'S NEW WITH JOYBRINGERS
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- Foodbank -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/foodbank.png" alt="Foodbank" class="img-fluid mb-3">
+          <h3>Join our Food Bank</h3>
+          <p>Feel free to join our Foodbank group and request any food you want when it is made available. All food items are 100% free.</p>
+          <a href="https://chat.whatsapp.com/FPLEq9c3SpE9Mv5GtnZ5RH?mode=ems_copy_t" 
+             class="btn btn-success">Join our Food Bank</a>
+        </div>
+      </div>
+
+      <!-- Success Stories -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/success.jpg" alt="Success Stories" class="img-fluid mb-3">
+          <h3>Our Success Stories</h3>
+          <p>Explore how our programs have made a difference in the lives of individuals and communities.</p>
+          <a href="what-we-do.html" class="btn btn-success">Our Success Stories</a>
+        </div>
+      </div>
+
+      <!-- Donate -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/donate.png" alt="Donate" class="img-fluid mb-3">
+          <h3>Donate Today</h3>
+          <p>Every child, adolescent and youth is worth fighting for. With your help, we can create a lasting impact on their lives.</p>
+          <a href="donate.html" class="btn btn-success">Donate Now</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+      <!-- Learn More -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/learn.png" alt="Learn More" class="img-fluid mb-3">
+          <h3>Learn More</h3>
+          <p>We are passionately committed to fostering the holistic well-being and development of children and young people.</p>
+          <a href="about.html" class="btn btn-success">Learn More</a>
+        </div>
+      </div>
+
+      <!-- What We Do -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/whatwedo.jpg" alt="What We Do" class="img-fluid mb-3">
+          <h3>What We Do</h3>
+          <p>Explore our work in empowering young people through skills, education, conferences, and events.</p>
+          <a href="what-we-do.html" class="btn btn-success">What We Do</a>
+        </div>
+      </div>
+
+      <!-- Get Involved -->
+      <div class="col-md-4 d-flex">
+        <div class="services text-center p-4 bg-white">
+          <img src="images/involved.jpg" alt="Get Involved" class="img-fluid mb-3">
+          <h3>Get Involved</h3>
+          <p>Explore volunteer opportunities, participate in events, or join our advocacy campaigns to actively support children and young people.</p>
+          <a href="volunteer.html" class="btn btn-success">Get Involved</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
   <!-- ✅ Partners -->
   <section class="ftco-section bg-light partners">
     <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section text-center ftco-animate">
-          <h2 class="mb-4">Our Partners</h2>
-          <p>We are proud to collaborate with amazing organizations that share our vision.</p>
+          <h2 class="mb-4">Our Partners & Supporters</h2>
+          <p>We are grateful to our partners and supporters who share our vision of empowering young people and communities.</p>
         </div>
       </div>
       <div class="row text-center">
+        <div class="col-md-2 col-6 ftco-animate">
+          <img src="images/partners/wl.png" alt="william Leech" class="img-fluid mb-3">
+        </div>
         <div class="col-md-3 col-6 ftco-animate">
           <img src="images/partners/blakelaw.png" alt="Blakelaw Council" class="img-fluid mb-3">
         </div>
-        <div class="col-md-3 col-6 ftco-animate">
+        <div class="col-md-2 col-6 ftco-animate">
           <img src="images/partners/coseng.png" alt="Coseng Limited UK" class="img-fluid mb-3">
         </div>
-        <div class="col-md-3 col-6 ftco-animate">
+        <div class="col-md-2 col-6 ftco-animate">
           <img src="images/partners/avire.gif" alt="Avire UK" class="img-fluid mb-3">
         </div>
-        <div class="col-md-3 col-6 ftco-animate">
+        <div class="col-md-2 col-6 ftco-animate">
           <img src="images/partners/fareshare.jpg" alt="FareShare" class="img-fluid mb-3">
         </div>
       </div>
@@ -244,35 +345,7 @@
     </div>
   </section>
 
-  <!-- ✅ Volunteer Form -->
-  <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row d-md-flex">
-        <div class="col-md-6 d-flex ftco-animate">
-          <div class="img img-2 align-self-stretch" style="background-image: url(images/bg_4.jpg);"></div>
-        </div>
-        <div class="col-md-6 volunteer pl-md-5 ftco-animate">
-          <h3 class="mb-3">Join Us as a Volunteer</h3>
-          <form action="https://formspree.io/f/mqayqnja" method="POST" class="volunter-form">
-            <div class="form-group">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-              <textarea name="message" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-warning py-3 px-5">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <!-- ✅ Footer -->
   <footer style="background-color:#006526; color:#fff; padding:40px 0; font-size:14px;">
     <div class="container">
@@ -294,19 +367,29 @@
           <img src="images/partners/ncvo-logo.jpg" alt="NCVO Member" style="max-height:80px;">
         </div>
         <!-- Right Column -->
-        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-right">
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-centre">
           <p>Follow us | <a href="contact.html" style="color:#fff;">Contact Us</a></p>
           <div class="footer-social">
-            <a href="https://www.facebook.com/Joybringero/" target="_blank" class="facebook"><span class="icon-facebook"></span></a>
-            <a href="https://www.instagram.com/joybringerscharity/" target="_blank" class="instagram"><span class="icon-instagram"></span></a>
-            <a href="https://www.linkedin.com/company/joybringers/?viewAsMember=true" target="_blank" class="linkedin"><span class="icon-linkedin"></span></a>
-            <a href="https://x.com/JoybringersC" target="_blank" class="twitter"><span class="icon-twitter"></span></a>
-            <a href="https://www.tiktok.com/@joybringersc?_t=ZN-8xSqI9AImOM&_r=1" target="_blank" class="tiktok"><span class="icon-tiktok"></span></a>
-          </div>
+  <a href="https://www.facebook.com/Joybringero/" target="_blank" class="facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/joybringerscharity/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/joybringers/?viewAsMember=true" target="_blank" class="linkedin">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://x.com/JoybringersC" target="_blank" class="twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.tiktok.com/@joybringersc?_t=ZN-8xSqI9AImOM&_r=1" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
           <p class="mt-2">
-            <a href="#" style="color:#fff;">Terms of use</a> / 
-            <a href="#" style="color:#fff;">Cookies</a> / 
-            <a href="#" style="color:#fff;">Privacy</a>
+            <a href="/terms.html" style="color:#fff;">Terms of use</a> /
+            <a href="/cookies.html" style="color:#fff;">Cookies</a> /
+            <a href="/privacy.html" style="color:#fff;">Privacy</a>
           </p>
         </div>
       </div>
@@ -322,23 +405,28 @@
   <!-- ✅ Social Icons Styling -->
   <style>
     .footer-social a {
-      display: inline-block;
-      margin: 0 5px;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 50%;
-      text-align: center;
-      color: #fff;
-      font-size: 18px;
-      transition: 0.3s;
-    }
-    .footer-social a:hover { opacity: 0.8; }
-    .footer-social a.facebook { background: #1877F2; }
-    .footer-social a.instagram { background: #E4405F; }
-    .footer-social a.linkedin { background: #0A66C2; }
-    .footer-social a.twitter { background: #1DA1F2; }
-    .footer-social a.tiktok { background: #000000; }
+  display: inline-flex;        /* centers child icon */
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  opacity: 0.8;
+}
+
+.footer-social a.facebook { background: #1877F2; }
+.footer-social a.instagram { background: #E4405F; }
+.footer-social a.linkedin { background: #0A66C2; }
+.footer-social a.twitter  { background: #1DA1F2; }
+.footer-social a.tiktok   { background: #000000; }
   </style>
 
    <!-- Loader -->

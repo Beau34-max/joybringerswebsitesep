@@ -4941,31 +4941,31 @@ button.close {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #78d5ef !important; }
+  background-color: #006526 !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #4ac7ea !important; }
+  background-color: #006526 !important; }
 
 .bg-secondary {
-  background-color: #6c757d !important; }
+  background-color: #006526 !important; }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #545b62 !important; }
+  background-color: #006526 !important; }
 
 .bg-success {
-  background-color: #28a745 !important; }
+  background-color: #006526 !important; }
 
 a.bg-success:hover, a.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
-  background-color: #1e7e34 !important; }
+  background-color: #006526 !important; }
 
 .bg-info {
-  background-color: #17a2b8 !important; }
+  background-color: #006526 !important; }
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
@@ -9164,7 +9164,7 @@ textarea.form-control {
     .partners img {
   max-height: 80px;
   transition: all 0.3s ease;
-  filter: grayscale(100%);
+  filter: grayscale(0%);
 }
 .partners img:hover {
   filter: grayscale(0%);
@@ -9180,7 +9180,7 @@ textarea.form-control {
 }
 
 .owl-carousel-wrapper .owl-carousel .ftco-cover-1 {
-  height: 100vh; /* full screen background */
+  height: 80vh; /* full screen background */
   background-size: cover;
   background-position: center;
 }
@@ -9206,3 +9206,14 @@ textarea.form-control {
   color: #fff;
   font-size: 18px;
 }
+
+
+/* Impact Counter overlap on Hero */
+.ftco-counter {
+  margin-top: -160px;  /* pull the orange boxes up */
+  position: relative;
+  z-index: 20;         /* keeps counter above the carousel */
+}
+
+
+

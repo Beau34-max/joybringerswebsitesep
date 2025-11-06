@@ -2388,38 +2388,46 @@ textarea.form-control {
   transform: scale(1.05);
 }
 
-
-/* Hero Carousel fix */
+/* Hero Carousel wrapper */
 .owl-carousel-wrapper {
   position: relative;
-  height: 100vh; /* full screen height */
+  height: 90vh; /* Adjust as needed */
   overflow: hidden;
+  z-index: 1;
 }
 
+/* Hero slides */
 .owl-carousel-wrapper .owl-carousel .ftco-cover-1 {
-  height: 100vh; /* full screen background */
+  height: 90vh;
   background-size: cover;
   background-position: center;
 }
 
+/* Hero text */
 .owl-carousel-wrapper .box-92819 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 2;
   color: #fff;
   max-width: 700px;
   text-align: center;
 }
 
-.owl-carousel-wrapper .box-92819 h1 {
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
+/* ✅ Impact Counter section */
+.ftco-counter {
+  margin-top: -60px;   /* slight overlap */
+  position: relative;
+  z-index: 5;          /* above hero */
 }
 
-.owl-carousel-wrapper .box-92819 p {
-  color: #fff;
-  font-size: 18px;
+/* ✅ Counter blocks look like floating cards */
+.ftco-counter .block-18 {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  color: #000;
 }
+

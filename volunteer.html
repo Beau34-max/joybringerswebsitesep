@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer with Joybringers</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Your main template CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Your brand overrides -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <style>
+    /* Sticky Footer Layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    nav.navbar {
+      flex-shrink: 0;
+    }
+    main {
+      flex: 1; /* Pushes footer down */
+    }
+    footer {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Joybringers</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="what-we-do.html" class="nav-link">What We Do</a></li>
+        <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+        <li class="nav-item active"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+<!-- <li class="nav-item"><a href="partner.html" class="nav-link">Partnerships</a></li>-->
+         <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END nav -->
+
+<!-- Main Content -->
+<main>
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Volunteer Opportunities</h2>
+    <div class="row">
+
+      <!-- Accountant Volunteer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Accountant Volunteer</h5>
+            <p class="card-text">Assist with bookkeeping, accounts management, and financial reporting for the charity.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Accountant Volunteer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secretary Volunteer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Secretary Volunteer</h5>
+            <p class="card-text">Support board and staff meetings, take minutes, manage correspondence, and handle admin tasks.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Secretary Volunteer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance Manager Volunteer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Compliance Manager Volunteer</h5>
+            <p class="card-text">Ensure policies, safeguarding, and governance standards are followed across our activities.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Compliance Manager Volunteer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Digital Media Analyst Volunteer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Digital Media Analyst Volunteer</h5>
+            <p class="card-text">Monitor and report on digital media performance, tracking engagement and improving strategy.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Digital Media Analyst Volunteer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Manager -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Project Manager</h5>
+            <p class="card-text">Oversee charity projects, manage deadlines, assign responsibilities, and ensure successful delivery.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Project Manager">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+<!-- Project Manager -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Food Bank Volunteer</h5>
+            <p class="card-text">Support in collecting surplus food donations from partner stores like ASDA, KFC, Tesco and Nandos.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Project Manager">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Analyst -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Business Analyst</h5>
+            <p class="card-text">Analyze data and trends, provide actionable insights, and guide business decision-making.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Business Analyst">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Website Designer/Manager -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Website Designer/Manager</h5>
+            <p class="card-text">Design and update Joybringers' website, ensuring accessibility, functionality, and appeal.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Website Designer/Manager">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fundraising Coordinator -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Fundraising Coordinator</h5>
+            <p class="card-text">Plan and coordinate fundraising campaigns to raise awareness and resources for Joybringers.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Fundraising Coordinator">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- IT Workshop Assistant -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">IT Workshop Assistant</h5>
+            <p class="card-text">Support delivery of IT skills workshops, helping young people learn coding and digital skills.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="IT Workshop Assistant">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Outreach Volunteer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Community Outreach Volunteer</h5>
+            <p class="card-text">Engage with communities, build connections, and represent Joybringers at events and activities.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Community Outreach Volunteer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Counselling Support Manager -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Counselling Support Manager</h5>
+            <p class="card-text">Provide emotional support and coordinate counselling sessions for children and young people.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Counselling Support Manager">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing Manager -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Marketing Manager</h5>
+            <p class="card-text">Develop and implement strategies to promote Joybringers, manage campaigns and social media.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Marketing Manager">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graphic Designer -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Graphic Designer</h5>
+            <p class="card-text">Create appealing designs for marketing, campaigns, and promotional materials.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Graphic Designer">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parenting Workshop Facilitator -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Parenting Workshop Facilitator</h5>
+            <p class="card-text">Lead workshops for parents on child development, positive parenting, and family well-being.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Parenting Workshop Facilitator">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language Tutor -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Language Tutor</h5>
+            <p class="card-text">Support children in improving reading, writing, and communication skills.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Language Tutor">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data and Research Analyst -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Data and Research Analyst</h5>
+            <p class="card-text">Assist in data collection, analysis, and reporting to measure program impact and success.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Data and Research Analyst">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volunteer Recruitment Specialist -->
+      <div class="col-md-4 job-card">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Volunteer Recruitment Specialist</h5>
+            <p class="card-text">Lead recruitment efforts, onboard new volunteers, and ensure smooth integration into the team.</p>
+            <button class="btn btn-success" data-toggle="modal" data-target="#volunteerFormModal" data-role="Volunteer Recruitment Specialist">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Volunteer Form Modal -->
+<div class="modal fade" id="volunteerFormModal" tabindex="-1" role="dialog" aria-labelledby="volunteerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Volunteer Application Form</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <form action="https://api.web3forms.com/submit" method="POST" class="volunteer-form">
+          <!-- Access Key -->
+          <input type="hidden" name="access_key" value="f2c68935-35a8-4f27-968a-606496bd4e3a">
+          <input type="hidden" name="redirect" value="http://127.0.0.1:5500/thank-you.html">
+          <input type="hidden" id="roleApplied" name="role">
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Full Name *</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Email Address *</label>
+              <input type="email" class="form-control" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Mobile Phone *</label>
+              <input type="tel" class="form-control" name="phone" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Date of Birth *</label>
+              <input type="date" class="form-control" name="dob" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Full Address *</label>
+            <input type="text" class="form-control" name="address" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>City *</label>
+              <input type="text" class="form-control" name="city" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Postcode *</label>
+              <input type="text" class="form-control" name="postcode" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Country *</label>
+            <select class="form-control" name="country" required>
+              <option value="">Select Country</option>
+              <option value="UK">United Kingdom</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="USA">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>How did you hear about Joybringers?</label>
+            <select name="referral" class="form-control" required>
+              <option value="">Select an option</option>
+              <option value="Website">Joybringers Website</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Job Board">Job Board</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Referral">Referral</option>
+              <option value="Word of Mouth">Word of Mouth</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
+            <label class="form-check-label" for="consent">
+              I agree to undergo necessary background checks and follow Joybringers' policies and guidelines.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-warning">Submit Application</button>
+
+        <!-- ✅ CV Upload Button -->
+          <div class="mt-3">
+            <p class="mb-1">After submitting, please upload your CV:</p>
+            <a href="https://joybringersc-my.sharepoint.com/:f:/g/personal/admin_joybringer_org_uk/EvjxOpH6pRlDvCskyL2zSxQBNfssgRtt8sI7JrdNL8xDQA" 
+               class="btn btn-success">
+               Upload Your CV Here
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Footer -->
+  <footer style="background-color:#006526; color:#fff; padding:40px 0; font-size:14px;">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-left">
+          <p>
+            Email us: <a href="mailto:info@joybringer.org.uk" style="color:#fff;">info@joybringer.org.uk</a><br>
+            Call us: <a href="tel:07780105816" style="color:#fff;">07780105816</a>
+          </p>
+          <p>
+            <strong>JOYBRINGERS LTD</strong><br>
+            (Company No. 15400265)<br>
+            Registered Charity Number 1212606
+          </p>
+        </div>
+        <!-- Middle Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center">
+          <img src="images/partners/ncvo-logo.jpg" alt="NCVO Member" style="max-height:80px;">
+        </div>
+        <!-- Right Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-centre">
+          <p>Follow us | <a href="contact.html" style="color:#fff;">Contact Us</a></p>
+          <div class="footer-social">
+  <a href="https://www.facebook.com/Joybringero/" target="_blank" class="facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/joybringerscharity/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/joybringers/?viewAsMember=true" target="_blank" class="linkedin">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://x.com/JoybringersC" target="_blank" class="twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.tiktok.com/@joybringersc?_t=ZN-8xSqI9AImOM&_r=1" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+          <p class="mt-2">
+            <a href="/terms.html" style="color:#fff;">Terms of use</a> /
+            <a href="/cookies.html" style="color:#fff;">Cookies</a> /
+            <a href="/privacy.html" style="color:#fff;">Privacy</a>
+          </p>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="row mt-4">
+        <div class="col text-center">
+          <p style="margin:0;">©2025 Joybringers. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Social Icons Styling -->
+  <style>
+    .footer-social a {
+  display: inline-flex;        /* centers child icon */
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  opacity: 0.8;
+}
+
+.footer-social a.facebook { background: #1877F2; }
+.footer-social a.instagram { background: #E4405F; }
+.footer-social a.linkedin { background: #0A66C2; }
+.footer-social a.twitter  { background: #1DA1F2; }
+.footer-social a.tiktok   { background: #000000; }
+  </style>
+
+<!-- Loader -->
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#007A4D"/>
+    </svg>
+  </div>
+
+  <!-- ✅ JS Files -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/main.js"></script>
+  
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Auto-fill role into hidden input
+  $('#volunteerFormModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var role = button.data('role')
+    var modal = $(this)
+    modal.find('#roleApplied').val(role)
+  })
+</script>
+
+</body>
+</html>

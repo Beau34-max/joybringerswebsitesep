@@ -1,0 +1,951 @@
+/* ===============================
+   Joybringers Custom Styles
+   =============================== */
+
+/* ✅ Global font */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #000; /* default black text */
+}
+
+/* ✅ Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: #006526; /* brand green */
+}
+h1 { font-size: 29px; }
+h2 { font-size: 26px; }
+h3 { font-size: 22px; }
+
+/* ✅ Navbar */
+.navbar {
+  background-color: #006526 !important; /* green */
+}
+.navbar .nav-link {
+  color: #fff !important; /* white text */
+}
+.navbar .nav-link:hover {
+  color: #006526 !important;
+  background-color: #fff !important; /* invert on hover */
+  border-radius: 4px;
+}
+
+/* ✅ Footer */
+footer {
+  background-color: #006526 !important;
+  color: #fff !important;
+}
+footer a {
+  color: #fff !important;
+}
+footer a:hover {
+  color: #FFD700 !important; /* yellow hover */
+}
+
+/* ✅ Buttons */
+.btn-warning {
+  background-color: #FFD700 !important; /* yellow */
+  border-color: #FFD700 !important;
+  color: #000 !important;
+}
+.btn-warning:hover {
+  background-color: #e6c200 !important; /* darker yellow */
+  border-color: #e6c200 !important;
+}
+
+.btn-success {
+  background-color: #006526 !important; /* green */
+  border-color: #006526 !important;
+  color: #fff !important;
+}
+.btn-success:hover {
+  background-color: #004d1c !important; /* darker green */
+  border-color: #004d1c !important;
+}
+
+/* ✅ Impact Counters */
+.ftco-counter .color-1 {
+  background-color: #006526 !important; /* green */
+}
+.ftco-counter .color-2 {
+  background-color: #FFD700 !important; /* yellow */
+  color: #000 !important;
+}
+.ftco-counter .color-3 {
+  background-color: #006526 !important; /* green */
+}
+
+/* ✅ Carousel text */
+.owl-carousel-wrapper .box-92819 h1,
+.owl-carousel-wrapper .box-92819 p {
+  color: #fff !important;
+}
+
+
+/* ✅ Global Branding Rules */
+
+/* Green background = white text */
+.bg-green,
+.color-1,
+.color-3,
+.navbar.bg-dark,
+footer.ftco-footer {
+  background-color: #006526 !important;
+  color: #fff !important;
+}
+
+/* Yellow background = black text */
+.bg-yellow,
+.color-2,
+.btn-yellow {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}
+
+/* Force headings on brand backgrounds */
+.bg-green h1, .bg-green h2, .bg-green h3, .bg-green h4, .bg-green h5, .bg-green h6,
+.color-1 h1, .color-1 h2, .color-1 h3, .color-1 h4, .color-1 h5, .color-1 h6,
+.color-3 h1, .color-3 h2, .color-3 h3, .color-3 h4, .color-3 h5, .color-3 h6 {
+  color: #fff !important;
+}
+
+.bg-yellow h1, .bg-yellow h2, .bg-yellow h3, .bg-yellow h4, .bg-yellow h5, .bg-yellow h6,
+.color-2 h1, .color-2 h2, .color-2 h3, .color-2 h4, .color-2 h5, .color-2 h6 {
+  color: #000 !important;
+}
+
+/* Buttons */
+.btn-green {
+  background-color: #006526 !important;
+  color: #fff !important;
+}
+.btn-green:hover {
+  background-color: #004d1c !important;
+}
+
+.btn-yellow {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}
+.btn-yellow:hover {
+  background-color: #e6c200 !important;
+}
+
+/* Typography */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  color: #006526;   /* headings use green */
+  font-weight: 700;
+}
+h1 { font-size: 29px; }
+
+/* Green background = white text (force override) */
+.bg-green,
+.color-1,
+.color-3,
+.bg-green *,
+.color-1 *,
+.color-3 * {
+  background-color: #006526 !important;
+  color: #fff !important;
+}
+
+/* Yellow background = black text (force override) */
+.bg-yellow,
+.color-2,
+.bg-yellow *,
+.color-2 * {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}
+
+
+.services {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* ensures all cards are equal height */
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.05);
+}
+
+.services h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #006526; /* Joybringers green */
+  min-height: 30px; /* keeps headings aligned in one line */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services p {
+  flex-grow: 1; /* makes paragraphs expand equally */
+  font-size: 14px;
+}
+
+.services .btn {
+  margin-top: auto; /* pushes button to the bottom */
+}
+
+.services img {
+  width: 100%;
+  height: 250px; /* fixed uniform height */
+  object-fit: cover; /* crops without distortion */
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+
+/* Force heading in one line */
+.heading {
+  font-size: 32px;       /* adjust smaller if it still wraps */
+  font-weight: 700;
+  color: #006526;
+  text-align: center;
+  white-space: nowrap;   /* keep text on one line */
+}
+
+/* Reduce section gap above */
+.site-section {
+  padding-top: 40px !important;   /* override template’s large spacing */
+  padding-bottom: 40px !important;
+}
+
+/* Optional: also reduce bottom margin of heading */
+.heading.mb-5 {
+  margin-bottom: 20px !important;
+}
+
+/* ✅ Volunteer Form Styles */
+.volunter-form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Labels */
+.volunter-form label {
+  font-weight: 600;
+  color: #006526;
+  font-size: 14px;
+}
+
+/* Inputs & Selects */
+.volunter-form input,
+.volunter-form select,
+.volunter-form textarea {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* Placeholder text */
+.volunter-form input::placeholder,
+.volunter-form textarea::placeholder {
+  color: #888;
+  font-size: 14px;
+}
+
+/* Submit Button */
+.volunter-form button,
+.volunter-form input[type="submit"] {
+  background-color: #006526;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.volunter-form button:hover,
+.volunter-form input[type="submit"]:hover {
+  background-color: #FFD700;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Headings */
+.volunteer h2, 
+.volunteer h3 {
+  color: #006526;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Section Background Overlay */
+.ftco-section-3 .overlay {
+  background: rgba(0, 101, 38, 0.6); /* semi-transparent green */
+}
+
+/* Consent & Radio buttons */
+.volunter-form small {
+  display: block;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.volunter-form input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Volunteer Section Fix */
+.ftco-section-3 {
+  position: relative;
+  padding: 80px 0;
+}
+
+.ftco-section-3 .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,101,38,0.6);
+  z-index: 1;
+}
+
+.ftco-section-3 .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Form Styling */
+.volunter-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.volunter-form input,
+.volunter-form select,
+.volunter-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.volunter-form input[type="submit"] {
+  background: #006526;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.volunter-form input[type="submit"]:hover {
+  background: #FFD700;
+  color: #000;
+}
+
+/* Volunteer Form Modal Styles */
+.modal-content {
+  border-radius: 10px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fff;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  background-color: #006526;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.form-label, 
+.form-check-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #006526;
+}
+
+.form-control, 
+.form-select {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control:focus, 
+.form-select:focus {
+  border-color: #006526;
+  box-shadow: 0 0 5px rgba(0, 101, 38, 0.5);
+}
+
+.form-check-input:checked {
+  background-color: #006526;
+  border-color: #006526;
+}
+
+.btn-warning {
+  background-color: #FFD700;
+  border: none;
+  font-weight: 600;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-warning:hover {
+  background-color: #e6c200;
+  color: #000;
+}
+
+.close span {
+  color: #fff !important;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.close:hover span {
+  color: #FFD700 !important;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+
+/* Ensure header/navbar stays normal height */
+header, nav.navbar {
+  flex-shrink: 0;   /* Prevent shrinking */
+}
+
+/* Main content expands */
+main {
+  flex: 1;
+}
+
+/* Footer sticks to bottom */
+footer {
+  background: #006526;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+
+/* Prevent navbar shrinking */
+.navbar {
+  flex: 0 0 auto; /* never shrink */
+  width: 100%;    /* span full width */
+}
+
+.navbar .nav-link.active {
+  border-bottom: 3px solid #FFD700;
+}
+
+.video-frame {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background: #000;
+}
+
+.video-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+}
+
+.donate-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.donate-header p {
+  font-size: 1.2rem;
+}
+
+.amount-options button {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 15px 25px;
+}
+
+.donation-description {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+
+.donation-green-area {
+  background-color: #006526;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.donation-green-area h2,
+.donation-green-area p {
+  color: #fff;
+}
+
+.donation-green-area .btn {
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donation-green-area .btn-light {
+  background-color: #fff;
+  color: #006526;
+  border: none;
+}
+
+.donation-green-area .btn-light:hover {
+  background-color: #f1f1f1;
+  color: #004d1a;
+}
+
+.donation-green-area .btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+
+.donation-green-area .btn-outline-light:hover {
+  background-color: #fff;
+  color: #006526;
+}
+
+.donation-green-area input[type="number"] {
+  background-color: #fff;
+  color: #006526;
+  border: 2px solid #fff;
+}
+
+.toggle-btn.active {
+  background-color: #fff !important;
+  color: #006526 !important;
+  border: 2px solid #fff;
+}
+
+
+
+.donation-toggle .btn {
+  border-radius: 0;
+  font-weight: bold;
+  background-color: white;
+  color: #006526;
+  border: 2px solid #006526;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.donation-toggle .btn.active {
+  background-color: #006526;
+  color: white;
+}
+
+.ftco-navbar-light.scrolled {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #006526 !important;
+  z-index: 9999;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* When navbar is scrolled */
+.ftco-navbar-light.scrolled .navbar-nav > .nav-item > .nav-link {
+  color: #ffffff !important;   /* Normal links stay white */
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for better visibility */
+.ftco-navbar-light.scrolled .navbar-nav > .nav-item > .nav-link:hover {
+  color: #FFD700 !important;   /* Gold/yellow hover */
+}
+
+/* Active page link */
+.ftco-navbar-light.scrolled .navbar-nav > .nav-item.active > .nav-link {
+  color: #FFD700 !important;   /* Active = yellow */
+  font-weight: 600;
+
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+  color: #ffffff !important;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item.active > .nav-link {
+  color: #FFD700 !important;
+  font-weight: 600;
+}
+
+.team-photo {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Optional: subtle zoom effect on hover */
+.staff:hover .team-photo {
+  transform: scale(1.03);
+}
+
+.staff .info {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.staff .info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #006526;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.staff .info .position {
+  display: block;
+  font-size: 16px;
+  color: #000000; /* Change subtitle to black */
+  font-weight: 400;
+}
+
+
+.team-photo {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.staff h3 {
+  font-weight: bold;
+  color: #006526;
+  font-size: 20px;
+}
+
+.staff .position {
+  color: #000;
+  font-size: 15px;
+}
+
+.team-photo-rect {
+  width: 210%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  object-fit: cover;
+}
+
+img.shadow-sm {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+img.shadow-sm {
+  object-fit: cover;
+  max-height: 300px;
+  width: 100%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Hero Carousel Mobile Adjustments */
+@media (max-width: 768px) {
+  .box-92819 {
+    padding: 2rem 1rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+
+  .box-92819 h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .box-92819 p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .box-92819 .btn {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0.5rem auto;
+  }
+
+  .owl-carousel-wrapper {
+    padding: 1rem 0;
+  }
+
+  .owl-1 .ftco-cover-1 {
+    height: 50vh;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .box-92819 {
+    padding: 2rem 1rem;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+
+  .box-92819 h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .box-92819 p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .box-92819 .btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem auto;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .owl-1 .ftco-cover-1 {
+    height: 60vh !important;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .owl-carousel-wrapper {
+    position: relative;
+  }
+}
+
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hero-buttons .btn {
+  padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 90%;
+    font-size: 1rem;
+  }
+}
+
+
+/* Make video fit carousel like a background */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Ensure the container holds the video properly */
+.ftco-cover-1 {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+.ftco-cover-1::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(29, 25, 25, 0.4); /* adjust darkness */
+  z-index: 1;
+}
+
+
+/* Make the video fill the hero section */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Ensure background div fills full height */
+.ftco-cover-1 {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Text box styling */
+.box-92819 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Make hero text flexible */
+.box-92819 h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.box-92819 p {
+  font-size: 1.2rem;
+}
+
+/* Stack buttons on small screens */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.hero-buttons .btn {
+  min-width: 180px;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .box-92819 h1 {
+    font-size: 2rem;
+  }
+
+  .box-92819 p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* Reduce hero height */
+.ftco-cover-1 {
+  min-height: 70vh; /* Previously 100vh – lower this value */
+}
+
+/* Optional: if .box-92819 has extra padding, reduce it */
+.box-92819 {
+  padding: 1rem 1rem;
+}
+
+/* Adjust for mobile if needed */
+@media (max-width: 768px) {
+  .ftco-cover-1 {
+    min-height: 60vh;
+  }
+
+  .box-92819 h1 {
+    font-size: 2rem;
+  }
+
+  .hero-buttons .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+  }
+}

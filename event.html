@@ -1,280 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joybringers - Events</title>
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+  <!-- Your main template CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <!-- Your brand overrides -->
+  <link rel="stylesheet" href="css/custom.css">
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <style>
+    /* Sticky Footer Layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    nav.navbar {
+      flex-shrink: 0;
+    }
+    main {
+      flex: 1; /* Pushes footer down */
+    }
+    footer {
+      flex-shrink: 0;
+    }
+  </style>
+  <style>
+    body { background-color: #f9f9f9; font-family: 'Open Sans', sans-serif; }
+    .event-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; margin-bottom: 30px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .event-card img { width: 100%; height: 220px; object-fit: cover; }
+    .modal-dialog { max-width: 700px; }
+    .modal-body label { font-weight: 600; margin-bottom: 5px; }
+    .modal-body .form-group { margin-bottom: 15px; }
+    .thank-you-message { display: none; text-align: center; padding: 20px; font-weight: bold; color: green; }
+    footer { background:#006526; color:#fff; padding:30px 0; font-size:14px; }
+    .footer-social a { display:inline-flex; align-items:center; justify-content:center; margin:0 5px; width:36px; height:36px; border-radius:50%; color:#fff; font-size:16px; transition:0.3s; }
+    .footer-social a:hover { opacity:0.8; }
+    .footer-social a.facebook { background:#1877F2; }
+    .footer-social a.instagram { background:#E4405F; }
+    .footer-social a.linkedin { background:#0A66C2; }
+    .footer-social a.twitter { background:#1DA1F2; }
+    .footer-social a.tiktok { background:#000; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Joybringers</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="what-we-do.html" class="nav-link">What We Do</a></li>
+        <li class="nav-item active"><a href="event.html" class="nav-link">Events</a></li>
+        <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+<!-- <li class="nav-item"><a href="partner.html" class="nav-link">Partnerships</a></li>-->
+         <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END nav -->
+
+<!-- ✅ Event Section -->
+<section class="ftco-section">
+  <div class="container">
+    <h2 class="text-center mb-5">Upcoming Events</h2>
+    <div class="row" id="upcoming-events"></div>
+
+    <h2 class="text-center mb-5 mt-5">Past Events</h2>
+    <div class="row" id="past-events"></div>
+  </div>
+</section>
+
+<!-- ✅ Registration Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 id="registerModalLabel" class="modal-title">Register for Event</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">&times;</button>
+      </div>
+
+      <form id="eventRegisterForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="ca5bab91-e33d-4ab7-bc17-45becec07004">
+        <input type="hidden" name="event_name" id="event_name">
+        <input type="hidden" name="event_date" id="event_date">
+        <input type="hidden" name="event_time" id="event_time">
+        <input type="hidden" name="event_location" id="event_location">
+
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>First Name *</label>
+                <input type="text" name="first_name" class="form-control" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Last Name *</label>
+                <input type="text" name="last_name" class="form-control" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Email *</label>
+                <input type="email" name="email" class="form-control" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" class="form-control">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Gender *</label>
+                <select name="gender" class="form-control" required>
+                  <option value="">Please Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Age Range *</label>
+                <select name="age_range" class="form-control" required>
+                  <option value="">Please Select</option>
+                  <option>7 - 11</option>
+                  <option>12 - 15</option>
+                  <option>16 - 25</option>
+                  <option>26 & Above</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Location *</label>
+                <select name="location" class="form-control" required onchange="toggleOtherLocation(this)">
+                  <option value="">Select Area</option>
+                  <option>Newcastle</option>
+                  <option>Sunderland</option>
+                  <option>Gateshead</option>
+                  <option>Durham</option>
+                  <option>North Shields</option>
+                  <option>South Shields</option>
+                  <option>Middlesbrough</option>
+                  <option>Stockton</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group d-none" id="otherLocationGroup">
+                <label>Specify Location</label>
+                <input type="text" name="other_location" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Submit Registration</button>
+        </div>
+        <div class="thank-you-message" id="thankYouMessage">
+          ✅ Thank you for registering! Check your email for event details.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Footer -->
+  <footer style="background-color:#006526; color:#fff; padding:40px 0; font-size:14px;">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Welfare</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
+      <div class="row align-items-center">
+        <!-- Left Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-left">
+          <p>
+            Email us: <a href="mailto:info@joybringer.org.uk" style="color:#fff;">info@joybringer.org.uk</a><br>
+            Call us: <a href="tel:07780105816" style="color:#fff;">07780105816</a>
+          </p>
+          <p>
+            <strong>JOYBRINGERS LTD</strong><br>
+            (Company No. 15400265)<br>
+            Registered Charity Number 1212606
+          </p>
+        </div>
+        <!-- Middle Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center">
+          <img src="images/partners/ncvo-logo.jpg" alt="NCVO Member" style="max-height:80px;">
+        </div>
+        <!-- Right Column -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-centre">
+          <p>Follow us | <a href="contact.html" style="color:#fff;">Contact Us</a></p>
+          <div class="footer-social">
+  <a href="https://www.facebook.com/Joybringero/" target="_blank" class="facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/joybringerscharity/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/joybringers/?viewAsMember=true" target="_blank" class="linkedin">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://x.com/JoybringersC" target="_blank" class="twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.tiktok.com/@joybringersc?_t=ZN-8xSqI9AImOM&_r=1" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
-          <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-          <li class="nav-item active"><a href="event.html" class="nav-link">Events</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
+          <p class="mt-2">
+            <a href="/terms.html" style="color:#fff;">Terms of use</a> /
+            <a href="/cookies.html" style="color:#fff;">Cookies</a> /
+            <a href="/privacy.html" style="color:#fff;">Privacy</a>
+          </p>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="row mt-4">
+        <div class="col text-center">
+          <p style="margin:0;">©2025 Joybringers. All Rights Reserved.</p>
+        </div>
       </div>
     </div>
-  </nav>
-    <!-- END nav -->
-    
-    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Event</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Events</h1>
-          </div>
-        </div>
-      </div>
-    </div>
+  </footer>
 
-    
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-        	<div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-1.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-2.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-3.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-4.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-5.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-6.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-		
+  <!-- ✅ Social Icons Styling -->
+  <style>
+    .footer-social a {
+  display: inline-flex;        /* centers child icon */
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
 
-    <footer class="ftco-footer ftco-section img">
-    	<div class="overlay"></div>
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-3">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About Us</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Recent Blog</h2>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-             <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Site Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Home</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Donate</a></li>
-                <li><a href="#" class="py-2 d-block">Causes</a></li>
-                <li><a href="#" class="py-2 d-block">Event</a></li>
-                <li><a href="#" class="py-2 d-block">Blog</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
+.footer-social a:hover {
+  opacity: 0.8;
+}
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    
-  
+.footer-social a.facebook { background: #1877F2; }
+.footer-social a.instagram { background: #E4405F; }
+.footer-social a.linkedin { background: #0A66C2; }
+.footer-social a.twitter  { background: #1DA1F2; }
+.footer-social a.tiktok   { background: #000000; }
+  </style>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<!-- Loader -->
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#007A4D"/>
+    </svg>
+  </div>
 
-
+  <!-- ✅ JS Files -->
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -289,9 +284,83 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
-  </body>
+
+<!-- ✅ Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const events = [
+  { title: "ONE MONTH CODING & Data CLASS", date: "2025-11-01", time: "10:00 AM", venue: "Suite 3, Neon, Quorum Business Park", description: "A one-month hands-on coding and data science class for ages 7 to 15 years.", image: "images/events/code.png" },
+  { title: "Volunteer Hangout", date: "2025-11-15", time: "10:00 AM", venue: "Suite 3, Neon, Quorum Business Park", description: "A Day set aside for volunteers to come together, have fun and network", image: "images/events/bg_3.jpg" },
+   { title: "BANQUET & AWARDS NIGHT", date: "2025-12-13", time: "16:00 PM", venue: "West Denton Community Centre, Hillhead Rd, West Denton, Newcastle upon Tyne NE5 1DN", description: "Celebrtaing excellence, impact and joy. You are invited. Dress code: Corporate/Black Tie", image: "images/banq.jpg" },
+
+  { title: "One Day Free Multiskilled Workshop (Scratch Coding Bootcamp)", date: "2025-04-17", time: "10:00 AM - 4:00 PM", venue: "Neon, Quorum Business Park", description: "A hands-on Scratch coding bootcamp for young minds.", image: "images/events/cv.png" },
+  { title: "Outdoor Picnic & Games for Young People", date: "2025-05-31", time: "12:00 PM - 5:00 PM", venue: "Leazes Park, Newcastle", description: "Relax and play! A fun day outdoors with games and food.", image: "images/events/event7.jpg" },
+  { title: "One Month Free French/German Lesson", date: "2025-06-28", time: "10:00 AM - 12:00 PM", venue: "Online (Zoom)", description: "Learn French or German in a fun and engaging way.", image: "images/events/event-1.jpg" },
+  { title: "Explore the NE: Excursion to Beamish", date: "2025-07-19", time: "9:00 AM - 6:00 PM", venue: "Beamish, County Durham", description: "Explore the North East's cultural past with us.", image: "images/events/an.jpg" },
+  { title: "Joybringers FUN FAIR", date: "2025-08-16", time: "11:00 AM - 5:00 PM", venue: "Neon, Quorum Business Park", description: "Food, games, prizes, and fun for all ages.", image: "images/events/event7.jpg" },
+  { title: "Explore the NE: Excursion to Alnwick Gardens", date: "2025-08-19", time: "9:30 AM - 6:30 PM", venue: "Alnwick, Northumberland", description: "A day of nature, learning, and exploration.", image: "images/events/event-2.jpg" },
+  { title: "Practical Multiskilled Training for Young People", date: "2025-10-04", time: "10:00 AM - 4:00 PM", venue: "Neon, Quorum Business Park", description: "Hands-on training across key youth skills.", image: "images/events/event7.jpg" },
+  { title: "Multiskilled Workshop", date: "2024-08-18", time: "10:00 AM - 4:00 PM", venue: "Neon, Quorum Business Park", description: "Develop versatile skills through our practical workshop.", image: "images/events/code.png" },
+  { title: "CV Clinic & Mock Interview", date: "2024-07-20", time: "11:00 AM - 3:00 PM", venue: "Neon, Quorum Business Park", description: "Polish your CV and get interview-ready with pros.", image: "images/events/cv.png" }
+];
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toDateString();
+}
+
+function eventCard(e) {
+  return `
+    <div class="col-md-4 d-flex">
+      <div class="event-card">
+        <img src="${e.image}" alt="${e.title}">
+        <div class="p-3">
+          <h5>${e.title}</h5>
+          <p><i class="fa fa-calendar"></i> ${formatDate(e.date)}</p>
+          <p><i class="fa fa-clock"></i> ${e.time}</p>
+          <p><i class="fa fa-map-marker"></i> ${e.venue}</p>
+          <p>${e.description}</p>
+          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#registerModal"
+            data-title="${e.title}" data-date="${e.date}" data-time="${e.time}" data-location="${e.venue}">
+            Register Now
+          </button>
+        </div>
+      </div>
+    </div>`;
+}
+
+$(document).ready(() => {
+  const today = new Date();
+  events.forEach(e => {
+    const section = new Date(e.date) >= today ? "#upcoming-events" : "#past-events";
+    $(section).append(eventCard(e));
+  });
+
+  $('#registerModal').on('show.bs.modal', function(event) {
+    const b = $(event.relatedTarget);
+    $('#event_name').val(b.data('title'));
+    $('#event_date').val(b.data('date'));
+    $('#event_time').val(b.data('time'));
+    $('#event_location').val(b.data('location'));
+    $('#thankYouMessage').hide();
+  });
+
+  $('#eventRegisterForm').on('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    fetch(form.action, { method: "POST", body: new FormData(form) })
+    .then(r => { if (r.ok) { form.reset(); $('#thankYouMessage').fadeIn(); } });
+  });
+});
+
+function toggleOtherLocation(sel) {
+  const box = document.getElementById('otherLocationGroup');
+  box.classList.toggle('d-none', sel.value !== "Other");
+}
+</script>
+
+</body>
 </html>
