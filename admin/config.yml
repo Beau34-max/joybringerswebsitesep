@@ -8,81 +8,99 @@ public_folder: "/images/uploads"
 collections:
   - name: "hero"
     label: "Hero Section"
-    file: "data/hero.json"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Charity Number", name: "charity_number", widget: "string" }
-      - { label: "Background Image", name: "background", widget: "image" }
-      - label: "Buttons"
-        name: "buttons"
-        widget: "list"
+    files:
+      - file: "data/hero.json"
+        label: "Hero Content"
+        name: "hero"
         fields:
-          - { label: "Text", name: "text", widget: "string" }
-          - { label: "Link", name: "link", widget: "string" }
-          - { label: "Style (e.g. btn-warning, btn-success)", name: "style", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Charity Number", name: "charity_number", widget: "string" }
+          - { label: "Background Image", name: "background", widget: "image" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+              - { label: "Style (e.g. btn-warning, btn-success)", name: "style", widget: "string" }
 
   - name: "impact"
     label: "Impact Counter"
-    file: "data/impact.json"
-    fields:
-      - { label: "Young People Supported", name: "young_people_supported", widget: "number" }
-      - { label: "Donation Message", name: "donation_message", widget: "text" }
-      - { label: "Volunteer Message", name: "volunteer_message", widget: "text" }
+    files:
+      - file: "data/impact.json"
+        label: "Impact Data"
+        name: "impact"
+        fields:
+          - { label: "Young People Supported", name: "young_people_supported", widget: "number" }
+          - { label: "Donation Message", name: "donation_message", widget: "text" }
+          - { label: "Volunteer Message", name: "volunteer_message", widget: "text" }
 
   - name: "programmes"
     label: "What We Do"
-    file: "data/programmes.json"
-    fields:
-      - label: "Items"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "data/programmes.json"
+        label: "Programmes"
+        name: "programmes"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Image", name: "image", widget: "image" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
 
   - name: "events"
     label: "Events"
-    file: "data/events.json"
-    fields:
-      - label: "Items"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "data/events.json"
+        label: "Events Data"
+        name: "events"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Date", name: "date", widget: "datetime" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Image", name: "image", widget: "image" }
-          - { label: "Link", name: "link", widget: "string" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link", name: "link", widget: "string" }
 
   - name: "partners"
     label: "Partners"
-    file: "data/partners.json"
-    fields:
-      - label: "Items"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "data/partners.json"
+        label: "Partners Data"
+        name: "partners"
         fields:
-          - { label: "Name", name: "name", widget: "string" }
-          - { label: "Logo", name: "logo", widget: "image" }
-          - { label: "Link", name: "link", widget: "string" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Link", name: "link", widget: "string" }
 
   - name: "footer"
     label: "Footer"
-    file: "data/footer.json"
-    fields:
-      - { label: "Email", name: "email", widget: "string" }
-      - { label: "Phone", name: "phone", widget: "string" }
-      - { label: "Company", name: "company", widget: "string" }
-      - { label: "Company No", name: "company_no", widget: "string" }
-      - { label: "Charity No", name: "charity_no", widget: "string" }
-      - { label: "Terms Link", name: "terms_link", widget: "string" }
-      - { label: "Cookies Link", name: "cookies_link", widget: "string" }
-      - { label: "Privacy Link", name: "privacy_link", widget: "string" }
-      - label: "Social Links"
-        name: "socials"
-        widget: "list"
+    files:
+      - file: "data/footer.json"
+        label: "Footer Info"
+        name: "footer"
         fields:
-          - { label: "Platform", name: "platform", widget: "string" }
-          - { label: "URL", name: "url", widget: "string" }
-          - { label: "Icon Class", name: "icon", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Company", name: "company", widget: "string" }
+          - { label: "Company No", name: "company_no", widget: "string" }
+          - { label: "Charity No", name: "charity_no", widget: "string" }
+          - { label: "Terms Link", name: "terms_link", widget: "string" }
+          - { label: "Cookies Link", name: "cookies_link", widget: "string" }
+          - { label: "Privacy Link", name: "privacy_link", widget: "string" }
+          - label: "Social Links"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Icon Class", name: "icon", widget: "string" }
