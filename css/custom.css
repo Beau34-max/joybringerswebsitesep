@@ -949,3 +949,14 @@ img.shadow-sm {
     font-size: 0.95rem;
   }
 }
+
+.owl-carousel .owl-item {
+  transition: opacity 1s ease-in-out !important;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
