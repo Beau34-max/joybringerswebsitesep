@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6327VK4');</script>
+<!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joybringers - Events</title>
@@ -55,6 +63,10 @@
   </style>
 </head>
 <body>
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6327VK4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="page-wrapper">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -134,6 +146,19 @@
                 </select>
               </div>
               <div class="col-md-6 form-group">
+                <label>How Many Person is attending *</label>
+                <select name="age_range" class="form-control" required>
+                  <option value="">Please Select</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>6+</option>
+                </select>
+              </div>
+             <!--  <div class="col-md-6 form-group">
                 <label>Age Range *</label>
                 <select name="age_range" class="form-control" required>
                   <option value="">Please Select</option>
@@ -142,7 +167,7 @@
                   <option>16 - 25</option>
                   <option>26 & Above</option>
                 </select>
-              </div>
+              </div> -->
               <div class="col-md-6 form-group">
                 <label>Location *</label>
                 <select name="location" class="form-control" required onchange="toggleOtherLocation(this)">
@@ -293,9 +318,8 @@
 <script>
 const events = [
   { title: "ONE MONTH CODING & Data CLASS", date: "2025-11-01", time: "10:00 AM", venue: "Suite 3, Neon, Quorum Business Park", description: "A one-month hands-on coding and data science class for ages 7 to 15 years.", image: "images/events/code.png" },
-  { title: "Volunteer Hangout", date: "2025-11-15", time: "10:00 AM", venue: "Suite 3, Neon, Quorum Business Park", description: "A Day set aside for volunteers to come together, have fun and network", image: "images/events/bg_3.jpg" },
-   { title: "BANQUET & AWARDS NIGHT", date: "2025-12-13", time: "16:00 PM", venue: "West Denton Community Centre, Hillhead Rd, West Denton, Newcastle upon Tyne NE5 1DN", description: "Celebrtaing excellence, impact and joy. You are invited. Dress code: Corporate/Black Tie", image: "images/banq.jpg" },
-
+  { title: "BANQUET & AWARDS NIGHT", date: "2025-12-13", time: "18:00 PM", venue: "West Denton Community Centre, Hillhead Rd, West Denton, Newcastle upon Tyne NE5 1DN", description: "Celebrating excellence, impact and joy. You are invited. Dress code: Corporate/Black Tie", image: "images/banq.jpg" },
+  { title: "Volunteer Hangout", date: "2026-02-21", time: "10:00 AM", venue: "Suite 3, Neon, Quorum Business Park", description: "A Day set aside for volunteers to come together, have fun and network", image: "images/events/bg_3.jpg" },
   { title: "One Day Free Multiskilled Workshop (Scratch Coding Bootcamp)", date: "2025-04-17", time: "10:00 AM - 4:00 PM", venue: "Neon, Quorum Business Park", description: "A hands-on Scratch coding bootcamp for young minds.", image: "images/events/cv.png" },
   { title: "Outdoor Picnic & Games for Young People", date: "2025-05-31", time: "12:00 PM - 5:00 PM", venue: "Leazes Park, Newcastle", description: "Relax and play! A fun day outdoors with games and food.", image: "images/events/event7.jpg" },
   { title: "One Month Free French/German Lesson", date: "2025-06-28", time: "10:00 AM - 12:00 PM", venue: "Online (Zoom)", description: "Learn French or German in a fun and engaging way.", image: "images/events/event-1.jpg" },
@@ -312,7 +336,8 @@ function formatDate(dateStr) {
   return d.toDateString();
 }
 
-function eventCard(e) {
+// ✅ Updated function — only show Register button for upcoming events
+function eventCard(e, isUpcoming) {
   return `
     <div class="col-md-4 d-flex">
       <div class="event-card">
@@ -323,10 +348,13 @@ function eventCard(e) {
           <p><i class="fa fa-clock"></i> ${e.time}</p>
           <p><i class="fa fa-map-marker"></i> ${e.venue}</p>
           <p>${e.description}</p>
-          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#registerModal"
-            data-title="${e.title}" data-date="${e.date}" data-time="${e.time}" data-location="${e.venue}">
-            Register Now
-          </button>
+          ${isUpcoming ? `
+            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#registerModal"
+              data-title="${e.title}" data-date="${e.date}" data-time="${e.time}" data-location="${e.venue}">
+              Register Now
+            </button>` : `
+            <span class="badge badge-secondary">Event Ended</span>
+          `}
         </div>
       </div>
     </div>`;
@@ -335,10 +363,13 @@ function eventCard(e) {
 $(document).ready(() => {
   const today = new Date();
   events.forEach(e => {
-    const section = new Date(e.date) >= today ? "#upcoming-events" : "#past-events";
-    $(section).append(eventCard(e));
+    const eventDate = new Date(e.date);
+    const isUpcoming = eventDate >= today;
+    const section = isUpcoming ? "#upcoming-events" : "#past-events";
+    $(section).append(eventCard(e, isUpcoming));
   });
 
+  // Modal and form handling remain the same
   $('#registerModal').on('show.bs.modal', function(event) {
     const b = $(event.relatedTarget);
     $('#event_name').val(b.data('title'));
@@ -361,6 +392,7 @@ function toggleOtherLocation(sel) {
   box.classList.toggle('d-none', sel.value !== "Other");
 }
 </script>
+
 
 </body>
 </html>
