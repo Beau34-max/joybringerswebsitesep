@@ -61,6 +61,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-social a.twitter { background:#1DA1F2; }
     .footer-social a.tiktok { background:#000; }
   </style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
 </head>
 <body>
    <!-- Google Tag Manager (noscript) -->
@@ -433,26 +435,30 @@ function toggleOtherLocation(sel) {
     e.preventDefault();
 
     // Send confirmation email via EmailJS
-    emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', this)
-      .then(function() {
-        // ✅ Show success message smoothly
-        $('#thankYouMessage').fadeIn();
+emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', this)
+  .then(function() {
+    // ✅ Show success message smoothly
+    $('#thankYouMessage').fadeIn();
 
-        // 🕒 Wait 3 seconds, then close modal and reset form
-        setTimeout(() => {
-          $('#thankYouMessage').fadeOut(600, () => {
-            $('#registerModal').modal('hide');
-            e.target.reset();
-          });
-        }, 3000);
+    // 🕒 Wait 3 seconds, then close modal, reset form, and refresh page
+    setTimeout(() => {
+      $('#thankYouMessage').fadeOut(600, () => {
+        $('#registerModal').modal('hide');
+        e.target.reset();
 
-        // Optional alert (you can remove this if you prefer)
-         alert("✅ Thank you for registering! A confirmation email has been sent.");
-      }, function(error) {
-        console.error("❌ Email send failed:", error);
-        alert("Oops! Something went wrong. Please try again.");
+        // ✅ Refresh the page automatically after success
+        window.location.reload();
       });
+    }, 1000);
+
+    // Optional alert (you can remove this if you prefer)
+    // alert("✅ Thank you for registering! A confirmation email has been sent.");
+  }, function(error) {
+    console.error("❌ Email send failed:", error);
+    alert("Oops! Something went wrong. Please try again.");
   });
+});
+
 </script>
 
 </body>
