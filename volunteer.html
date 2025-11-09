@@ -330,11 +330,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       
       <div class="modal-body">
-        <form action="https://api.web3forms.com/submit" method="POST" class="volunteer-form">
+        <form id="volunteerForm" class="volunteer-form">          
           <!-- Access Key -->
           <input type="hidden" name="access_key" value="f2c68935-35a8-4f27-968a-606496bd4e3a">
-          <input type="hidden" name="redirect" value="http://127.0.0.1:5500/thank-you.html">
-          <input type="hidden" id="roleApplied" name="role">
+          <input type="hidden" name="redirect" value="https://joybringer.org.uk/thank-you.html">          <input type="hidden" id="roleApplied" name="role">
 
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -546,6 +545,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.find('#roleApplied').val(role)
   })
 </script>
+
+<!-- ✅ EmailJS Integration -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    // Initialize EmailJS with your public key
+    emailjs.init("_TGXKABP5E9-_Sxzn");
+  })();
+
+  // Handle volunteer form submission
+  document.getElementById("volunteerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Send form data via EmailJS
+    emailjs.sendForm('service_m8qsdzk', 'template_56p9ftd', this)
+      .then(function() {
+        // ✅ Show success message
+        alert("✅ Thank you for applying! A confirmation email has been sent to you.");
+
+        // ✅ Close the modal
+        $('#volunteerFormModal').modal('hide');
+
+        // ✅ Redirect to live thank-you page after short delay
+        setTimeout(function() {
+          window.location.href = "https://joybringer.org.uk/thank-you.html";
+        }, 1500); // 1.5 second delay
+      }, function(error) {
+        // ❌ Handle errors
+        console.error("Email send failed:", error);
+        alert("Oops! Something went wrong. Please try again later.");
+      });
+  });
+</script>
+
 
 </body>
 </html>

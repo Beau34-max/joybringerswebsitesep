@@ -111,7 +111,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">&times;</button>
       </div>
 
-      <form id="eventRegisterForm" action="https://api.web3forms.com/submit" method="POST">
+      <form id="eventRegisterForm">        
         <input type="hidden" name="access_key" value="ca5bab91-e33d-4ab7-bc17-45becec07004">
         <input type="hidden" name="event_name" id="event_name">
         <input type="hidden" name="event_date" id="event_date">
@@ -147,7 +147,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="col-md-6 form-group">
                 <label>How Many Person is attending *</label>
-                <select name="age_range" class="form-control" required>
+                <select name="number_of_persons" class="form-control" required>
                   <option value="">Please Select</option>
                   <option>1</option>
                   <option>2</option>
@@ -379,12 +379,7 @@ $(document).ready(() => {
     $('#thankYouMessage').hide();
   });
 
-  $('#eventRegisterForm').on('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    fetch(form.action, { method: "POST", body: new FormData(form) })
-    .then(r => { if (r.ok) { form.reset(); $('#thankYouMessage').fadeIn(); } });
-  });
+
 });
 
 function toggleOtherLocation(sel) {
@@ -393,6 +388,72 @@ function toggleOtherLocation(sel) {
 }
 </script>
 
+<!-- ✅ EmailJS Integration -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("_TGXKABP5E9-_Sxzn"); // Your public key
+  })();
+
+  // Send confirmation email
+  document.getElementById("eventRegisterForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', this)
+      .then(function() {
+        // Show thank you message
+        document.getElementById("thankYouMessage").style.display = "block";
+
+        // Close modal and reset form after delay
+        setTimeout(() => {
+          $('#registerModal').modal('hide');
+          document.getElementById("thankYouMessage").style.display = "none";
+          e.target.reset();
+        }, 4000);
+
+        alert("✅ Thank you for registering! A confirmation email has been sent.");
+      }, function(error) {
+        console.error("❌ Email send failed:", error);
+        alert("Oops! Something went wrong. Please try again.");
+      });
+  });
+</script>
+
+<!-- ✅ EmailJS Integration for Event Registration -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    // Initialize with your public key
+    emailjs.init("_TGXKABP5E9-_Sxzn");
+  })();
+
+  // Event registration form handler
+  document.getElementById("eventRegisterForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Send confirmation email via EmailJS
+    emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', this)
+      .then(function() {
+        // ✅ Show success message smoothly
+        $('#thankYouMessage').fadeIn();
+
+        // 🕒 Wait 3 seconds, then close modal and reset form
+        setTimeout(() => {
+          $('#thankYouMessage').fadeOut(600, () => {
+            $('#registerModal').modal('hide');
+            e.target.reset();
+          });
+        }, 3000);
+
+        // Optional alert (you can remove this if you prefer)
+         alert("✅ Thank you for registering! A confirmation email has been sent.");
+      }, function(error) {
+        console.error("❌ Email send failed:", error);
+        alert("Oops! Something went wrong. Please try again.");
+      });
+  });
+</script>
 
 </body>
 </html>
