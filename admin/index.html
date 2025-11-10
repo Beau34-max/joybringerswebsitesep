@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
   <head>
     <!-- Google Tag Manager -->
@@ -11,9 +11,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  
     <meta charset="utf-8" />
     <title>Joybringers CMS</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/netlify-identity-widget@^1.9.1/build/netlify-identity-widget.js"></script>
   </head>
   <body>
+    <!-- Initialize Netlify Identity -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
@@ -26,7 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
     </script>
 
-    <!-- Load Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- Load Decap (Netlify) CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
+

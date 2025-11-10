@@ -27,7 +27,7 @@ loadJSON("data/impact.json").then(data => {
 });
 
 // PROGRAMMES SECTION
-loadJSON("data/programmes.json").then(data => {
+loadJSON("data/whatwedo.json").then(data => {
   let container = document.querySelector("#programmes-list");
   container.innerHTML = "";
   data.items.forEach(item => {

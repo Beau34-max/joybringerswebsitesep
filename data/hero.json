@@ -1,10 +1,14 @@
 {
-  "title": "Helping Young People Believe, Belong, and Become",
+  "title": "Empowering Young People to Thrive",
   "charity_number": "Registered Charity Number 1212606",
-  "background": "images/bg_7.jpg",
+  "background": "images/hero-bg.jpg",
   "buttons": [
-    { "text": "Donate Now", "link": "donate.html", "style": "btn-warning" },
-    { "text": "Become a Volunteer", "link": "volunteer.html", "style": "btn-success" },
-    { "text": "Partner With Us", "link": "partner.html", "style": "btn-success" }
+    { "text": "Donate Now", "link": "donate.html", "style": "btn btn-warning py-3 px-4 rounded-0" },
+    { "text": "Become a Volunteer", "link": "volunteer.html", "style": "btn btn-success py-3 px-4 rounded-0" },
+    { "text": "Partner With Us", "link": "contact.html", "style": "btn btn-success py-3 px-4 rounded-0" }
   ]
 }
+
+
+
+

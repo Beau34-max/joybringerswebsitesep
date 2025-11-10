@@ -1,18 +1,13 @@
 {
   "items": [
     {
-      "title": "Youth Empowerment Workshop",
-      "date": "2025-05-20T10:00:00Z",
-      "description": "Training sessions in digital skills and creative arts.",
-      "image": "images/event-1.jpg",
-      "link": "event.html"
-    },
-    {
-      "title": "Outdoor Fun Day",
-      "date": "2025-06-15T12:00:00Z",
-      "description": "Families enjoying sack races, football, and fun activities.",
-      "image": "images/event-2.jpg",
-      "link": "event.html"
+      "title": "Joybringers Banquet & Award Night",
+      "date": "2025-12-13T18:00:00Z",
+      "time": "6:00 PM",
+      "venue": "City of God Christian Centre, Newcastle",
+      "description": "Join us for an unforgettable night celebrating community heroes, volunteers, and young achievers.",
+      "image": "/images/uploads/banquet.jpg",
+      "link": "/events.html"
     }
   ]
 }
