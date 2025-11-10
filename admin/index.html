@@ -1,34 +1,18 @@
-   <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P6327VK4');</script>
-<!-- End Google Tag Manager -->
- 
     <meta charset="utf-8" />
     <title>Joybringers CMS</title>
-    <script src="https://unpkg.com/netlify-identity-widget@^1.9.1/build/netlify-identity-widget.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <!-- Initialize Netlify Identity -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-
-    <!-- Load Decap (Netlify) CMS -->
+    <!-- ✅ Load Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- ✅ Optional: load your site styles for CMS preview -->
+    <script>
+      CMS.registerPreviewStyle("/css/style.css");
+      CMS.registerPreviewStyle("/css/custom.css");
+    </script>
   </body>
 </html>
-
