@@ -2,8 +2,9 @@ backend:
   name: github
   repo: Beau34-max/joybringerswebsitesep
   branch: main
-  base_url: https://decap-auth-yourname.vercel.app   # 🔁 Replace later after deploying OAuth app
+  base_url: https://joybringers-cms-auth.vercel.app
 
+  
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
