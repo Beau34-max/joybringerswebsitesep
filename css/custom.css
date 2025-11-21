@@ -1024,3 +1024,10 @@ img.shadow-sm {
     line-height: 1.2em !important;
   }
 }
+
+.team-banner {
+  height: 310px;       /* adjust height here */
+  object-fit: cover;   /* crops without stretching */
+  width: 100%;
+  border-radius: 8px;
+}
