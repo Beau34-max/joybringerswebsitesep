@@ -960,3 +960,67 @@ img.shadow-sm {
   object-fit: cover;
   display: block;
 }
+
+/* Fix hero section height on mobile */
+@media (max-width: 768px) {
+
+  .owl-carousel-wrapper {
+    position: relative;
+    height: 520px !important;
+  }
+
+  .hero-video {
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .box-92819 {
+    padding-top: 120px !important;
+  }
+
+  .hero-spacer {
+    height: 520px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-buttons a {
+    margin-bottom: 8px;
+    width: 90%;
+  }
+}
+
+.ftco-counter {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .ftco-counter {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    margin-top: 20px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .hero-buttons a.btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box-92819 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .box-92819 h1 {
+    font-size: 32px !important;
+    line-height: 1.2em !important;
+  }
+}

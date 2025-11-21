@@ -113,14 +113,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">&times;</button>
       </div>
 
-     <form id="eventRegisterForm" action="https://api.web3forms.com/submit" method="POST">
-  <!-- Web3Forms setup -->
-  <input type="hidden" name="access_key" value="ca5bab91-e33d-4ab7-bc17-45becec07004">
+     <form id="eventRegisterForm" action="https://submit-form.com/3vHXAfvX2" method="POST">
 
   <!-- ✅ Disable Web3Forms auto-responder (no duplicate emails) -->
-  <input type="hidden" name="email_template" value="none">
-  <input type="hidden" name="from_name" value="Joybringers Charity">
-
+   <input type="hidden" name="_email.template" value="none">
+   
   <!-- Event info (auto-filled by JS when modal opens) -->
   <input type="hidden" name="event_name" id="event_name">
   <input type="hidden" name="event_date" id="event_date">
@@ -399,69 +396,46 @@ function toggleOtherLocation(sel) {
 </script>
 
 
-<!-- ✅ EmailJS Integration + Google Sheets + Web3Forms Hybrid -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
 (function() {
-  // Initialize EmailJS
-  emailjs.init("_TGXKABP5E9-_Sxzn");
+  emailjs.init("_TGXKABP5E9-_Sxzn"); // your EmailJS public key
 })();
-
-// ✅ Your Google Apps Script Web App URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbwWSQvN9Oq-60EWsh83EDbwyTw2jZeHUv6ckq3iSAGUZ1GEpwFPE5sDwcFG8YqLqMugSQ/exec";
 
 document.getElementById("eventRegisterForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const form = this;
-  const thankYou = document.getElementById("thankYouMessage");
 
-  // ✅ Step 1: Send to Web3Forms (Admin Notification)
-  fetch("https://api.web3forms.com/submit", {
+  // 1️⃣ Send to FORMSPARK (admin email + storage)
+  fetch(form.action, {
     method: "POST",
     body: new FormData(form)
   })
-  .then(res => res.json())
   .then(() => {
-    console.log("✅ Web3Forms submission successful (admin email sent)");
-  })
-  .catch(err => console.error("❌ Web3Forms error:", err));
+    console.log("Admin email + storage completed");
+  });
 
-  // ✅ Step 2: Log data to Google Sheets
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(() => console.log("✅ Registration saved to Google Sheets"))
-  .catch(err => console.error("❌ Google Sheets error:", err));
-
-  // ✅ Step 3: Send confirmation email to registrant via EmailJS
+  // 2️⃣ Send confirmation email to REGISTRANT
   emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', form)
-    .then(function() {
-      console.log("✅ Confirmation email sent to registrant");
+    .then(() => {
+      console.log("Confirmation email sent!");
 
-      // ✅ Smooth thank-you message (your preferred style)
+      // Show thank-you popup
       $('#thankYouMessage').fadeIn();
       setTimeout(() => {
         $('#thankYouMessage').fadeOut(600, () => {
           $('#registerModal').modal('hide');
-          e.target.reset();
-          window.location.reload(); // refresh the page after close
+          form.reset();
+          window.location.reload();
         });
       }, 3000);
-
-      // Optional: small alert confirmation
-      // alert("✅ Thank you for registering! A confirmation email has been sent.");
-    }, function(error) {
-      console.error("❌ EmailJS send failed:", error);
-      alert("Oops! Something went wrong. Please try again.");
+    })
+    .catch(err => {
+      console.error("EmailJS Error:", err);
+      alert("Could not send confirmation email. Please try again.");
     });
 });
 </script>
-
 
 </body>
 </html>
