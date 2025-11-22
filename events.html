@@ -406,29 +406,33 @@ document.getElementById("eventRegisterForm").addEventListener("submit", function
   e.preventDefault();
   const form = this;
 
-  // 1️⃣ Send to FORMSPARK (admin email + storage)
+  // 1️⃣ Send to Formspark (admin email + dashboard storage)
   fetch(form.action, {
     method: "POST",
     body: new FormData(form)
   })
   .then(() => {
-    console.log("Admin email + storage completed");
+    console.log("Formspark submission saved.");
+  })
+  .catch(err => {
+    console.error("Formspark Error:", err);
   });
 
-  // 2️⃣ Send confirmation email to REGISTRANT
+  // 2️⃣ Send confirmation email to registrant
   emailjs.sendForm('service_m8qsdzk', 'template_l0gb2le', form)
     .then(() => {
-      console.log("Confirmation email sent!");
-
-      // Show thank-you popup
+      console.log("EmailJS confirmation sent.");
+      // Show thank-you message
       $('#thankYouMessage').fadeIn();
+
+      // Give Formspark time to finish
       setTimeout(() => {
         $('#thankYouMessage').fadeOut(600, () => {
           $('#registerModal').modal('hide');
           form.reset();
-          window.location.reload();
+          // Do NOT reload the page — let Formspark finish
         });
-      }, 3000);
+      }, 2500);
     })
     .catch(err => {
       console.error("EmailJS Error:", err);
