@@ -287,43 +287,45 @@
         <p class="vh-section-title"><i class="fas fa-file-contract mr-2"></i>D. Insurance Details</p>
         <div class="alert alert-warning" style="font-size:13px;border-radius:8px">
           <i class="fas fa-exclamation-triangle mr-2"></i>
-          <strong>UK requirement:</strong> Hirers must hold Public Liability Insurance with a minimum cover of <strong>£5,000,000</strong> for the duration of the hire period. Evidence of insurance must be submitted at least 7 days before the event.
+          <strong>UK requirement:</strong> Hirers must hold Public Liability Insurance with a minimum cover of <strong>£5,000,000</strong>. Evidence of insurance must be submitted at least <strong>7 days before the event</strong>. You may complete these details now or provide them later.
         </div>
         <div class="row">
           <div class="col-md-6 form-group">
-            <label>Insurance Company <span class="req">*</span></label>
-            <input type="text" class="form-control" id="insurance_company" placeholder="e.g. Aviva, AXA, Direct Line" required>
+            <label>Insurance Company <span style="color:#6b7280;font-size:12px">(optional at this stage)</span></label>
+            <input type="text" class="form-control" id="insurance_company" placeholder="e.g. Aviva, AXA, Direct Line">
           </div>
           <div class="col-md-6 form-group">
-            <label>Policy Number <span class="req">*</span></label>
-            <input type="text" class="form-control" id="policy_number" placeholder="Policy / certificate number" required>
+            <label>Policy Number <span style="color:#6b7280;font-size:12px">(optional at this stage)</span></label>
+            <input type="text" class="form-control" id="policy_number" placeholder="Policy / certificate number">
           </div>
           <div class="col-md-6 form-group">
-            <label>Public Liability Cover Amount <span class="req">*</span></label>
-            <input type="text" class="form-control" id="public_liability_cover" placeholder="e.g. £5,000,000" required>
+            <label>Public Liability Cover Amount <span style="color:#6b7280;font-size:12px">(optional at this stage)</span></label>
+            <input type="text" class="form-control" id="public_liability_cover" placeholder="e.g. £5,000,000">
           </div>
           <div class="col-md-6 form-group">
-            <label>Policy Expiry Date <span class="req">*</span></label>
-            <input type="date" class="form-control" id="insurance_expiry" required>
+            <label>Policy Expiry Date <span style="color:#6b7280;font-size:12px">(optional at this stage)</span></label>
+            <input type="date" class="form-control" id="insurance_expiry">
           </div>
           <div class="col-12 form-group">
-            <label class="d-block mb-2">Does the policy cover damage to hired premises? <span class="req">*</span></label>
+            <label class="d-block mb-2">Does the policy cover damage to hired premises?</label>
             <div class="vh-check-group">
               <label><input type="radio" name="dmg_premises" value="yes"> Yes</label>
               <label><input type="radio" name="dmg_premises" value="no"> No</label>
+              <label><input type="radio" name="dmg_premises" value="unknown"> Not yet known</label>
             </div>
           </div>
           <div class="col-12 form-group">
-            <label class="d-block mb-2">Does the policy cover damage to fixtures and equipment? <span class="req">*</span></label>
+            <label class="d-block mb-2">Does the policy cover damage to fixtures and equipment?</label>
             <div class="vh-check-group">
               <label><input type="radio" name="dmg_fixtures" value="yes"> Yes</label>
               <label><input type="radio" name="dmg_fixtures" value="no"> No</label>
+              <label><input type="radio" name="dmg_fixtures" value="unknown"> Not yet known</label>
             </div>
           </div>
           <div class="col-12 form-group mb-0">
-            <label class="d-block mb-2">Have you supplied / will you supply insurance evidence? <span class="req">*</span></label>
+            <label class="d-block mb-2">Have you supplied / will you supply insurance evidence?</label>
             <div class="vh-check-group">
-              <label><input type="radio" name="ins_evidence" value="yes"> Yes</label>
+              <label><input type="radio" name="ins_evidence" value="yes"> Yes — already supplied</label>
               <label><input type="radio" name="ins_evidence" value="no"> No — I will supply before the event</label>
             </div>
           </div>
@@ -510,17 +512,7 @@
         }
       }
     }
-    if (step === 3) {
-      ['insurance_company','policy_number','public_liability_cover','insurance_expiry'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el.value.trim()) { el.classList.add('is-invalid'); ok = false; }
-        else el.classList.remove('is-invalid');
-      });
-      if (!document.querySelector('input[name="dmg_premises"]:checked')) ok = false;
-      if (!document.querySelector('input[name="dmg_fixtures"]:checked')) ok = false;
-      if (!document.querySelector('input[name="ins_evidence"]:checked')) ok = false;
-      if (!ok) alert('Please complete all insurance fields and answer all Yes/No questions.');
-    }
+    // Step 3 (Insurance) is optional — no blocking validation
     return ok;
   }
 
