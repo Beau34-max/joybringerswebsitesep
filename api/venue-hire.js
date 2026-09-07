@@ -159,6 +159,17 @@ module.exports = async (req, res) => {
   const body   = typeof req.body === 'object' ? req.body : JSON.parse(req.body || '{}');
   const action = body.action;
 
+  /* ── PUBLIC: get booked dates for calendar ──────────────── */
+  if (action === 'get_availability') {
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/${TABLE}?select=event_date,status&status=neq.cancelled&event_date=not.is.null&limit=500`,
+      { headers: sbHeaders() }
+    );
+    if (!r.ok) return res.status(200).json([]);
+    const rows = await r.json().catch(() => []);
+    return res.status(200).json(rows.map(row => ({ date: row.event_date, status: row.status })));
+  }
+
   /* ── PUBLIC: submit new booking ─────────────────────────── */
   if (action === 'submit') {
     const { org_name, responsible_person, email } = body;

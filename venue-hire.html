@@ -73,6 +73,30 @@
     .form-control:focus { border-color:#006526; box-shadow:0 0 0 .2rem rgba(0,101,38,.15); }
     label .req { color:#dc2626; margin-left:2px; }
 
+    /* ── Calendar ── */
+    .vh-cal { border:1.5px solid #e5e7eb; border-radius:12px; overflow:hidden; max-width:480px; background:#fff; }
+    .vh-cal-header { background:#006526; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; }
+    .vh-cal-header h3 { margin:0; font-size:15px; font-weight:700; }
+    .vh-cal-nav { background:none; border:none; color:#fff; font-size:18px; cursor:pointer; padding:4px 10px; border-radius:6px; line-height:1; }
+    .vh-cal-nav:hover { background:rgba(255,255,255,.18); }
+    .vh-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:12px; gap:4px; }
+    .vh-cal-dow { text-align:center; font-size:11px; font-weight:700; color:#9ca3af; padding:4px 0; text-transform:uppercase; }
+    .vh-cal-day { text-align:center; padding:8px 4px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; transition:.12s; position:relative; min-height:36px; display:flex; align-items:center; justify-content:center; }
+    .vh-cal-day.empty { cursor:default; }
+    .vh-cal-day.past { color:#d1d5db; cursor:not-allowed; }
+    .vh-cal-day.available:hover { background:#f0fdf4; color:#006526; font-weight:700; }
+    .vh-cal-day.selected { background:#006526 !important; color:#fff !important; font-weight:700; }
+    .vh-cal-day.booked { background:#fee2e2; color:#dc2626; cursor:not-allowed; text-decoration:line-through; }
+    .vh-cal-day.tentative { background:#fef3c7; color:#b45309; cursor:not-allowed; }
+    .vh-cal-day.today { border:2px solid #006526; }
+    .vh-cal-legend { display:flex; gap:18px; margin-top:10px; font-size:12px; color:#6b7280; flex-wrap:wrap; }
+    .vh-cal-dot { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+    .vh-cal-dot.available { background:#f0fdf4; border:1.5px solid #006526; }
+    .vh-cal-dot.pending   { background:#fef3c7; border:1.5px solid #b45309; }
+    .vh-cal-dot.booked    { background:#fee2e2; border:1.5px solid #dc2626; }
+    .vh-cal-selected { margin-top:10px; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:8px; padding:10px 14px; font-size:13.5px; color:#065f46; font-weight:600; }
+    .vh-cal-loading { padding:40px; text-align:center; color:#9ca3af; font-size:13px; }
+
     /* Footer */
     .jb-footer { background:#003d14; color:#fff; padding:60px 0 32px; font-size:14px; }
     .jb-footer-brand { font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:8px; }
@@ -219,9 +243,16 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-12 form-group" id="cal-group">
             <label>Event Date <span class="req">*</span></label>
-            <input type="date" class="form-control" id="event_date" required>
+            <input type="hidden" id="event_date" required>
+            <div id="vh-calendar" class="vh-cal"></div>
+            <div id="vh-cal-legend" class="vh-cal-legend">
+              <span><span class="vh-cal-dot available"></span> Available</span>
+              <span><span class="vh-cal-dot pending"></span> Tentative</span>
+              <span><span class="vh-cal-dot booked"></span> Unavailable</span>
+            </div>
+            <div id="vh-cal-selected" class="vh-cal-selected" style="display:none"></div>
           </div>
           <div class="col-md-4 form-group">
             <label>Expected Attendance <span class="req">*</span></label>
@@ -456,11 +487,19 @@
       if (em.value && !em.value.includes('@')) { em.classList.add('is-invalid'); ok = false; }
     }
     if (step === 2) {
-      ['event_name','event_type','event_date','expected_attendance','event_start_time','event_finish_time'].forEach(function(id) {
+      ['event_name','event_type','expected_attendance','event_start_time','event_finish_time'].forEach(function(id) {
         var el = document.getElementById(id);
         if (!el.value.trim()) { el.classList.add('is-invalid'); ok = false; }
         else el.classList.remove('is-invalid');
       });
+      // Date comes from calendar picker
+      if (!document.getElementById('event_date').value) {
+        document.getElementById('vh-calendar').style.outline = '2px solid #dc3545';
+        document.getElementById('vh-calendar').style.borderRadius = '12px';
+        ok = false;
+      } else {
+        document.getElementById('vh-calendar').style.outline = '';
+      }
       var fin = document.getElementById('event_finish_time').value;
       if (fin) {
         var h = parseInt(fin.split(':')[0]);
@@ -567,8 +606,107 @@
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  // Set min date to today for event date
-  document.getElementById('event_date').min = new Date().toISOString().slice(0, 10);
+  /* ── Availability Calendar ─────────────────────────────── */
+  var calBookedDates = {};   // { 'YYYY-MM-DD': 'confirmed'|'pending' }
+  var calYear, calMonth;
+
+  function calInit() {
+    var now = new Date();
+    calYear  = now.getFullYear();
+    calMonth = now.getMonth();
+    document.getElementById('vh-calendar').innerHTML =
+      '<div class="vh-cal-loading"><i class="fas fa-spinner fa-spin"></i> Checking availability…</div>';
+    fetch('/api/venue-hire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'get_availability' })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(rows) {
+      calBookedDates = {};
+      (rows || []).forEach(function(row) {
+        if (row.date) calBookedDates[row.date] = row.status;
+      });
+      calRender();
+    })
+    .catch(function() { calRender(); });
+  }
+
+  function calRender() {
+    var today    = new Date();
+    today.setHours(0,0,0,0);
+    var firstDay = new Date(calYear, calMonth, 1);
+    var lastDay  = new Date(calYear, calMonth + 1, 0);
+    var startDow = (firstDay.getDay() + 6) % 7; // Mon=0
+    var months   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var days     = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+    var html = '<div class="vh-cal-header">';
+    html += '<button type="button" class="vh-cal-nav" onclick="calPrev()">&#8249;</button>';
+    html += '<h3>' + months[calMonth] + ' ' + calYear + '</h3>';
+    html += '<button type="button" class="vh-cal-nav" onclick="calNext()">&#8250;</button>';
+    html += '</div><div class="vh-cal-grid">';
+
+    days.forEach(function(d) { html += '<div class="vh-cal-dow">' + d + '</div>'; });
+
+    for (var i = 0; i < startDow; i++) html += '<div class="vh-cal-day empty"></div>';
+
+    var selectedVal = document.getElementById('event_date').value;
+
+    for (var d = 1; d <= lastDay.getDate(); d++) {
+      var dateObj  = new Date(calYear, calMonth, d);
+      var dateStr  = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+      var status   = calBookedDates[dateStr];
+      var isPast   = dateObj < today;
+      var isToday  = dateObj.getTime() === today.getTime();
+      var isSel    = dateStr === selectedVal;
+      var cls      = 'vh-cal-day';
+
+      if (isPast)               cls += ' past';
+      else if (status === 'confirmed') cls += ' booked';
+      else if (status === 'pending')   cls += ' tentative';
+      else                             cls += ' available';
+      if (isToday && !isPast)   cls += ' today';
+      if (isSel)                cls += ' selected';
+
+      var click = (!isPast && !status) ? 'onclick="calSelect(\'' + dateStr + '\')"' : '';
+      html += '<div class="' + cls + '" ' + click + ' title="' + dateStr + '">' + d + '</div>';
+    }
+
+    html += '</div>';
+    document.getElementById('vh-calendar').innerHTML = html;
+  }
+
+  function calSelect(dateStr) {
+    document.getElementById('event_date').value = dateStr;
+    document.getElementById('event_date').classList.remove('is-invalid');
+    var parts   = dateStr.split('-');
+    var display = new Date(parts[0], parts[1]-1, parts[2])
+      .toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+    var sel = document.getElementById('vh-cal-selected');
+    sel.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Selected: <strong>' + display + '</strong>';
+    sel.style.display = 'block';
+    calRender();
+  }
+
+  function calPrev() {
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    calRender();
+  }
+  function calNext() {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    calRender();
+  }
+
+  // Load calendar when step 2 is shown
+  var _calLoaded = false;
+  var _origNextStep = nextStep;
+  // patch: init calendar the first time step 2 becomes visible
+  document.querySelector('[onclick="nextStep(1)"]').addEventListener('click', function() {
+    if (!_calLoaded) { _calLoaded = true; setTimeout(calInit, 50); }
+  });
 </script>
 <script src="/js/footer-loader.js"></script>
 </body>
