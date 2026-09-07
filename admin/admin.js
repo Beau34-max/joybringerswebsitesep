@@ -121,7 +121,7 @@ function switchTab(tabId) {
   document.getElementById(`tab-${tabId}`).style.display = 'block';
   const link = document.querySelector(`[data-tab="${tabId}"]`);
   if (link) link.classList.add('active');
-  const titles = { events: 'Events', roles: 'Volunteer Roles', photos: 'Photos & Gallery', content: 'Website Content', dataentry: 'Data Entry', visitors: 'Visitor Log', attendance: 'Event Attendance', 'venue-hire': 'Venue Hire Bookings', exports: 'Export Data', settings: 'Settings' };
+  const titles = { events: 'Events', roles: 'Volunteer Roles', photos: 'Photos & Gallery', content: 'Website Content', dataentry: 'Data Entry', visitors: 'Visitor Log', attendance: 'Event Attendance', 'venue-hire': 'Venue Hire Bookings', 'vol-expenses': 'Volunteer Expenses', exports: 'Export Data', settings: 'Settings' };
   document.getElementById('page-title').textContent = titles[tabId] || tabId;
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebar-backdrop').classList.remove('open');
@@ -133,8 +133,9 @@ function switchTab(tabId) {
   if (tabId === 'dataentry')   loadDataEntryTab();
   if (tabId === 'visitors')    initVisitorTab();
   if (tabId === 'attendance')  loadAttendanceTab();
-  if (tabId === 'venue-hire')  loadVenueHire();
-  if (tabId === 'exports')     loadExportTab();
+  if (tabId === 'venue-hire')   loadVenueHire();
+  if (tabId === 'vol-expenses') loadVolExpenses();
+  if (tabId === 'exports')      loadExportTab();
   if (tabId === 'settings')    loadUsers();
 }
 
@@ -2114,7 +2115,7 @@ function fmtDateVh(d) {
 }
 
 async function apiVh(body) {
-  const token = sessionStorage.getItem('adminToken') || localStorage.getItem('adminToken') || '';
+  const token = getSession();
   const r = await fetch('/api/venue-hire', {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -2378,6 +2379,183 @@ async function saveVhAdmin() {
     showAlert('success', 'Booking updated successfully.');
     bootstrap.Modal.getInstance(document.getElementById('vhModal'))?.hide();
     loadVenueHire();
+  } catch (e) {
+    showAlert('danger', `Failed: ${e.message}`);
+  } finally {
+    hideLoading();
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOLUNTEER EXPENSES
+   ═══════════════════════════════════════════════════════════ */
+
+let veExpenses = [];
+let veCurrent  = null;
+
+const VE_STATUS_BADGE = {
+  pending:  'bg-warning text-dark',
+  approved: 'bg-primary',
+  paid:     'bg-success',
+  rejected: 'bg-danger'
+};
+
+const VE_TRANSPORT_LABEL = { car: 'Own Car', public: 'Bus / Train', both: 'Both' };
+
+function fmtDateVe(d) {
+  if (!d) return '—';
+  try { return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  catch { return d; }
+}
+
+async function loadVolExpenses() {
+  document.getElementById('ve-tbody').innerHTML =
+    '<tr><td colspan="8" class="text-center text-muted py-4"><span class="spinner-border spinner-border-sm me-2"></span>Loading…</td></tr>';
+  try {
+    const rows = await apiCall('export_data', { type: 'volunteer_expenses', date_from: null, date_to: null });
+    veExpenses = Array.isArray(rows) ? rows : [];
+    updateVeStats();
+    renderVeTable();
+  } catch (e) {
+    document.getElementById('ve-tbody').innerHTML =
+      `<tr><td colspan="8" class="text-center text-danger py-4">Failed to load: ${e.message}</td></tr>`;
+  }
+}
+
+function updateVeStats() {
+  document.getElementById('ve-stat-total').textContent    = veExpenses.length;
+  document.getElementById('ve-stat-pending').textContent  = veExpenses.filter(r => (r.status || 'pending') === 'pending').length;
+  document.getElementById('ve-stat-approved').textContent = veExpenses.filter(r => r.status === 'approved').length;
+  document.getElementById('ve-stat-paid').textContent     = veExpenses.filter(r => r.status === 'paid').length;
+}
+
+function renderVeTable() {
+  const q      = (document.getElementById('ve-search')?.value || '').toLowerCase();
+  const status = document.getElementById('ve-filter-status')?.value || '';
+  const filtered = veExpenses.filter(r => {
+    const rowStatus = r.status || 'pending';
+    if (status && rowStatus !== status) return false;
+    const searchable = `${r.first_name} ${r.last_name} ${r.email}`.toLowerCase();
+    if (q && !searchable.includes(q)) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    document.getElementById('ve-tbody').innerHTML =
+      '<tr><td colspan="8" class="text-center text-muted py-4">No claims found.</td></tr>';
+    return;
+  }
+
+  document.getElementById('ve-tbody').innerHTML = filtered.map(r => {
+    const rowStatus = r.status || 'pending';
+    const badge     = VE_STATUS_BADGE[rowStatus] || 'bg-secondary';
+    const transport = VE_TRANSPORT_LABEL[r.transport_type] || r.transport_type || '—';
+    const total     = r.total_amount != null ? `£${parseFloat(r.total_amount).toFixed(2)}` : '—';
+    const receipt   = r.receipt_url
+      ? `<a href="${r.receipt_url}" target="_blank" class="btn btn-outline-secondary btn-sm py-0"><i class="fas fa-file-alt"></i></a>`
+      : '<span class="text-muted small">None</span>';
+    return `<tr>
+      <td>
+        <div class="fw-semibold">${r.first_name || ''} ${r.last_name || ''}</div>
+        <small class="text-muted">${r.email || ''}</small>
+      </td>
+      <td class="text-nowrap small">${fmtDateVe(r.period_start)}${r.period_end && r.period_end !== r.period_start ? '<br>' + fmtDateVe(r.period_end) : ''}</td>
+      <td><span class="badge bg-light text-dark border">${transport}</span></td>
+      <td class="fw-bold text-success">${total}</td>
+      <td class="text-nowrap small">${fmtDateVe(r.created_at)}</td>
+      <td>${receipt}</td>
+      <td><span class="badge ${badge} text-capitalize">${rowStatus}</span></td>
+      <td><button class="btn btn-outline-success btn-sm" onclick="openVeModal('${r.id}')"><i class="fas fa-eye"></i></button></td>
+    </tr>`;
+  }).join('');
+}
+
+function openVeModal(id) {
+  const r = veExpenses.find(x => x.id === id);
+  if (!r) return;
+  veCurrent = r;
+
+  const rowStatus = r.status || 'pending';
+  const badge     = VE_STATUS_BADGE[rowStatus] || 'bg-secondary';
+  const transport = VE_TRANSPORT_LABEL[r.transport_type] || r.transport_type || '—';
+  const carAmt    = r.car_reimbursement  != null ? `£${parseFloat(r.car_reimbursement).toFixed(2)}`  : null;
+  const pubAmt    = r.public_transport_cost != null ? `£${parseFloat(r.public_transport_cost).toFixed(2)}` : null;
+  const total     = r.total_amount != null ? `£${parseFloat(r.total_amount).toFixed(2)}` : '—';
+
+  document.getElementById('veModalLabel').innerHTML =
+    `<i class="fas fa-receipt text-success me-2"></i>${r.first_name} ${r.last_name} — Expense Claim`;
+
+  document.getElementById('veModalBody').innerHTML = `
+    <!-- Status bar -->
+    <div class="d-flex align-items-center gap-3 mb-4 p-3 bg-light rounded flex-wrap">
+      <span class="badge ${badge} fs-6 text-capitalize">${rowStatus}</span>
+      <select class="form-select form-select-sm" id="ve-status-sel" style="max-width:180px">
+        <option value="pending"  ${rowStatus==='pending'  ? 'selected':''}>Pending</option>
+        <option value="approved" ${rowStatus==='approved' ? 'selected':''}>Approved</option>
+        <option value="paid"     ${rowStatus==='paid'     ? 'selected':''}>Paid</option>
+        <option value="rejected" ${rowStatus==='rejected' ? 'selected':''}>Rejected</option>
+      </select>
+      <small class="text-muted ms-auto">Submitted: ${fmtDateVe(r.created_at)}</small>
+    </div>
+
+    <div class="row g-4">
+      <!-- Volunteer details -->
+      <div class="col-md-6">
+        <h6 class="text-success fw-bold border-bottom pb-2">Volunteer Details</h6>
+        <dl class="row small mb-0">
+          <dt class="col-5">Name</dt>        <dd class="col-7">${r.first_name || ''} ${r.last_name || ''}</dd>
+          <dt class="col-5">Email</dt>       <dd class="col-7"><a href="mailto:${r.email}">${r.email || '—'}</a></dd>
+          <dt class="col-5">Phone</dt>       <dd class="col-7">${r.phone || '—'}</dd>
+          <dt class="col-5">Account No.</dt> <dd class="col-7">${r.account_number || '<span class="text-muted">Not provided</span>'}</dd>
+          <dt class="col-5">Sort Code</dt>   <dd class="col-7">${r.sort_code || '<span class="text-muted">Not provided</span>'}</dd>
+        </dl>
+      </div>
+
+      <!-- Claim details -->
+      <div class="col-md-6">
+        <h6 class="text-success fw-bold border-bottom pb-2">Travel Claim</h6>
+        <dl class="row small mb-0">
+          <dt class="col-5">Period</dt>      <dd class="col-7">${fmtDateVe(r.period_start)} – ${fmtDateVe(r.period_end)}</dd>
+          <dt class="col-5">Transport</dt>   <dd class="col-7">${transport}</dd>
+          ${r.from_location ? `<dt class="col-5">From</dt><dd class="col-7">${r.from_location}</dd>` : ''}
+          ${r.to_location   ? `<dt class="col-5">To</dt><dd class="col-7">${r.to_location}</dd>`     : ''}
+          ${r.total_miles   ? `<dt class="col-5">Miles</dt><dd class="col-7">${r.total_miles} mi</dd>` : ''}
+          ${carAmt          ? `<dt class="col-5">Car (45p/mi)</dt><dd class="col-7 fw-semibold">${carAmt}</dd>` : ''}
+          ${pubAmt          ? `<dt class="col-5">Bus/Train</dt><dd class="col-7 fw-semibold">${pubAmt}</dd>` : ''}
+          <dt class="col-5 fw-bold">Total</dt><dd class="col-7 fw-bold text-success fs-6">${total}</dd>
+        </dl>
+      </div>
+
+      <!-- Receipt -->
+      <div class="col-12">
+        <h6 class="text-success fw-bold border-bottom pb-2">Receipt &amp; Notes</h6>
+        ${r.receipt_url
+          ? `<a href="${r.receipt_url}" target="_blank" class="btn btn-outline-secondary btn-sm mb-3"><i class="fas fa-file-alt me-1"></i>View Receipt / Ticket</a>`
+          : '<p class="text-muted small mb-2">No receipt uploaded.</p>'}
+        ${r.notes ? `<p class="small text-muted mb-3"><strong>Volunteer notes:</strong> ${r.notes}</p>` : ''}
+      </div>
+
+      <!-- Admin notes -->
+      <div class="col-12">
+        <label class="form-label fw-semibold small">Admin Notes</label>
+        <textarea class="form-control" id="ve-admin-notes" rows="3" placeholder="Internal notes — payment reference, approval reason, etc.">${r.admin_notes || ''}</textarea>
+      </div>
+    </div>`;
+
+  bootstrap.Modal.getOrCreate(document.getElementById('veModal')).show();
+}
+
+async function saveVeAdmin() {
+  if (!veCurrent) return;
+  const status      = document.getElementById('ve-status-sel')?.value || veCurrent.status;
+  const admin_notes = document.getElementById('ve-admin-notes')?.value ?? veCurrent.admin_notes;
+
+  showLoading('Saving…');
+  try {
+    await apiCall('update_expense', { id: veCurrent.id, status, admin_notes });
+    showAlert('success', 'Expense claim updated.');
+    bootstrap.Modal.getInstance(document.getElementById('veModal'))?.hide();
+    loadVolExpenses();
   } catch (e) {
     showAlert('danger', `Failed: ${e.message}`);
   } finally {

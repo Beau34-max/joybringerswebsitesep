@@ -546,5 +546,21 @@ module.exports = async function handler(req, res) {
     return res.status(r.status).json(data);
   }
 
+  /* ── update volunteer expense status / notes ──────────── */
+  if (action === 'update_expense') {
+    if (!['admin', 'editor'].includes(role)) return res.status(403).json({ error: 'Access denied.' });
+    const { id, status, admin_notes } = body;
+    if (!id) return res.status(400).json({ error: 'ID required.' });
+    const patch = {};
+    if (status      !== undefined) patch.status      = status;
+    if (admin_notes !== undefined) patch.admin_notes = admin_notes;
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/volunteer_expenses?id=eq.${encodeURIComponent(id)}`,
+      { method: 'PATCH', headers: { ...sbHeaders(), Prefer: 'return=minimal' }, body: JSON.stringify(patch) }
+    );
+    if (!r.ok) return res.status(500).json({ error: 'Update failed.' });
+    return res.status(200).json({ ok: true });
+  }
+
   return res.status(400).json({ error: `Unknown action: ${action}` });
 };
