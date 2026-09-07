@@ -135,9 +135,8 @@
   <div class="vh-steps" id="progressSteps">
     <div class="vh-step active" data-step="1"><div class="vh-step-dot">1</div><span class="vh-step-label">Hirer</span></div>
     <div class="vh-step" data-step="2"><div class="vh-step-dot">2</div><span class="vh-step-label">Event</span></div>
-    <div class="vh-step" data-step="3"><div class="vh-step-dot">3</div><span class="vh-step-label">Suppliers</span></div>
-    <div class="vh-step" data-step="4"><div class="vh-step-dot">4</div><span class="vh-step-label">Insurance</span></div>
-    <div class="vh-step" data-step="5"><div class="vh-step-dot">5</div><span class="vh-step-label">Declare</span></div>
+    <div class="vh-step" data-step="3"><div class="vh-step-dot">3</div><span class="vh-step-label">Insurance</span></div>
+    <div class="vh-step" data-step="4"><div class="vh-step-dot">4</div><span class="vh-step-label">Declare</span></div>
   </div>
 </div>
 
@@ -248,48 +247,12 @@
         </div>
         <div class="vh-nav">
           <button type="button" class="btn-vh-back" onclick="prevStep(2)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
-          <button type="button" class="btn-vh-next" onclick="nextStep(2)">Next: Suppliers <i class="fas fa-arrow-right ml-1"></i></button>
+          <button type="button" class="btn-vh-next" onclick="nextStep(2)">Next: Insurance <i class="fas fa-arrow-right ml-1"></i></button>
         </div>
       </div>
 
-      <!-- STEP 3: External Suppliers -->
+      <!-- STEP 3: Insurance -->
       <div class="vh-step-panel" id="step3">
-        <p class="vh-section-title"><i class="fas fa-truck mr-2"></i>C. External Suppliers</p>
-        <p class="text-muted" style="font-size:13px;margin-bottom:20px">Please list any external suppliers attending the event. Leave blank if not applicable. All external suppliers must be approved by Joybringers in advance.</p>
-        <div class="row">
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-utensils mr-1 text-success"></i> Caterer</label>
-            <input type="text" class="form-control" id="sup_caterer" placeholder="Company name and contact">
-          </div>
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-music mr-1 text-success"></i> DJ / Entertainment</label>
-            <input type="text" class="form-control" id="sup_dj" placeholder="Company name and contact">
-          </div>
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-palette mr-1 text-success"></i> Decorator</label>
-            <input type="text" class="form-control" id="sup_decorator" placeholder="Company name and contact">
-          </div>
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-camera mr-1 text-success"></i> Photographer / Videographer</label>
-            <input type="text" class="form-control" id="sup_photographer" placeholder="Company name and contact">
-          </div>
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-shield-alt mr-1 text-success"></i> Security Company</label>
-            <input type="text" class="form-control" id="sup_security" placeholder="Company name and contact">
-          </div>
-          <div class="col-md-6 form-group">
-            <label><i class="fas fa-ellipsis-h mr-1 text-success"></i> Other</label>
-            <input type="text" class="form-control" id="sup_other" placeholder="Describe any other suppliers">
-          </div>
-        </div>
-        <div class="vh-nav">
-          <button type="button" class="btn-vh-back" onclick="prevStep(3)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
-          <button type="button" class="btn-vh-next" onclick="nextStep(3)">Next: Insurance <i class="fas fa-arrow-right ml-1"></i></button>
-        </div>
-      </div>
-
-      <!-- STEP 4: Insurance -->
-      <div class="vh-step-panel" id="step4">
         <p class="vh-section-title"><i class="fas fa-file-contract mr-2"></i>D. Insurance Details</p>
         <div class="alert alert-warning" style="font-size:13px;border-radius:8px">
           <i class="fas fa-exclamation-triangle mr-2"></i>
@@ -335,13 +298,13 @@
           </div>
         </div>
         <div class="vh-nav">
-          <button type="button" class="btn-vh-back" onclick="prevStep(4)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
-          <button type="button" class="btn-vh-next" onclick="nextStep(4)">Next: Declaration <i class="fas fa-arrow-right ml-1"></i></button>
+          <button type="button" class="btn-vh-back" onclick="prevStep(3)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+          <button type="button" class="btn-vh-next" onclick="nextStep(3)">Next: Declaration <i class="fas fa-arrow-right ml-1"></i></button>
         </div>
       </div>
 
-      <!-- STEP 5: Declaration -->
-      <div class="vh-step-panel" id="step5">
+      <!-- STEP 4: Declaration -->
+      <div class="vh-step-panel" id="step4">
         <p class="vh-section-title"><i class="fas fa-signature mr-2"></i>F. Hirer's Declaration</p>
         <p style="font-size:13.5px;color:#374151;line-height:1.7;margin-bottom:20px">
           By submitting this form, I/we confirm and agree to the following on behalf of the organisation named in this booking:
@@ -379,7 +342,7 @@
         <div id="submitError" class="alert alert-danger" style="display:none;border-radius:8px;font-size:14px"></div>
 
         <div class="vh-nav">
-          <button type="button" class="btn-vh-back" onclick="prevStep(5)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+          <button type="button" class="btn-vh-back" onclick="prevStep(4)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
           <button type="submit" class="btn-vh-submit" id="submitBtn">
             <i class="fas fa-paper-plane mr-2"></i>Submit Booking Enquiry
           </button>
@@ -459,7 +422,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script>
   let currentStep = 1;
-  const TOTAL_STEPS = 5;
+  const TOTAL_STEPS = 4;
 
   function updateProgress(step) {
     document.querySelectorAll('.vh-step').forEach(function(el) {
@@ -508,7 +471,7 @@
         }
       }
     }
-    if (step === 4) {
+    if (step === 3) {
       ['insurance_company','policy_number','public_liability_cover','insurance_expiry'].forEach(function(id) {
         var el = document.getElementById(id);
         if (!el.value.trim()) { el.classList.add('is-invalid'); ok = false; }
@@ -564,14 +527,7 @@
       setup_time:               document.getElementById('setup_time').value,
       event_start_time:         document.getElementById('event_start_time').value,
       event_finish_time:        document.getElementById('event_finish_time').value,
-      suppliers: {
-        caterer:      document.getElementById('sup_caterer').value.trim(),
-        dj:           document.getElementById('sup_dj').value.trim(),
-        decorator:    document.getElementById('sup_decorator').value.trim(),
-        photographer: document.getElementById('sup_photographer').value.trim(),
-        security:     document.getElementById('sup_security').value.trim(),
-        other:        document.getElementById('sup_other').value.trim()
-      },
+      suppliers: {},
       insurance_company:           document.getElementById('insurance_company').value.trim(),
       policy_number:               document.getElementById('policy_number').value.trim(),
       public_liability_cover:      document.getElementById('public_liability_cover').value.trim(),
