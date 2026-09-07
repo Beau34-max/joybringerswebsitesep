@@ -121,20 +121,21 @@ function switchTab(tabId) {
   document.getElementById(`tab-${tabId}`).style.display = 'block';
   const link = document.querySelector(`[data-tab="${tabId}"]`);
   if (link) link.classList.add('active');
-  const titles = { events: 'Events', roles: 'Volunteer Roles', photos: 'Photos & Gallery', content: 'Website Content', dataentry: 'Data Entry', visitors: 'Visitor Log', attendance: 'Event Attendance', exports: 'Export Data', settings: 'Settings' };
+  const titles = { events: 'Events', roles: 'Volunteer Roles', photos: 'Photos & Gallery', content: 'Website Content', dataentry: 'Data Entry', visitors: 'Visitor Log', attendance: 'Event Attendance', 'venue-hire': 'Venue Hire Bookings', exports: 'Export Data', settings: 'Settings' };
   document.getElementById('page-title').textContent = titles[tabId] || tabId;
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebar-backdrop').classList.remove('open');
 
-  if (tabId === 'events')     loadEvents();
-  if (tabId === 'roles')      loadRoles();
-  if (tabId === 'photos')     { renderGallery('events'); renderGallery('partners'); }
-  if (tabId === 'content')    loadContentTab();
-  if (tabId === 'dataentry')  loadDataEntryTab();
-  if (tabId === 'visitors')   initVisitorTab();
-  if (tabId === 'attendance') loadAttendanceTab();
-  if (tabId === 'exports')    loadExportTab();
-  if (tabId === 'settings')   loadUsers();
+  if (tabId === 'events')      loadEvents();
+  if (tabId === 'roles')       loadRoles();
+  if (tabId === 'photos')      { renderGallery('events'); renderGallery('partners'); }
+  if (tabId === 'content')     loadContentTab();
+  if (tabId === 'dataentry')   loadDataEntryTab();
+  if (tabId === 'visitors')    initVisitorTab();
+  if (tabId === 'attendance')  loadAttendanceTab();
+  if (tabId === 'venue-hire')  loadVenueHire();
+  if (tabId === 'exports')     loadExportTab();
+  if (tabId === 'settings')    loadUsers();
 }
 
 /* ── Role-based UI restriction ───────────────────────────── */
@@ -2085,6 +2086,298 @@ async function toggleRoleOpen(idx) {
     rolesData.items = updated;
     renderRolesList();
     showAlert('success', `"${r.title}" is now ${nowOpen ? 'open' : 'closed'} for applications.`);
+  } catch (e) {
+    showAlert('danger', `Failed: ${e.message}`);
+  } finally {
+    hideLoading();
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VENUE HIRE
+   ═══════════════════════════════════════════════════════════ */
+
+let vhBookings = [];
+let vhCurrent  = null;
+
+const VH_STATUS_BADGE = {
+  pending:   'bg-warning text-dark',
+  confirmed: 'bg-success',
+  cancelled: 'bg-danger',
+  completed: 'bg-secondary'
+};
+
+function fmtDateVh(d) {
+  if (!d) return '—';
+  try { return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  catch { return d; }
+}
+
+async function apiVh(body) {
+  const token = sessionStorage.getItem('adminToken') || localStorage.getItem('adminToken') || '';
+  const r = await fetch('/api/venue-hire', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ ...body, token })
+  });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+  return data;
+}
+
+async function loadVenueHire() {
+  document.getElementById('vh-tbody').innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4"><span class="spinner-border spinner-border-sm me-2"></span>Loading…</td></tr>';
+  try {
+    vhBookings = await apiVh({ action: 'list' });
+    updateVhStats();
+    renderVhTable();
+  } catch (e) {
+    document.getElementById('vh-tbody').innerHTML = `<tr><td colspan="8" class="text-center text-danger py-4">Failed to load: ${e.message}</td></tr>`;
+  }
+}
+
+function updateVhStats() {
+  const total     = vhBookings.length;
+  const pending   = vhBookings.filter(b => b.status === 'pending').length;
+  const confirmed = vhBookings.filter(b => b.status === 'confirmed').length;
+  const cancelled = vhBookings.filter(b => b.status === 'cancelled').length;
+  document.getElementById('vh-stat-total').textContent     = total;
+  document.getElementById('vh-stat-pending').textContent   = pending;
+  document.getElementById('vh-stat-confirmed').textContent = confirmed;
+  document.getElementById('vh-stat-cancelled').textContent = cancelled;
+}
+
+function renderVhTable() {
+  const q      = (document.getElementById('vh-search')?.value || '').toLowerCase();
+  const status = document.getElementById('vh-filter-status')?.value || '';
+  const filtered = vhBookings.filter(b => {
+    if (status && b.status !== status) return false;
+    if (q && !`${b.org_name} ${b.responsible_person} ${b.booking_ref} ${b.event_name}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    document.getElementById('vh-tbody').innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4">No bookings found.</td></tr>';
+    return;
+  }
+
+  document.getElementById('vh-tbody').innerHTML = filtered.map(b => {
+    const badge = VH_STATUS_BADGE[b.status] || 'bg-secondary';
+    return `<tr>
+      <td><code style="font-size:12px">${b.booking_ref || '—'}</code></td>
+      <td>${b.org_name || '—'}</td>
+      <td><div style="font-size:13px">${b.responsible_person || '—'}</div><small class="text-muted">${b.email || ''}</small></td>
+      <td>${b.event_name || '—'}</td>
+      <td>${fmtDateVh(b.event_date)}</td>
+      <td>${fmtDateVh(b.created_at)}</td>
+      <td><span class="badge ${badge} text-capitalize">${b.status || 'pending'}</span></td>
+      <td><button class="btn btn-outline-success btn-sm" onclick="openVhModal('${b.id}')"><i class="fas fa-eye"></i></button></td>
+    </tr>`;
+  }).join('');
+}
+
+async function openVhModal(id) {
+  const modalEl = document.getElementById('vhModal');
+  const modal   = bootstrap.Modal.getOrCreate(modalEl);
+  document.getElementById('vhModalLabel').innerHTML = '<i class="fas fa-building text-success me-2"></i>Venue Hire Booking';
+  document.getElementById('vhModalBody').innerHTML  = '<p class="text-center py-4"><span class="spinner-border spinner-border-sm me-2"></span>Loading…</p>';
+  modal.show();
+
+  try {
+    const b = await apiVh({ action: 'get', id });
+    vhCurrent = b;
+
+    const f  = b.financials   || {};
+    const ac = b.admin_checks || {};
+    const sup = b.suppliers   || {};
+
+    document.getElementById('vhModalLabel').innerHTML = `<i class="fas fa-building text-success me-2"></i>${b.booking_ref || '—'} — ${b.org_name}`;
+
+    const badge = VH_STATUS_BADGE[b.status] || 'bg-secondary';
+
+    document.getElementById('vhModalBody').innerHTML = `
+    <!-- Status bar -->
+    <div class="d-flex align-items-center gap-3 mb-4 p-3 bg-light rounded">
+      <span class="badge ${badge} fs-6 text-capitalize">${b.status || 'pending'}</span>
+      <select class="form-select form-select-sm" id="vh-status-sel" style="max-width:180px">
+        <option value="pending"   ${b.status==='pending'   ? 'selected':''}>Pending</option>
+        <option value="confirmed" ${b.status==='confirmed' ? 'selected':''}>Confirmed</option>
+        <option value="cancelled" ${b.status==='cancelled' ? 'selected':''}>Cancelled</option>
+        <option value="completed" ${b.status==='completed' ? 'selected':''}>Completed</option>
+      </select>
+      <small class="text-muted ms-auto">Submitted: ${fmtDateVh(b.created_at)}</small>
+    </div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs mb-4" id="vhDetailTabs">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#vhTabDetails">Booking Details</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#vhTabFinance">Financial Summary</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#vhTabChecks">Admin Checklist</button></li>
+    </ul>
+    <div class="tab-content">
+
+      <!-- Booking Details -->
+      <div class="tab-pane fade show active" id="vhTabDetails">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h6 class="text-success fw-bold border-bottom pb-2">A. Hirer Details</h6>
+            <dl class="row small mb-0">
+              <dt class="col-5">Organisation</dt><dd class="col-7">${b.org_name}</dd>
+              <dt class="col-5">Responsible</dt><dd class="col-7">${b.responsible_person}</dd>
+              <dt class="col-5">Address</dt><dd class="col-7">${(b.address||'—').replace(/\n/g,'<br>')}</dd>
+              <dt class="col-5">Telephone</dt><dd class="col-7">${b.telephone||'—'}</dd>
+              <dt class="col-5">Email</dt><dd class="col-7"><a href="mailto:${b.email}">${b.email}</a></dd>
+            </dl>
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-success fw-bold border-bottom pb-2">B. Event Details</h6>
+            <dl class="row small mb-0">
+              <dt class="col-5">Event Name</dt><dd class="col-7">${b.event_name||'—'}</dd>
+              <dt class="col-5">Type</dt><dd class="col-7">${b.event_type||'—'}</dd>
+              <dt class="col-5">Date</dt><dd class="col-7">${fmtDateVh(b.event_date)}</dd>
+              <dt class="col-5">Attendance</dt><dd class="col-7">${b.expected_attendance||'—'}</dd>
+              <dt class="col-5">Setup from</dt><dd class="col-7">${b.setup_time||'—'}</dd>
+              <dt class="col-5">Start</dt><dd class="col-7">${b.event_start_time||'—'}</dd>
+              <dt class="col-5">Finish</dt><dd class="col-7">${b.event_finish_time||'—'}</dd>
+            </dl>
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-success fw-bold border-bottom pb-2">C. External Suppliers</h6>
+            <dl class="row small mb-0">
+              <dt class="col-5">Caterer</dt><dd class="col-7">${sup.caterer||'—'}</dd>
+              <dt class="col-5">DJ</dt><dd class="col-7">${sup.dj||'—'}</dd>
+              <dt class="col-5">Decorator</dt><dd class="col-7">${sup.decorator||'—'}</dd>
+              <dt class="col-5">Photographer</dt><dd class="col-7">${sup.photographer||'—'}</dd>
+              <dt class="col-5">Security</dt><dd class="col-7">${sup.security||'—'}</dd>
+              <dt class="col-5">Other</dt><dd class="col-7">${sup.other||'—'}</dd>
+            </dl>
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-success fw-bold border-bottom pb-2">D. Insurance Details</h6>
+            <dl class="row small mb-0">
+              <dt class="col-5">Company</dt><dd class="col-7">${b.insurance_company||'—'}</dd>
+              <dt class="col-5">Policy No.</dt><dd class="col-7">${b.policy_number||'—'}</dd>
+              <dt class="col-5">PL Cover</dt><dd class="col-7">${b.public_liability_cover||'—'}</dd>
+              <dt class="col-5">Expires</dt><dd class="col-7">${fmtDateVh(b.insurance_expiry)}</dd>
+              <dt class="col-5">Premises</dt><dd class="col-7">${b.damage_premises_covered ? '✅ Yes' : '❌ No'}</dd>
+              <dt class="col-5">Fixtures</dt><dd class="col-7">${b.damage_fixtures_covered ? '✅ Yes' : '❌ No'}</dd>
+              <dt class="col-5">Evidence</dt><dd class="col-7">${b.insurance_evidence_supplied ? '✅ Supplied' : '⏳ Pending'}</dd>
+            </dl>
+          </div>
+          <div class="col-12">
+            <h6 class="text-success fw-bold border-bottom pb-2">F. Declaration</h6>
+            <dl class="row small mb-0">
+              <dt class="col-3">Name</dt><dd class="col-9">${b.declarant_name||'—'}</dd>
+              <dt class="col-3">Position</dt><dd class="col-9">${b.declarant_position||'—'}</dd>
+              <dt class="col-3">Agreed</dt><dd class="col-9">${b.declaration_agreed ? '✅ Yes' : '❌ No'} on ${fmtDateVh(b.declaration_date)}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Summary -->
+      <div class="tab-pane fade" id="vhTabFinance">
+        <p class="text-muted small mb-3">Record the financial details for this booking. These are internal notes only.</p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Hire Fee (£)</label>
+            <input type="number" class="form-control" id="vh-fin-fee" value="${f.fee||''}" placeholder="0.00" step="0.01">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Security Deposit (£)</label>
+            <input type="number" class="form-control" id="vh-fin-deposit" value="${f.deposit||''}" placeholder="0.00" step="0.01">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Amount Paid (£)</label>
+            <input type="number" class="form-control" id="vh-fin-paid" value="${f.paid||''}" placeholder="0.00" step="0.01">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Balance Outstanding (£)</label>
+            <input type="number" class="form-control" id="vh-fin-balance" value="${f.balance||''}" placeholder="0.00" step="0.01">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Payment Method</label>
+            <select class="form-select" id="vh-fin-method">
+              <option value="">— Select —</option>
+              <option ${f.payment_method==='Bank Transfer'?'selected':''}>Bank Transfer</option>
+              <option ${f.payment_method==='Card'?'selected':''}>Card</option>
+              <option ${f.payment_method==='Cash'?'selected':''}>Cash</option>
+              <option ${f.payment_method==='Cheque'?'selected':''}>Cheque</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold small">Invoice Number</label>
+            <input type="text" class="form-control" id="vh-fin-invoice" value="${f.invoice_no||''}" placeholder="e.g. INV-2026-001">
+          </div>
+          <div class="col-12">
+            <label class="form-label fw-semibold small">Payment Notes</label>
+            <textarea class="form-control" id="vh-fin-notes" rows="2" placeholder="Any additional payment notes">${f.notes||''}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Checklist -->
+      <div class="tab-pane fade" id="vhTabChecks">
+        <p class="text-muted small mb-3">Track the internal admin steps for this booking.</p>
+        ${[
+          ['insurance_received',  'Insurance certificate received'],
+          ['deposit_paid',        'Security deposit paid'],
+          ['balance_paid',        'Full balance received'],
+          ['room_allocated',      'Room / space confirmed and allocated'],
+          ['key_issued',          'Keys / access arranged'],
+          ['risk_assessed',       'Risk assessment reviewed'],
+          ['suppliers_approved',  'External suppliers approved'],
+          ['post_event_check',    'Post-event inspection completed'],
+          ['deposit_returned',    'Security deposit returned / cleared'],
+        ].map(([k, label]) => `
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="vh-chk-${k}" ${ac[k] ? 'checked' : ''} style="cursor:pointer">
+            <label class="form-check-label" for="vh-chk-${k}">${label}</label>
+          </div>`).join('')}
+        <div class="mt-4">
+          <label class="form-label fw-semibold small">Admin Notes</label>
+          <textarea class="form-control" id="vh-admin-notes" rows="4" placeholder="Internal notes for this booking">${b.admin_notes||''}</textarea>
+        </div>
+      </div>
+    </div>`;
+
+  } catch (e) {
+    document.getElementById('vhModalBody').innerHTML = `<p class="text-danger py-4 text-center">Failed to load booking: ${e.message}</p>`;
+  }
+}
+
+async function saveVhAdmin() {
+  if (!vhCurrent) return;
+
+  const f  = vhCurrent.financials   || {};
+  const ac = vhCurrent.admin_checks || {};
+
+  const financials = {
+    fee:            document.getElementById('vh-fin-fee')?.value     || f.fee,
+    deposit:        document.getElementById('vh-fin-deposit')?.value || f.deposit,
+    paid:           document.getElementById('vh-fin-paid')?.value    || f.paid,
+    balance:        document.getElementById('vh-fin-balance')?.value || f.balance,
+    payment_method: document.getElementById('vh-fin-method')?.value  || f.payment_method,
+    invoice_no:     document.getElementById('vh-fin-invoice')?.value || f.invoice_no,
+    notes:          document.getElementById('vh-fin-notes')?.value   || f.notes
+  };
+
+  const checkKeys = ['insurance_received','deposit_paid','balance_paid','room_allocated','key_issued','risk_assessed','suppliers_approved','post_event_check','deposit_returned'];
+  const admin_checks = {};
+  checkKeys.forEach(k => {
+    const el = document.getElementById(`vh-chk-${k}`);
+    admin_checks[k] = el ? el.checked : (ac[k] || false);
+  });
+
+  const status      = document.getElementById('vh-status-sel')?.value || vhCurrent.status;
+  const admin_notes = document.getElementById('vh-admin-notes')?.value ?? vhCurrent.admin_notes;
+
+  showLoading('Saving…');
+  try {
+    await apiVh({ action: 'update_admin', id: vhCurrent.id, financials, admin_checks, status, admin_notes });
+    showAlert('success', 'Booking updated successfully.');
+    bootstrap.Modal.getInstance(document.getElementById('vhModal'))?.hide();
+    loadVenueHire();
   } catch (e) {
     showAlert('danger', `Failed: ${e.message}`);
   } finally {
