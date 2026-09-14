@@ -54,6 +54,11 @@
       "name": "OneStop Shop",
       "logo": "images/partners/os.png",
       "link": "https://www.onestop.co.uk/"
+    },
+    {
+      "name": "Northumbiran Water",
+      "logo": "",
+      "link": "https://www.nwl.co.uk/"
     }
   ]
 }
