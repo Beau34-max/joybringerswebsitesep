@@ -732,6 +732,10 @@ function appendPartnerRow(p = {}) {
   const div = document.createElement('div');
   div.className = 'partner-row';
   div.innerHTML = `
+    <div class="d-flex flex-column me-2 gap-1 align-self-end mb-1">
+      <button type="button" class="btn btn-outline-secondary btn-sm px-2 py-0" title="Move up" onclick="movePartnerRow(this,-1)"><i class="fas fa-chevron-up"></i></button>
+      <button type="button" class="btn btn-outline-secondary btn-sm px-2 py-0" title="Move down" onclick="movePartnerRow(this,1)"><i class="fas fa-chevron-down"></i></button>
+    </div>
     <div class="flex-grow-1">
       <div class="row g-2">
         <div class="col-md-4">
@@ -748,10 +752,21 @@ function appendPartnerRow(p = {}) {
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-outline-danger btn-sm align-self-end ms-2" onclick="this.closest('.partner-row').remove()">
+    <button type="button" class="btn btn-outline-danger btn-sm align-self-end ms-2 mb-1" onclick="this.closest('.partner-row').remove()">
       <i class="fas fa-trash"></i>
     </button>`;
   container.appendChild(div);
+}
+function movePartnerRow(btn, dir) {
+  const row = btn.closest('.partner-row');
+  const container = row.parentElement;
+  if (dir === -1) {
+    const prev = row.previousElementSibling;
+    if (prev) container.insertBefore(row, prev);
+  } else {
+    const next = row.nextElementSibling;
+    if (next) container.insertBefore(next, row);
+  }
 }
 function addPartnerRow() { appendPartnerRow(); }
 
