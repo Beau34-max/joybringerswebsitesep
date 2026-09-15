@@ -1,14 +1,14 @@
 {
   "items": [
     {
+      "name": " Northumbrian Water",
+      "logo": "images/partners/nwl.png",
+      "link": "https://www.nwl.co.uk/"
+    },
+    {
       "name": "William Leech Charity",
       "logo": "images/partners/wl.png",
       "link": "https://www.williamleechcharity.org.uk"
-    },
-    {
-      "name": "Blakelaw Council",
-      "logo": "images/partners/blakelaw.png",
-      "link": "https://www.newcastle.gov.uk"
     },
     {
       "name": "Coseng Limited UK",
@@ -41,11 +41,6 @@
       "link": "https://fareshare.org.uk"
     },
     {
-      "name": "NCVO",
-      "logo": "images/partners/ncvo-logo.jpg",
-      "link": "https://www.ncvo.org.uk"
-    },
-    {
       "name": "Groundwork UK",
       "logo": "images/partners/gw.jpg",
       "link": "https://www.groundwork.org.uk/"
@@ -56,9 +51,14 @@
       "link": "https://www.onestop.co.uk/"
     },
     {
-      "name": " Northumbrian Water",
-      "logo": "images/partners/nwl.png",
-      "link": "https://www.nwl.co.uk/"
+      "name": "NCVO",
+      "logo": "images/partners/ncvo-logo.jpg",
+      "link": "https://www.ncvo.org.uk"
+    },
+    {
+      "name": "Blakelaw Council",
+      "logo": "images/partners/blakelaw.png",
+      "link": "https://www.newcastle.gov.uk"
     }
   ]
 }
