@@ -256,7 +256,7 @@
       "image": "images/events/parentconnect.jpeg",
       "featured": false,
       "paidEvent": false,
-      "regOverrideOpen": false,
+      "regOverrideOpen": true,
       "programmeType": "general",
       "joiningLink": "https://teams.microsoft.com/meet/37798626870892?p=zLMiOlOI8G1t8hCdo8"
     }
