@@ -255,7 +255,7 @@
       "venue": "Online Via Teams",
       "description": "ParentConnect is a supportive online programme for mums, dads, single parents, and carers of all backgrounds. This session will provide practical discussions, helpful tips, and real conversations about supporting children, strengthening families, and helping young people grow in confidence.",
       "image": "images/events/parentconnect.jpeg",
-      "featured": false,
+      "featured": true,
       "paidEvent": false,
       "regOverrideOpen": true,
       "programmeType": "general",
