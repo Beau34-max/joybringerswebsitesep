@@ -838,7 +838,9 @@ $(document).ready(() => {
 const requestedEventSlug = params.get("event");
 
 if (requestedEventSlug) {
-  const matchedEvent = events.find(e => createEventSlug(e.title) === requestedEventSlug);
+  const matchedEvent =
+    events.find(e => createEventSlug(e.title) === requestedEventSlug && new Date(e.date + 'T00:00:00') >= today) ||
+    events.find(e => createEventSlug(e.title) === requestedEventSlug);
 
   if (matchedEvent) {
     const eventDate = new Date(matchedEvent.date + "T00:00:00");
