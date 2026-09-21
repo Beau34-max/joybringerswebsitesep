@@ -785,8 +785,8 @@
             <input type="checkbox" id="chk-safeguarding">
             <span class="check-item-text"><strong>Safeguarding:</strong> I confirm I have read and understood the safeguarding information displayed at reception and agree to abide by the Joybringers Safeguarding Policy.</span>
           </label>
-          <label class="check-item">
-            <input type="checkbox" id="chk-badge">
+          <label class="check-item" style="display:none;">
+            <input type="checkbox" id="chk-badge" checked>
             <span class="check-item-text"><strong>Visitor Badge:</strong> I agree to wear my visitor badge visibly at all times during my visit and return it when I leave.</span>
           </label>
           <label class="check-item">
@@ -1425,8 +1425,6 @@ function startSignIn() { resetForm(); showScreen('screen-signin'); }
 async function submitSignIn() {
   if (!document.getElementById('chk-safeguarding').checked)
     return showToast('Please confirm you have read the safeguarding information.', 'error');
-  if (!document.getElementById('chk-badge').checked)
-    return showToast('Please confirm you will wear a visitor badge.', 'error');
   if (!document.getElementById('chk-gdpr').checked)
     return showToast('Please consent to data storage to proceed.', 'error');
 
