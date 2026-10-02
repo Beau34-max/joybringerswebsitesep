@@ -77,6 +77,52 @@
     .wwd-video-frame { border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.1); margin-bottom:24px; }
     .wwd-video-frame iframe { width:100%; height:210px; border:none; display:block; }
 
+    /* ── 3 Strands ── */
+    .wwd-strands { padding:60px 0 50px; background:#fff; }
+    .wwd-strand-card { border-radius:14px; overflow:hidden; height:100%; display:flex; flex-direction:column; }
+    .wwd-strand-header { padding:24px 24px 18px; display:flex; align-items:flex-start; gap:14px; }
+    .wwd-strand-icon { width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .wwd-strand-icon i { font-size:1.4rem; color:#fff; }
+    .wwd-strand-num { font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; margin-bottom:3px; }
+    .wwd-strand-title { font-size:1.05rem; font-weight:800; color:#003d14; margin:0; line-height:1.25; }
+    .strand-1 .wwd-strand-header { background:#e8f5ee; border-bottom:3px solid #006526; }
+    .strand-1 .wwd-strand-icon   { background:#006526; }
+    .strand-1 .wwd-strand-num    { color:#006526; }
+    .strand-2 .wwd-strand-header { background:#e8f0fb; border-bottom:3px solid #1a3f8f; }
+    .strand-2 .wwd-strand-icon   { background:#1a3f8f; }
+    .strand-2 .wwd-strand-num    { color:#1a3f8f; }
+    .strand-3 .wwd-strand-header { background:#fff4e6; border-bottom:3px solid #b45309; }
+    .strand-3 .wwd-strand-icon   { background:#b45309; }
+    .strand-3 .wwd-strand-num    { color:#b45309; }
+    .wwd-strand-body { padding:0 0 8px; background:#fafafa; flex:1; border:1px solid #e8edea; border-top:none; border-radius:0 0 14px 14px; }
+    .wwd-prog-item { padding:14px 20px; border-bottom:1px solid #eef2ef; }
+    .wwd-prog-item:last-child { border-bottom:none; }
+    .wwd-prog-name { font-size:.88rem; font-weight:700; color:#003d14; margin-bottom:4px; }
+    .wwd-prog-meta { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:5px; }
+    .wwd-prog-tag { font-size:.68rem; font-weight:600; padding:2px 8px; border-radius:20px; background:#e8f5ee; color:#006526; }
+    .wwd-prog-tag.blue { background:#e8f0fb; color:#1a3f8f; }
+    .wwd-prog-tag.amber { background:#fff4e6; color:#b45309; }
+    .wwd-prog-activities { font-size:.78rem; color:#555; line-height:1.5; margin:0; }
+
+    /* ── Annual Cycle ── */
+    .wwd-cycle { padding:60px 0; background:#edf5ef; }
+    .wwd-cycle-table { width:100%; border-collapse:separate; border-spacing:0; font-size:.8rem; }
+    .wwd-cycle-table th { background:#006526; color:#fff; padding:8px 10px; text-align:center; font-weight:700; font-size:.72rem; white-space:nowrap; }
+    .wwd-cycle-table th:first-child { text-align:left; min-width:170px; }
+    .wwd-cycle-table td { padding:7px 10px; border-bottom:1px solid #d4e8d8; color:#333; vertical-align:middle; }
+    .wwd-cycle-table td:first-child { font-weight:600; color:#003d14; font-size:.8rem; }
+    .wwd-cycle-table tr:last-child td { border-bottom:none; }
+    .wwd-cycle-table tr:nth-child(even) td { background:rgba(0,101,38,.04); }
+    .wwd-cycle-dot { display:inline-block; width:20px; height:20px; border-radius:50%; }
+    .dot-green  { background:#006526; }
+    .dot-blue   { background:#1a3f8f; }
+    .dot-amber  { background:#b45309; }
+    .dot-grey   { background:#d1d5db; }
+    .wwd-cycle-scroll { overflow-x:auto; }
+    .cycle-legend { display:flex; flex-wrap:wrap; gap:16px; margin-top:20px; font-size:.78rem; }
+    .cycle-legend-item { display:flex; align-items:center; gap:6px; }
+    .cycle-legend-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+
     /* ── CTA strip ── */
     .wwd-cta { background:linear-gradient(135deg,#e8f5ee 0%,#d0eddb 55%,#c4e8d2 100%); padding:60px 0; text-align:center; border-top:1px solid #b6ddc5; }
     .wwd-cta h2 { font-size:1.9rem; font-weight:700; color:#003d14 !important; margin-bottom:10px; }
@@ -126,7 +172,7 @@
           <div class="col-lg-7">
             <p class="wwd-hero-eyebrow"><i class="fas fa-seedling mr-1"></i> Our Impact</p>
             <h1>What We Do</h1>
-            <p class="lead">From coding bootcamps and career workshops to community fun days and a weekly food bank — we're creating real opportunities for young people aged 7–25 across Newcastle and the North East.</p>
+            <p class="lead">Joybringers is a Newcastle-based registered charity supporting children, young people and families — particularly those experiencing disadvantage or financial hardship. We combine basic-needs support with education, digital skills, employability and family engagement, so that young people are supported not only with immediate challenges but also to build confidence, independence and better long-term opportunities.</p>
             <a href="#stories" class="btn btn-light btn-lg px-4 font-weight-bold" style="color:#006526;">
               See Our Stories &nbsp;<i class="fas fa-arrow-down"></i>
             </a>
@@ -140,57 +186,209 @@
       </div>
     </section>
 
-    <!-- ══ OUR PROGRAMMES ═══════════════════════════════════════ -->
-    <section class="wwd-programmes">
+    <!-- ══ THREE STRANDS ═════════════════════════════════════════ -->
+    <section class="wwd-strands" id="programmes">
       <div class="container">
         <div class="text-center mb-5">
           <div class="wwd-divider mx-auto"></div>
-          <h2 class="wwd-section-title">Our Programmes</h2>
-          <p class="wwd-section-sub" style="margin-bottom:0;">Six core areas where we make a difference every week.</p>
+          <h2 class="wwd-section-title">Our Programme Strands</h2>
+          <p class="wwd-section-sub" style="margin-bottom:0;">Everything we do sits within three connected strands — Basic Needs, Education &amp; Skills, and Family &amp; Community.</p>
         </div>
         <div class="row">
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-laptop-code"></i></div>
-              <p class="wwd-prog-title">Digital Skills &amp; Coding</p>
-              <p class="wwd-prog-desc">Bootcamps in Python, R, data analytics, and web design.</p>
+
+          <!-- Strand 1 -->
+          <div class="col-lg-4 mb-4">
+            <div class="wwd-strand-card strand-1">
+              <div class="wwd-strand-header">
+                <div class="wwd-strand-icon"><i class="fas fa-box-open"></i></div>
+                <div>
+                  <p class="wwd-strand-num">Strand 1</p>
+                  <h3 class="wwd-strand-title">Basic Needs Support</h3>
+                </div>
+              </div>
+              <div class="wwd-strand-body">
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-shopping-basket mr-1" style="color:#006526;"></i> Food &amp; Essentials Support</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag">Every Friday · 11am–2pm</span>
+                    <span class="wwd-prog-tag">Year-round</span>
+                    <span class="wwd-prog-tag">All families</span>
+                  </div>
+                  <p class="wwd-prog-activities">Food parcels, toiletries, hygiene products, household essentials and donated clothing for young people and families experiencing hardship.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-users"></i></div>
-              <p class="wwd-prog-title">Community Events</p>
-              <p class="wwd-prog-desc">Fun days, sports, excursions, and cultural celebrations.</p>
+
+          <!-- Strand 2 -->
+          <div class="col-lg-4 mb-4">
+            <div class="wwd-strand-card strand-2">
+              <div class="wwd-strand-header">
+                <div class="wwd-strand-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                  <p class="wwd-strand-num">Strand 2</p>
+                  <h3 class="wwd-strand-title">Education &amp; Youth Development</h3>
+                </div>
+              </div>
+              <div class="wwd-strand-body">
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-pencil-alt mr-1" style="color:#1a3f8f;"></i> SATs &amp; GCSE Preparation</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag blue">Saturday mornings · Jan–May</span>
+                    <span class="wwd-prog-tag blue">Year 6 &amp; GCSE</span>
+                  </div>
+                  <p class="wwd-prog-activities">Maths, English, revision support, past papers, exam techniques and confidence building.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-briefcase mr-1" style="color:#1a3f8f;"></i> Joybringers Future Ready</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag blue">Sat afternoons · Feb–Apr</span>
+                    <span class="wwd-prog-tag blue">Ages 18–25</span>
+                  </div>
+                  <p class="wwd-prog-activities">Data analytics, software development, web/app development, CVs, interview preparation and mentoring.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-child mr-1" style="color:#1a3f8f;"></i> Joybringers Discover</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag blue">Sat mornings · Jun–Oct</span>
+                    <span class="wwd-prog-tag blue">Ages 7–11</span>
+                  </div>
+                  <p class="wwd-prog-activities">Digital creativity, simple coding, computer confidence, games, teamwork and life skills.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-laptop-code mr-1" style="color:#1a3f8f;"></i> Joybringers Create</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag blue">Sat mornings · Jun–Oct</span>
+                    <span class="wwd-prog-tag blue">Ages 12–17</span>
+                  </div>
+                  <p class="wwd-prog-activities">Coding, animation, games development, digital projects, creativity, teamwork and life skills.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-paint-brush mr-1" style="color:#1a3f8f;"></i> Holiday Skills Programme</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag blue">Selected school holidays</span>
+                    <span class="wwd-prog-tag blue">Ages 7–17</span>
+                  </div>
+                  <p class="wwd-prog-activities">Arts, crafts, crocheting, knitting, sewing, soap making, cooking, Maths and English.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-shopping-basket"></i></div>
-              <p class="wwd-prog-title">Weekly Food Bank</p>
-              <p class="wwd-prog-desc">Free weekly food support for families in the North East.</p>
+
+          <!-- Strand 3 -->
+          <div class="col-lg-4 mb-4">
+            <div class="wwd-strand-card strand-3">
+              <div class="wwd-strand-header">
+                <div class="wwd-strand-icon"><i class="fas fa-people-arrows"></i></div>
+                <div>
+                  <p class="wwd-strand-num">Strand 3</p>
+                  <h3 class="wwd-strand-title">Family &amp; Community Engagement</h3>
+                </div>
+              </div>
+              <div class="wwd-strand-body">
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-laptop mr-1" style="color:#b45309;"></i> ParentConnect</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag amber">January, May &amp; September</span>
+                    <span class="wwd-prog-tag amber">Parents &amp; carers</span>
+                  </div>
+                  <p class="wwd-prog-activities">Online parenting sessions covering wellbeing, education, confidence, safeguarding and family issues.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-sun mr-1" style="color:#b45309;"></i> Family Fun Day</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag amber">Once each summer</span>
+                    <span class="wwd-prog-tag amber">All ages</span>
+                  </div>
+                  <p class="wwd-prog-activities">Annual community event across Tyne and Wear — games, activities, food, wellbeing, outreach and programme registration.</p>
+                </div>
+                <div class="wwd-prog-item">
+                  <p class="wwd-prog-name"><i class="fas fa-award mr-1" style="color:#b45309;"></i> Annual Banquet &amp; Awards</p>
+                  <div class="wwd-prog-meta">
+                    <span class="wwd-prog-tag amber">November</span>
+                    <span class="wwd-prog-tag amber">Families, volunteers &amp; partners</span>
+                  </div>
+                  <p class="wwd-prog-activities">Certificates, awards, project showcases, recognition and celebration. The final programme of the year.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-briefcase"></i></div>
-              <p class="wwd-prog-title">Career Development</p>
-              <p class="wwd-prog-desc">CV clinics, mock interviews, and career talks.</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-mountain"></i></div>
-              <p class="wwd-prog-title">Outdoor Experiences</p>
-              <p class="wwd-prog-desc">Sailing, excursions, and adventures that build confidence.</p>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2 mb-4">
-            <div class="wwd-prog-card">
-              <div class="wwd-prog-icon"><i class="fas fa-hand-holding-heart"></i></div>
-              <p class="wwd-prog-title">Youth Empowerment</p>
-              <p class="wwd-prog-desc">Well-being, self-expression, and public speaking workshops.</p>
-            </div>
-          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ANNUAL CYCLE ═══════════════════════════════════════════ -->
+    <section class="wwd-cycle">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="wwd-divider mx-auto"></div>
+          <h2 class="wwd-section-title">Annual Programme Cycle</h2>
+          <p class="wwd-section-sub" style="margin-bottom:0;">How our programmes flow across the year — giving Joybringers a consistent, structured calendar of support.</p>
+        </div>
+        <div class="wwd-cycle-scroll">
+          <table class="wwd-cycle-table">
+            <thead>
+              <tr>
+                <th>Programme</th>
+                <th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th>
+                <th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Food &amp; Essentials Support</td>
+                <td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td>
+                <td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td><td><span class="wwd-cycle-dot dot-green"></span></td>
+              </tr>
+              <tr>
+                <td>SATs &amp; GCSE Preparation</td>
+                <td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Future Ready (18–25)</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Discover (Ages 7–11)</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td>
+                <td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Create (Ages 12–17)</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td>
+                <td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Holiday Skills Programme</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-blue"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>ParentConnect</td>
+                <td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Family Fun Day</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+                <td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+              <tr>
+                <td>Annual Banquet &amp; Awards</td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+                <td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td><td><span class="wwd-cycle-dot dot-amber"></span></td><td><span class="wwd-cycle-dot dot-grey"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cycle-legend mt-3">
+          <div class="cycle-legend-item"><span class="cycle-legend-dot dot-green"></span> Basic Needs Support</div>
+          <div class="cycle-legend-item"><span class="cycle-legend-dot dot-blue"></span> Education &amp; Youth Development</div>
+          <div class="cycle-legend-item"><span class="cycle-legend-dot dot-amber"></span> Family &amp; Community</div>
+          <div class="cycle-legend-item"><span class="cycle-legend-dot dot-grey"></span> Not running this month</div>
         </div>
       </div>
     </section>
