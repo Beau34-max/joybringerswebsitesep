@@ -12,6 +12,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Joybringers is a registered charity (No. 1212606) based in Newcastle empowering children and young people aged 7–25 through skills, education, and community programmes.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Joybringers Charity">
+    <meta property="og:url" content="https://joybringerscharity.org/">
+    <meta property="og:title" content="Joybringers — Helping Young People Believe, Belong, and Become">
+    <meta property="og:description" content="A registered charity in Newcastle supporting children and young people aged 7–25 through education, digital skills, food support and community programmes.">
+    <meta property="og:image" content="https://joybringerscharity.org/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@JoybringersC">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
@@ -196,6 +205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a class="dropdown-item" href="/volunteer"><i class="fas fa-hands-helping mr-2"></i>Volunteer</a>
               <a class="dropdown-item" href="/donate"><i class="fas fa-heart mr-2"></i>Donate</a>
               <a class="dropdown-item" href="/partner"><i class="fas fa-handshake mr-2"></i>Partner With Us</a>
+              <a class="dropdown-item" href="/venue-hire"><i class="fas fa-building mr-2"></i>Hire Our Venue</a>
             </div>
           </li>
           <li class="nav-item"><a href="/foodbank" class="nav-link">Foodbank</a></li>
@@ -475,7 +485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="col-6 col-md-2 jb-partner-item">
           <a href="https://www.newcastle.gov.uk" target="_blank">
-            <img src="images/partners/blakelaw.png" alt="Blakelaw Council" class="jb-partner-logo img-fluid">
+            <img src="images/partners/blakelaw.png" alt="Newcastle City Council" class="jb-partner-logo img-fluid">
           </a>
         </div>
         <div class="col-6 col-md-2 jb-partner-item">
@@ -575,6 +585,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/contact">Corporate Partnership</a></li>
             <li><a href="https://chat.whatsapp.com/HY23VHoTK7J3zjdQuv9gc3" target="_blank">Join Our Food Bank</a></li>
             <li><a href="/events">Upcoming Events</a></li>
+            <li><a href="/venue-hire">Hire Our Venue</a></li>
           </ul>
           <div class="mt-3">
             <img src="images/partners/ncvo-logo.jpg" alt="NCVO Member" style="max-height:52px;border-radius:6px;background:#fff;padding:4px 8px;">
@@ -600,6 +611,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
 
+      <!-- Newsletter sign-up -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:24px 28px;">
+            <div class="row align-items-center">
+              <div class="col-md-5 mb-3 mb-md-0">
+                <h6 style="color:#86efac;font-weight:700;margin-bottom:4px;">Stay Connected</h6>
+                <p style="font-size:0.82rem;opacity:0.75;margin:0;">Get updates on events, programmes, and community news — no spam, unsubscribe any time.</p>
+              </div>
+              <div class="col-md-7">
+                <form id="footer-newsletter-form" onsubmit="submitNewsletterSignup(event)" novalidate>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <input type="email" id="footer-nl-email" placeholder="Your email address" required
+                      style="flex:1;min-width:180px;padding:9px 14px;border-radius:6px;border:none;font-size:0.85rem;background:rgba(255,255,255,0.12);color:#fff;outline:none;" />
+                    <button type="submit" style="padding:9px 20px;background:#006526;color:#fff;border:none;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;">
+                      Sign Up
+                    </button>
+                  </div>
+                  <p id="footer-nl-msg" style="font-size:0.78rem;margin:6px 0 0;display:none;"></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accreditation strip -->
+      <div class="jb-accred-strip">
+        <div class="jb-accred-badge">
+          <i class="fas fa-shield-halved"></i>
+          <div><strong>ICO Registered</strong><span>Information Commissioner's Office</span></div>
+        </div>
+        <div class="jb-accred-badge">
+          <i class="fas fa-graduation-cap"></i>
+          <div><strong>UKPRN: 10101743</strong><span>UK Register of Learning Providers</span></div>
+        </div>
+        <div class="jb-accred-badge">
+          <i class="fas fa-building-columns"></i>
+          <div><strong>HMRC Registered Employer</strong><span>HM Revenue &amp; Customs</span></div>
+        </div>
+        <div class="jb-accred-badge">
+          <i class="fas fa-star"></i>
+          <div><strong>NCVO Member</strong><span>National Council for Voluntary Organisations</span></div>
+        </div>
+      </div>
+
       <!-- Divider -->
       <hr style="border-color:rgba(255,255,255,0.12);margin-bottom:24px;">
 
@@ -612,6 +669,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="col-md-6 text-center text-md-right">
           <a href="/terms" class="jb-footer-legal">Terms of Use</a>
           <a href="/privacy" class="jb-footer-legal">Privacy Policy</a>
+          <a href="/safeguarding" class="jb-footer-legal">Safeguarding</a>
+          <a href="/complaints" class="jb-footer-legal">Complaints</a>
           <a href="/cookies" class="jb-footer-legal">Cookies</a>
           <button type="button" onclick="window.showCmpBanner()" class="jb-footer-cookie-btn">
             <i class="fas fa-cookie-bite mr-1"></i>Cookie Settings
@@ -745,5 +804,35 @@ $('.owl-1').owlCarousel({
 </script>
 
   <script src="/js/footer-loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (function() {
+      var SB_URL = "https://roofompdejyndlpqfrjl.supabase.co";
+      var SB_KEY = "sb_publishable_Ys9Vq0Akl7BW6VXVVgy65g_MBuXloNO";
+      var sbClient = window.supabase ? window.supabase.createClient(SB_URL, SB_KEY) : null;
+
+      window.submitNewsletterSignup = async function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('footer-nl-email');
+        var msgEl = document.getElementById('footer-nl-msg');
+        var email = emailEl.value.trim();
+        if (!email) return;
+        msgEl.style.display = 'block';
+        msgEl.style.color = '#86efac';
+        msgEl.textContent = 'Signing you up…';
+        try {
+          if (sbClient) {
+            var { error } = await sbClient.from('newsletter_signups').insert([{ email: email, signed_up_at: new Date().toISOString(), source: 'website_footer' }]);
+            if (error && error.code !== '23505') throw error;
+          }
+          msgEl.textContent = 'You\'re signed up! Thank you.';
+          emailEl.value = '';
+        } catch(err) {
+          msgEl.style.color = '#fca5a5';
+          msgEl.textContent = 'Something went wrong — please email info@joybringerscharity.org to sign up.';
+        }
+      };
+    })();
+  </script>
 </body>
 </html>

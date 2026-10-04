@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html l11ng="en">
+<html lang="en">
 <head>
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,7 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joybringers - Events</title>
+  <meta name="description" content="Browse and register for upcoming Joybringers events — coding workshops, family days, community programmes and more for young people in Newcastle and the North East.">
+  <title>Events — Joybringers Charity | Newcastle Youth Programmes</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joybringers Charity">
+  <meta property="og:url" content="https://joybringerscharity.org/events">
+  <meta property="og:title" content="Events — Joybringers Charity">
+  <meta property="og:description" content="Upcoming workshops, family days and community programmes from Joybringers. Free events for young people aged 7–25 in Newcastle and the North East.">
+  <meta property="og:image" content="https://joybringerscharity.org/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JoybringersC">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
@@ -121,6 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a class="dropdown-item" href="/volunteer"><i class="fas fa-hands-helping mr-2"></i>Volunteer</a>
             <a class="dropdown-item" href="/donate"><i class="fas fa-heart mr-2"></i>Donate</a>
             <a class="dropdown-item" href="/partner"><i class="fas fa-handshake mr-2"></i>Partner With Us</a>
+            <a class="dropdown-item" href="/venue-hire"><i class="fas fa-building mr-2"></i>Hire Our Venue</a>
           </div>
         </li>
         <li class="nav-item"><a href="/foodbank" class="nav-link">Foodbank</a></li>
@@ -236,7 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="col-md-6 form-group">
                 <label>Phone Number *</label>
-                <input type="text" name="phone" class="form-control">
+                <input type="tel" name="phone" class="form-control">
               </div>
               <div class="col-md-6 form-group">
                 <label>Gender *</label>
@@ -247,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </select>
               </div>
               <div class="col-md-6 form-group">
-                <label>How Many Person is attending *</label>
+                <label>How many people are attending? *</label>
                 <select name="number_of_persons" id="number_of_persons" class="form-control" required onchange="onPersonCountChange(this.value)">
                   <option value="">Please Select</option>
                   <option value="1">1</option>
@@ -484,6 +495,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="col-md-6 text-center text-md-right">
           <a href="/terms" class="jb-footer-legal">Terms of Use</a>
           <a href="/privacy" class="jb-footer-legal">Privacy Policy</a>
+          <a href="/safeguarding" class="jb-footer-legal">Safeguarding</a>
+          <a href="/complaints" class="jb-footer-legal">Complaints</a>
           <a href="/cookies" class="jb-footer-legal">Cookies</a>
           <button type="button" onclick="window.showCmpBanner()" class="jb-footer-cookie-btn">
             <i class="fas fa-cookie-bite mr-1"></i>Cookie Settings

@@ -27,6 +27,9 @@
     { "source": "/thankyou", "destination": "/thankyou.html" },
     { "source": "/terms",   "destination": "/terms.html" },
     { "source": "/checkin", "destination": "/checkin.html" },
-    { "source": "/venue-hire", "destination": "/venue-hire.html" }
+    { "source": "/venue-hire", "destination": "/venue-hire.html" },
+    { "source": "/safeguarding", "destination": "/safeguarding.html" },
+    { "source": "/complaints", "destination": "/complaints.html" },
+    { "source": "/accessibility", "destination": "/accessibility.html" }
   ]
 }

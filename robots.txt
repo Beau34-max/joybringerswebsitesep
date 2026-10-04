@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /visitor-signin
+Disallow: /checkin
+Disallow: /volunteer-expenses
+Disallow: /api/
+Allow: /
+
+Sitemap: https://joybringerscharity.org/sitemap.xml
