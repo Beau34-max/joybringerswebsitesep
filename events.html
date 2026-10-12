@@ -1145,6 +1145,7 @@ document.getElementById("eventRegisterForm").addEventListener("submit", async fu
         : "";   // empty = hidden in the email template
 
       await emailjs.send("service_m8qsdzk", "template_l0gb2le", {
+        from_name:         "Joybringers Charity",
         email:             formData.get("email"),
         first_name:        formData.get("first_name"),
         last_name:         formData.get("last_name"),
