@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6327VK4');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joybringers Home Learning & Digital Skills — affordable tutoring and digital education for children and young people aged 7–25 across Newcastle and the North East.">
+  <title>Home Learning &amp; Digital Skills — Joybringers Charity</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joybringers Charity">
+  <meta property="og:url" content="https://joybringerscharity.org/home-learning">
+  <meta property="og:title" content="Home Learning &amp; Digital Skills — Joybringers Charity">
+  <meta property="og:description" content="Affordable, vetted tutoring and digital skills support for children and young people aged 7–25. Delivered by Joybringers — income reinvested into our free charitable programmes.">
+  <meta property="og:image" content="https://joybringerscharity.org/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    body { background:#f4f7f4; font-family:'Open Sans',sans-serif; }
+
+    /* ── Hero ── */
+    .hl-hero { background:linear-gradient(135deg,#003d14 0%,#006526 55%,#00883a 100%); padding:70px 0 48px; position:relative; overflow:hidden; }
+    .hl-hero::after { content:''; position:absolute; bottom:-1px; left:0; width:100%; height:60px; background:#f4f7f4; clip-path:ellipse(55% 60px at 50% 100%); }
+    .hl-hero-eyebrow { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.75); display:block; margin-bottom:.6rem; }
+    .hl-hero h1 { font-size:2.4rem; font-weight:800; color:#fff; line-height:1.2; margin-bottom:.85rem; }
+    .hl-hero .lead { color:rgba(255,255,255,.88); font-size:1rem; max-width:580px; margin-bottom:1.6rem; }
+    .hl-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:#fff; font-size:.78rem; font-weight:700; padding:5px 14px; border-radius:20px; margin-bottom:1rem; }
+    @media(max-width:576px){ .hl-hero { padding:54px 0 40px; } .hl-hero h1 { font-size:1.85rem; } }
+
+    /* ── Section base ── */
+    .hl-section { padding:64px 0; }
+    .hl-divider { width:48px; height:4px; background:#006526; border-radius:2px; margin:0 0 14px; }
+    .hl-divider.mx-auto { margin:0 auto 14px; }
+    .hl-eyebrow { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#006526; margin-bottom:8px; }
+    .hl-section-title { font-size:1.75rem; font-weight:800; color:#1a1f14; margin-bottom:.5rem; }
+    .hl-section-sub { color:#5a6370; font-size:.95rem; margin-bottom:36px; }
+
+    /* ── How it works steps ── */
+    .hl-step { display:flex; align-items:flex-start; gap:18px; margin-bottom:28px; }
+    .hl-step-num { width:44px; height:44px; border-radius:50%; background:#006526; color:#fff; font-size:1.1rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .hl-step-body h5 { font-size:.97rem; font-weight:700; color:#1a1f14; margin-bottom:4px; }
+    .hl-step-body p { font-size:.87rem; color:#5a6370; margin:0; line-height:1.6; }
+    .hl-reinvest-box { background:#f0fdf4; border:2px solid #d1fae5; border-radius:12px; padding:22px 24px; margin-top:8px; }
+    .hl-reinvest-box p { font-size:.88rem; color:#166534; margin:0; line-height:1.65; }
+    .hl-reinvest-box strong { color:#003d14; }
+
+    /* ── Programme cards ── */
+    .hl-prog-card { background:#fff; border-radius:14px; border:1px solid #e4edea; padding:28px 24px; height:100%; transition:transform .2s,box-shadow .2s; }
+    .hl-prog-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,77,26,.1); }
+    .hl-prog-icon { width:56px; height:56px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; font-size:1.4rem; }
+    .hl-prog-card h4 { font-size:1.05rem; font-weight:700; color:#1a1f14; margin-bottom:6px; }
+    .hl-prog-age { display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#006526; background:#f0fdf4; border:1px solid #bbf7d0; padding:3px 10px; border-radius:20px; margin-bottom:12px; }
+    .hl-prog-card p { font-size:.87rem; color:#5a6370; line-height:1.65; margin:0; }
+    .hl-prog-card ul { padding-left:1.2rem; margin:10px 0 0; font-size:.87rem; color:#444; }
+    .hl-prog-card ul li { margin-bottom:5px; }
+
+    /* ── Pricing table ── */
+    .hl-pricing-table { width:100%; border-collapse:collapse; }
+    .hl-pricing-table th { background:#0d1a10; color:#fff; font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:14px 16px; text-align:left; }
+    .hl-pricing-table td { padding:14px 16px; font-size:.9rem; color:#333; border-bottom:1px solid #e4edea; vertical-align:middle; }
+    .hl-pricing-table tr:last-child td { border-bottom:none; }
+    .hl-pricing-table tr:nth-child(even) td { background:#f8fdf9; }
+    .hl-pricing-table .price { font-weight:700; color:#006526; white-space:nowrap; }
+    .hl-pricing-table .badge-best { background:#006526; color:#fff; font-size:.68rem; font-weight:700; padding:2px 8px; border-radius:12px; white-space:nowrap; }
+    .hl-pricing-table .badge-good { background:#d1fae5; color:#166534; font-size:.68rem; font-weight:700; padding:2px 8px; border-radius:12px; white-space:nowrap; }
+    .hl-pricing-note { background:#fff8e6; border-left:4px solid #f59e0b; border-radius:0 8px 8px 0; padding:16px 18px; margin-top:18px; font-size:.87rem; color:#78350f; }
+
+    /* ── Block format callout ── */
+    .hl-block-box { background:#006526; color:#fff; border-radius:14px; padding:32px 28px; text-align:center; }
+    .hl-block-box h3 { color:#fff; font-size:1.25rem; font-weight:700; margin-bottom:8px; }
+    .hl-block-box p { color:rgba(255,255,255,.88); font-size:.92rem; margin-bottom:20px; }
+    .hl-block-num { font-size:2.5rem; font-weight:800; color:#86efac; line-height:1; }
+    .hl-block-label { font-size:.78rem; color:rgba(255,255,255,.75); text-transform:uppercase; letter-spacing:.06em; }
+
+    /* ── Safeguarding ── */
+    .hl-sg-list { list-style:none; padding:0; margin:0; }
+    .hl-sg-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:.9rem; color:#333; line-height:1.6; }
+    .hl-sg-list li i { color:#006526; margin-top:3px; flex-shrink:0; }
+
+    /* ── FAQ ── */
+    .hl-faq { border-bottom:1px solid #e4edea; padding:18px 0; }
+    .hl-faq:first-child { border-top:1px solid #e4edea; }
+    .hl-faq-q { font-size:.97rem; font-weight:700; color:#1a1f14; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .hl-faq-q i { color:#006526; flex-shrink:0; transition:transform .2s; }
+    .hl-faq-a { font-size:.9rem; color:#5a6370; line-height:1.7; margin-top:10px; display:none; }
+
+    /* ── CTA strip ── */
+    .hl-cta { background:#f8f9fa; border-top:1px solid #e5e7eb; padding:68px 0; text-align:center; }
+    .hl-cta h2 { font-size:2rem; font-weight:800; color:#1a1f14; margin-bottom:12px; }
+    .hl-cta p { color:#5a6370; font-size:1rem; max-width:520px; margin:0 auto 28px; }
+
+    @media(max-width:767px){ .hl-section { padding:48px 0; } .hl-section-title { font-size:1.45rem; } }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6327VK4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Joybringers Charity" style="height:46px;width:auto;"><span class="jb-brand-text"><strong>Joybringers</strong><small>Charity</small></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="/what-we-do" class="nav-link">What We Do</a></li>
+            <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Involved</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/volunteer"><i class="fas fa-hands-helping mr-2"></i>Volunteer</a>
+                <a class="dropdown-item" href="/donate"><i class="fas fa-heart mr-2"></i>Donate</a>
+                <a class="dropdown-item" href="/partner"><i class="fas fa-handshake mr-2"></i>Partner With Us</a>
+                <a class="dropdown-item" href="/venue-hire"><i class="fas fa-building mr-2"></i>Hire Our Venue</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="/foodbank" class="nav-link">Foodbank</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ══ HERO ═══════════════════════════════════════════════ -->
+    <section class="hl-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <span class="hl-hero-eyebrow"><i class="fas fa-graduation-cap mr-1"></i> Learning &amp; Digital Skills</span>
+            <div class="hl-badge"><i class="fas fa-check-circle"></i> Board-Approved Pilot Programme</div>
+            <h1>Home Learning &amp;<br>Digital Skills Support</h1>
+            <p class="lead">Affordable, vetted tutoring and digital education for children and young people aged 7–25. Delivered by Joybringers — every pound of surplus is reinvested into our free charitable programmes.</p>
+            <div class="d-flex flex-wrap" style="gap:12px;">
+              <a href="#book" class="btn btn-warning btn-lg font-weight-bold" style="border-radius:8px;color:#1a1a1a;">
+                <i class="fas fa-calendar-check mr-2"></i>Book a Session
+              </a>
+              <a href="#pricing" class="btn btn-light btn-lg font-weight-bold" style="border-radius:8px;color:#006526;">
+                <i class="fas fa-tag mr-2"></i>See Pricing
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5 mt-5 mt-lg-0 d-none d-lg-block text-center">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:280px;margin:0 auto;">
+              <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:22px 14px;text-align:center;border:1px solid rgba(255,255,255,.2);">
+                <div style="font-size:2rem;font-weight:800;color:#86efac;">7–25</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em;">Ages Supported</div>
+              </div>
+              <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:22px 14px;text-align:center;border:1px solid rgba(255,255,255,.2);">
+                <div style="font-size:2rem;font-weight:800;color:#86efac;">4</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em;">Programmes</div>
+              </div>
+              <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:22px 14px;text-align:center;border:1px solid rgba(255,255,255,.2);">
+                <div style="font-size:2rem;font-weight:800;color:#86efac;">£15</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em;">From per child</div>
+              </div>
+              <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:22px 14px;text-align:center;border:1px solid rgba(255,255,255,.2);">
+                <div style="font-size:2rem;font-weight:800;color:#86efac;">100%</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em;">Surplus reinvested</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ HOW IT WORKS ═══════════════════════════════════════ -->
+    <section class="hl-section" style="background:#fff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <span class="hl-eyebrow"><i class="fas fa-route mr-1"></i> The Process</span>
+            <div class="hl-divider"></div>
+            <h2 class="hl-section-title">How It Works</h2>
+            <p class="hl-section-sub" style="margin-bottom:28px;">Simple from start to finish — we handle the matching, you focus on your child's progress.</p>
+            <div class="hl-step">
+              <div class="hl-step-num">1</div>
+              <div class="hl-step-body">
+                <h5>Family Registers</h5>
+                <p>Parent or carer selects subject, age group, and preferred format — group class, online 1-to-1, or in-person.</p>
+              </div>
+            </div>
+            <div class="hl-step">
+              <div class="hl-step-num">2</div>
+              <div class="hl-step-body">
+                <h5>Joybringers Matches</h5>
+                <p>Your child is matched with a vetted, DBS-checked trainer suited to their needs and learning stage.</p>
+              </div>
+            </div>
+            <div class="hl-step">
+              <div class="hl-step-num">3</div>
+              <div class="hl-step-body">
+                <h5>Sessions Delivered</h5>
+                <p>Learning happens online, at our Quorum Business Park centre, or at home (for eligible families).</p>
+              </div>
+            </div>
+            <div class="hl-step">
+              <div class="hl-step-num">4</div>
+              <div class="hl-step-body">
+                <h5>Your Payment Makes a Difference</h5>
+                <p>All fees go directly to Joybringers. After trainer costs, every surplus pound funds free programmes for families who can't afford support.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="hl-reinvest-box mb-4">
+              <div class="d-flex align-items-start" style="gap:14px;">
+                <i class="fas fa-recycle" style="color:#006526;font-size:1.5rem;flex-shrink:0;margin-top:2px;"></i>
+                <div>
+                  <strong>Mission-led, not profit-led.</strong>
+                  <p style="margin-top:6px;">"Affordable learning support for children and young people. Income is reinvested into Joybringers' charitable programmes." This service exists to extend our reach — not to compete commercially.</p>
+                </div>
+              </div>
+            </div>
+            <div style="background:#fff;border:2px solid #e4edea;border-radius:14px;padding:28px 24px;">
+              <h5 style="font-weight:700;color:#1a1f14;margin-bottom:16px;"><i class="fas fa-calendar-alt mr-2" style="color:#006526;"></i>We recommend blocks, not one-offs</h5>
+              <div class="row text-center" style="gap:0;">
+                <div class="col-6 mb-3">
+                  <div class="hl-block-num" style="color:#006526;">6</div>
+                  <div class="hl-block-label" style="color:#888;">week block</div>
+                  <p style="font-size:.8rem;color:#555;margin-top:6px;margin-bottom:0;">Ideal for SATs or GCSE sprint preparation</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <div class="hl-block-num" style="color:#006526;">12</div>
+                  <div class="hl-block-label" style="color:#888;">week block</div>
+                  <p style="font-size:.8rem;color:#555;margin-top:6px;margin-bottom:0;">Best for steady digital skills or academic progress</p>
+                </div>
+              </div>
+              <p style="font-size:.82rem;color:#6c757d;margin:0;border-top:1px solid #e4edea;padding-top:14px;">Blocks provide structure for your child and make scheduling more predictable for families and trainers alike.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROGRAMMES ══════════════════════════════════════════ -->
+    <section class="hl-section" style="background:#f4f7f4;" id="programmes">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-7 text-center">
+            <span class="hl-eyebrow"><i class="fas fa-th-large mr-1"></i> Our Programmes</span>
+            <div class="hl-divider mx-auto"></div>
+            <h2 class="hl-section-title">What We Offer</h2>
+            <p class="hl-section-sub mb-0">We start with services closely linked to our existing Joybringers programmes — familiar faces, trusted delivery.</p>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="hl-prog-card w-100">
+              <div class="hl-prog-icon" style="background:#dbeafe;">
+                <i class="fas fa-book-open" style="color:#1d4ed8;"></i>
+              </div>
+              <h4>Primary Learning Support</h4>
+              <span class="hl-prog-age">Ages 7–11</span>
+              <p>Helping children build confidence with the core subjects before secondary school.</p>
+              <ul>
+                <li>English &amp; reading</li>
+                <li>Maths foundations</li>
+                <li>Year 6 SATs preparation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="hl-prog-card w-100">
+              <div class="hl-prog-icon" style="background:#fce7f3;">
+                <i class="fas fa-pencil-ruler" style="color:#9d174d;"></i>
+              </div>
+              <h4>GCSE Support</h4>
+              <span class="hl-prog-age">Ages 11–16</span>
+              <p>Focused exam preparation and subject support to improve grades and reduce stress.</p>
+              <ul>
+                <li>Maths &amp; English</li>
+                <li>Study skills</li>
+                <li>Exam technique &amp; preparation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="hl-prog-card w-100">
+              <div class="hl-prog-icon" style="background:#d1fae5;">
+                <i class="fas fa-laptop-code" style="color:#065f46;"></i>
+              </div>
+              <h4>Coding &amp; Digital Skills</h4>
+              <span class="hl-prog-age">Ages 8–17</span>
+              <p>Hands-on digital education delivered by experienced Joybringers trainers.</p>
+              <ul>
+                <li>Computer skills</li>
+                <li>Coding &amp; web development</li>
+                <li>Digital creativity</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="hl-prog-card w-100">
+              <div class="hl-prog-icon" style="background:#fef3c7;">
+                <i class="fas fa-briefcase" style="color:#92400e;"></i>
+              </div>
+              <h4>Future Ready</h4>
+              <span class="hl-prog-age">Ages 16–25</span>
+              <p>Career-focused digital skills for young adults moving into work or further study.</p>
+              <ul>
+                <li>Data analytics</li>
+                <li>Software &amp; web development</li>
+                <li>CVs &amp; employability</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRICING ═════════════════════════════════════════════ -->
+    <section class="hl-section" style="background:#fff;" id="pricing">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-7 text-center">
+            <span class="hl-eyebrow"><i class="fas fa-tag mr-1"></i> Transparent Pricing</span>
+            <div class="hl-divider mx-auto"></div>
+            <h2 class="hl-section-title">Clear, Affordable Prices</h2>
+            <p class="hl-section-sub mb-0">Board-approved pricing designed to be accessible to families while covering trainer costs and contributing to our charity.</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div style="overflow-x:auto;">
+              <table class="hl-pricing-table">
+                <thead>
+                  <tr>
+                    <th>Session Type</th>
+                    <th>Price</th>
+                    <th>Notes</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Small group at Joybringers</strong><br><span style="font-size:.82rem;color:#6c757d;">4–8 learners per class</span></td>
+                    <td class="price">£15–£20 <span style="font-size:.78rem;font-weight:400;">per child</span></td>
+                    <td>Lower cost, more children reached per session</td>
+                    <td><span class="badge-best">Best Value</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Online 1-to-1</strong><br><span style="font-size:.82rem;color:#6c757d;">Via video call, flexible scheduling</span></td>
+                    <td class="price">£25–£30 <span style="font-size:.78rem;font-weight:400;">per hour</span></td>
+                    <td>No travel time — easiest to arrange</td>
+                    <td><span class="badge-good">Great Option</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Centre-based 1-to-1</strong><br><span style="font-size:.82rem;color:#6c757d;">At Joybringers, Quorum Business Park</span></td>
+                    <td class="price">£25–£30 <span style="font-size:.78rem;font-weight:400;">per hour</span></td>
+                    <td>Uses our centre; safe, professional setting</td>
+                    <td><span class="badge-good">Great Option</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Home 1-to-1 — local zone</strong><br><span style="font-size:.82rem;color:#6c757d;">Up to 5 miles</span></td>
+                    <td class="price">£45–£50 <span style="font-size:.78rem;font-weight:400;">per hour</span></td>
+                    <td>Premium price reflects full trainer travel time</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Home session — 90 minutes</strong><br><span style="font-size:.82rem;color:#6c757d;">Preferred home visit option</span></td>
+                    <td class="price">£60–£65</td>
+                    <td>Recommended for home visits — better value per minute</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Home session — 2 hours</strong></td>
+                    <td class="price">£75–£85</td>
+                    <td>Best value when travel time is involved</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sibling / shared session</strong><br><span style="font-size:.82rem;color:#6c757d;">Two children in same home or session</span></td>
+                    <td class="price">£55–£60 <span style="font-size:.78rem;font-weight:400;">per hour total</span></td>
+                    <td>Great savings for families with multiple children</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Travel supplement</strong></td>
+                    <td class="price">+£5 <span style="font-size:.78rem;font-weight:400;">per session</span></td>
+                    <td>For journeys 5–10 miles; beyond 10 miles by arrangement</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hl-pricing-note">
+              <i class="fas fa-info-circle mr-2"></i>
+              <strong>How your payment works:</strong> All fees are paid directly to Joybringers Charity. Trainer fees, travel, materials and admin costs are deducted, and any surplus is reinvested into free or subsidised charitable programmes for families who need them most.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SAFEGUARDING ════════════════════════════════════════ -->
+    <section class="hl-section" style="background:#f4f7f4;">
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <span class="hl-eyebrow"><i class="fas fa-shield-halved mr-1"></i> Safeguarding</span>
+            <div class="hl-divider"></div>
+            <h2 class="hl-section-title">Your Child's Safety Comes First</h2>
+            <p style="color:#5a6370;font-size:.95rem;line-height:1.75;margin-bottom:24px;">Safeguarding is built into every part of this service — not added on at the end. We follow the same rigorous standards that underpin all our charitable work.</p>
+            <a href="/safeguarding" class="btn btn-outline-success font-weight-bold" style="border-radius:8px;">
+              <i class="fas fa-file-alt mr-2"></i>Read Our Safeguarding Policy
+            </a>
+          </div>
+          <div class="col-lg-6 offset-lg-1">
+            <ul class="hl-sg-list">
+              <li><i class="fas fa-check-circle"></i> All trainers complete enhanced DBS checks and safeguarding induction</li>
+              <li><i class="fas fa-check-circle"></i> A parent or responsible adult must be present for all under-18 home sessions</li>
+              <li><i class="fas fa-check-circle"></i> Sessions take place in a communal area — never a child's bedroom</li>
+              <li><i class="fas fa-check-circle"></i> All visits are logged with check-in and check-out times</li>
+              <li><i class="fas fa-check-circle"></i> No direct private arrangements outside the Joybringers booking process</li>
+              <li><i class="fas fa-check-circle"></i> Trainers hold a clear code of conduct and identity verification</li>
+              <li><i class="fas fa-check-circle"></i> Clear reporting route to our Designated Safeguarding Lead (DSL)</li>
+              <li><i class="fas fa-check-circle"></i> A specific Home Visit &amp; One-to-One Tuition Policy is in place</li>
+            </ul>
+            <div style="background:#fff;border-radius:12px;padding:20px 22px;margin-top:22px;border:1px solid #e4edea;">
+              <p style="margin:0;font-size:.85rem;color:#444;line-height:1.7;">
+                <strong style="color:#006526;">DSL:</strong> Esele Okosun &nbsp;|&nbsp;
+                <a href="mailto:Esele.Okosun@joybringerscharity.org" style="color:#006526;">Esele.Okosun@joybringerscharity.org</a><br>
+                <strong style="color:#006526;">Deputy DSL:</strong> John Porlycarp &nbsp;|&nbsp;
+                <a href="tel:+447500010317" style="color:#006526;">+44 7500 010317</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ═════════════════════════════════════════════════ -->
+    <section class="hl-section" style="background:#fff;">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-7 text-center">
+            <span class="hl-eyebrow"><i class="fas fa-question-circle mr-1"></i> Common Questions</span>
+            <div class="hl-divider mx-auto"></div>
+            <h2 class="hl-section-title">Frequently Asked Questions</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                Is this the same as Joybringers' free programmes?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">This is a paid service — separate from our free charitable programmes. The difference is that the income from this service helps us run and expand those free programmes. Think of it as a way to benefit your child while also helping other families who can't afford support.
+              </div>
+            </div>
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                How are trainers selected?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">All trainers are vetted by Joybringers — this includes identity checks, references, safeguarding induction, and an enhanced DBS check where required. We only work with people whose skills and values align with ours.
+              </div>
+            </div>
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                Why are home visits priced higher?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">A 1-hour home lesson typically uses 2 hours of a trainer's time once travel is included. To keep the service sustainable and ensure trainers are fairly paid, home visits are priced as a premium option. We recommend online or centre-based sessions as the best value choice, and 90-minute or 2-hour blocks when home visits are preferred.
+              </div>
+            </div>
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                Can I book a one-off session rather than a block?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">We recommend 6 or 12-week blocks because they give children consistent support and make it easier to track progress. Blocks also help families plan ahead and allow us to schedule trainers effectively. Please get in touch to discuss your needs — we'll do our best to be flexible.
+              </div>
+            </div>
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                Who do I pay and how?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">All payments go directly to Joybringers Charity — never directly to a trainer. This protects both families and trainers and ensures all income is managed transparently through our charity accounts. Payment details will be confirmed at the point of booking.
+              </div>
+            </div>
+            <div class="hl-faq">
+              <div class="hl-faq-q" onclick="toggleFaq(this)">
+                Is this service available across Newcastle and the North East?
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="hl-faq-a">Online sessions are available to anyone. Group and centre-based sessions run from our Quorum Business Park location (Neon, Suite 3, Benton Lane, NE12 8BU). Home visits are available within a 10-mile radius; please contact us for locations beyond this.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BOOK / ENQUIRE ══════════════════════════════════════ -->
+    <section class="hl-cta" id="book">
+      <div class="container">
+        <span class="hl-eyebrow" style="display:block;margin-bottom:8px;"><i class="fas fa-calendar-check mr-1"></i> Get Started</span>
+        <h2>Ready to Book or Find Out More?</h2>
+        <p>Get in touch and we'll match your child with the right programme and trainer. We aim to respond within 2 working days.</p>
+        <div class="d-flex flex-wrap justify-content-center" style="gap:12px;">
+          <a href="mailto:info@joybringerscharity.org?subject=Home%20Learning%20Enquiry" class="btn btn-success btn-lg font-weight-bold" style="border-radius:8px;">
+            <i class="fas fa-envelope mr-2"></i>Email Us to Enquire
+          </a>
+          <a href="/contact" class="btn btn-light btn-lg font-weight-bold" style="border-radius:8px;color:#006526;border:2px solid #d1fae5;">
+            <i class="fas fa-phone mr-2"></i>Call or Message Us
+          </a>
+          <a href="/events" class="btn btn-light btn-lg font-weight-bold" style="border-radius:8px;color:#006526;border:2px solid #d1fae5;">
+            <i class="fas fa-calendar-alt mr-2"></i>See Upcoming Workshops
+          </a>
+        </div>
+        <p style="font-size:.82rem;color:#6c757d;margin-top:24px;margin-bottom:0;">
+          <i class="fas fa-map-marker-alt mr-1" style="color:#006526;"></i>
+          Joybringers Charity &nbsp;·&nbsp; Neon, Suite 3, Benton Lane, Quorum Business Park, Newcastle upon Tyne NE12 8BU<br>
+          <a href="tel:01916030219" style="color:#006526;">0191 603 0219</a> &nbsp;·&nbsp; <a href="mailto:info@joybringerscharity.org" style="color:#006526;">info@joybringerscharity.org</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ════════════════════════════════════════════ -->
+    <footer class="jb-footer">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 pr-lg-5">
+            <div class="jb-footer-brand">JOYBRINGERS</div>
+            <p class="jb-footer-tagline">Helping Young People Believe, Belong, and Become.</p>
+            <p class="jb-footer-sub">A registered charity empowering children and young people aged 7–25 across Newcastle and the North East through skills, education, and community.</p>
+            <div class="footer-social mt-4">
+              <a href="https://www.facebook.com/Joybringero/" target="_blank" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/joybringerscharity/" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/joybringers/" target="_blank" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://x.com/JoybringersC" target="_blank" class="twitter" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.tiktok.com/@joybringerscharity" target="_blank" class="tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h6 class="jb-footer-heading">Quick Links</h6>
+            <ul class="jb-footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/what-we-do">What We Do</a></li>
+              <li><a href="/events">Events</a></li>
+              <li><a href="/volunteer">Volunteer</a></li>
+              <li><a href="/donate">Donate</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <h6 class="jb-footer-heading">Get Involved</h6>
+            <ul class="jb-footer-links">
+              <li><a href="/volunteer">Volunteer With Us</a></li>
+              <li><a href="/donate">Make a Donation</a></li>
+              <li><a href="/partner">Corporate Partnership</a></li>
+              <li><a href="/venue-hire">Hire Our Venue</a></li>
+              <li><a href="/home-learning">Home Learning</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <h6 class="jb-footer-heading">Contact Us</h6>
+            <ul class="jb-footer-contact">
+              <li><i class="fas fa-envelope"></i><a href="mailto:info@joybringerscharity.org">info@joybringerscharity.org</a></li>
+              <li><i class="fas fa-phone"></i><a href="tel:01916030219">0191 603 0219</a></li>
+              <li><i class="fas fa-map-marker-alt"></i><span>Neon, Suite 3, Benton Lane, Quorum Business Park, Newcastle upon Tyne</span></li>
+            </ul>
+            <div class="mt-4 p-3" style="background:rgba(255,255,255,0.06);border-radius:10px;border:1px solid rgba(255,255,255,0.1);">
+              <p style="font-size:0.75rem;margin:0;opacity:0.7;line-height:1.6;">
+                <strong style="color:#a7f3c5;">JOYBRINGERS LTD</strong><br>
+                Company No. 15400265<br>
+                Registered Charity No. 1212606
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="jb-accred-strip">
+          <div class="jb-accred-badge"><i class="fas fa-shield-halved"></i><div><strong>ICO Registered</strong><span>Information Commissioner's Office</span></div></div>
+          <div class="jb-accred-badge"><i class="fas fa-graduation-cap"></i><div><strong>UKPRN: 10101743</strong><span>UK Register of Learning Providers</span></div></div>
+          <div class="jb-accred-badge"><i class="fas fa-building-columns"></i><div><strong>HMRC Registered Employer</strong><span>HM Revenue &amp; Customs</span></div></div>
+          <div class="jb-accred-badge"><i class="fas fa-star"></i><div><strong>NCVO Member</strong><span>National Council for Voluntary Organisations</span></div></div>
+        </div>
+        <hr style="border-color:rgba(255,255,255,0.12);margin-bottom:24px;">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+            <p style="margin:0;font-size:0.8rem;color:rgba(255,255,255,0.65);">&copy;2026 Joybringers Ltd. All Rights Reserved. Registered in England &amp; Wales.</p>
+            <p style="margin:4px 0 0;font-size:0.75rem;opacity:0.45;">Powered by <a href="https://www.elmorilx.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Elmoril</a></p>
+          </div>
+          <div class="col-md-6 text-center text-md-right">
+            <a href="/terms" class="jb-footer-legal">Terms of Use</a>
+            <a href="/privacy" class="jb-footer-legal">Privacy Policy</a>
+            <a href="/safeguarding" class="jb-footer-legal">Safeguarding</a>
+            <a href="/complaints" class="jb-footer-legal">Complaints</a>
+            <a href="/cookies" class="jb-footer-legal">Cookies</a>
+            <button type="button" onclick="window.showCmpBanner()" class="jb-footer-cookie-btn">
+              <i class="fas fa-cookie-bite mr-1"></i>Cookie Settings
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/cookie-consent.js"></script>
+  <script>
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const icon = el.querySelector('i');
+      const isOpen = answer.style.display === 'block';
+      document.querySelectorAll('.hl-faq-a').forEach(a => a.style.display = 'none');
+      document.querySelectorAll('.hl-faq-q i').forEach(i => i.style.transform = '');
+      if (!isOpen) {
+        answer.style.display = 'block';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+</body>
+</html>

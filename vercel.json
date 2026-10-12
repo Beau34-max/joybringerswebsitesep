@@ -30,6 +30,7 @@
     { "source": "/venue-hire", "destination": "/venue-hire.html" },
     { "source": "/safeguarding", "destination": "/safeguarding.html" },
     { "source": "/complaints", "destination": "/complaints.html" },
-    { "source": "/accessibility", "destination": "/accessibility.html" }
+    { "source": "/accessibility", "destination": "/accessibility.html" },
+    { "source": "/home-learning", "destination": "/home-learning.html" }
   ]
 }
