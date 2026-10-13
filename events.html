@@ -971,12 +971,6 @@ function toggleAllergyQuestionForEvent(locationText) {
   const STRIPE_FAMILY_LINK = "https://book.stripe.com/14A9AVcsie1a1go0z3efC01";
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-(function() {
-  emailjs.init("_TGXKABP5E9-_Sxzn");
-})();
-</script>
 
 <script>
 /* ── Family member helpers ─────────────────────────── */
@@ -1131,7 +1125,7 @@ document.getElementById("eventRegisterForm").addEventListener("submit", async fu
       return;
     }
 
-    // 2) Send EmailJS confirmation — built dynamically so each event gets the right email
+    // 2) Send confirmation email via Resend (server-side) — full HTML control
     try {
       const venue       = formData.get("event_location") || "";
       const rawLink     = formData.get("event_joining_link") || "";
@@ -1144,22 +1138,25 @@ document.getElementById("eventRegisterForm").addEventListener("submit", async fu
         ? (rawLink ? rawLink : "A joining link will be emailed to you before the event.")
         : "";   // empty = hidden in the email template
 
-      await emailjs.send("service_m8qsdzk", "template_l0gb2le", {
-        from_name:         "Joybringers Charity",
-        email:             formData.get("email"),
-        first_name:        formData.get("first_name"),
-        last_name:         formData.get("last_name"),
-        event_name:        formData.get("event_name"),
-        event_date:        formData.get("event_date"),
-        event_time:        formData.get("event_time"),
-        event_location:    venueLine,
-        joining_link_line: joiningLinkLine,
-        number_of_persons: formData.get("number_of_persons"),
-        booking_ref:       insertData?.reg_ref || '',
-        pre_event_info:    document.getElementById('hidden_pre_event_info').value || '',
+      await fetch('/api/send-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email:             formData.get("email"),
+          first_name:        formData.get("first_name"),
+          last_name:         formData.get("last_name"),
+          event_name:        formData.get("event_name"),
+          event_date:        formData.get("event_date"),
+          event_time:        formData.get("event_time"),
+          event_location:    venueLine,
+          joining_link_line: joiningLinkLine,
+          number_of_persons: formData.get("number_of_persons"),
+          booking_ref:       insertData?.reg_ref || '',
+          pre_event_info:    document.getElementById('hidden_pre_event_info').value || '',
+        })
       });
     } catch (err) {
-      console.error("EmailJS error:", err);
+      console.error("Confirmation email error:", err);
       // We still proceed because Supabase already saved it
     }
 
