@@ -85,7 +85,7 @@ function confirmationHtml(d, ref) {
       <li>Your booking is confirmed once payment is received</li>
     </ol>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:0 0 20px">
-    <p style="color:#888;font-size:12px;line-height:1.7;margin:0">Joybringers Ltd &middot; Part 1st Floor, The Light Box Q2, Quorum Business Park, Benton Ln, Longbenton, Newcastle upon Tyne NE12 8EU<br>
+    <p style="color:#888;font-size:12px;line-height:1.7;margin:0">Joybringers Ltd &middot; Part 3rd Floor, The Light Box Q2, Quorum Business Park, Benton Ln, Longbenton, Newcastle upon Tyne NE12 8EU<br>
     <a href="mailto:info@joybringerscharity.org" style="color:#006526">info@joybringerscharity.org</a> &middot; Registered Charity No. 1212606 &middot; Company No. 15400265</p>
   </div>
 </div>`;
