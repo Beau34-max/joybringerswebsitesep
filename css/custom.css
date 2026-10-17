@@ -1064,13 +1064,21 @@ img.shadow-sm {
   font-size:0.88rem; font-weight:700; letter-spacing:0.05em;
   text-transform:uppercase; color:#fff; opacity:1; line-height:1;
 }
+/* ── Navbar z-index: always above hero/carousel overlays ── */
+.ftco_navbar {
+  z-index: 9999 !important;
+}
+
 /* ── Get Involved dropdown ── */
 .ftco_navbar .dropdown-menu {
   background:#006526 !important; border:none !important; border-radius:8px;
   box-shadow:0 8px 24px rgba(0,0,0,0.25); min-width:160px; margin-top:6px;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
 }
 .ftco_navbar .dropdown-item {
   color:rgba(255,255,255,0.9) !important; font-size:0.9rem; padding:10px 18px;
+  pointer-events: auto !important;
 }
 .ftco_navbar .dropdown-item:hover {
   background:rgba(255,255,255,0.12) !important; color:#fff !important;
