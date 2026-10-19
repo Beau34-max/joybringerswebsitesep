@@ -96,7 +96,7 @@ function confirmationHtml(d) {
   <!-- Footer -->
   <div style="background:#f4f7f4;padding:18px 28px;border-top:1px solid #e5e7eb;text-align:center;">
     <p style="font-size:11px;color:#888;margin:0;line-height:1.7;">
-      Joybringers Ltd &middot; Part 3rd Floor, The Light Box Q2, Quorum Business Park, Benton Ln, Longbenton, Newcastle upon Tyne NE12 8EU<br>
+      Joybringers Ltd &middot; 3rd Floor, The Light Box Q2, Quorum Business Park, Benton Ln, Longbenton, Newcastle upon Tyne NE12 8EU<br>
       <a href="mailto:info@joybringerscharity.org" style="color:#006526;">info@joybringerscharity.org</a>
       &middot; Registered Charity No. 1212606 &middot; Company No. 15400265
     </p>
