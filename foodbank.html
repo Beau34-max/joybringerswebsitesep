@@ -303,8 +303,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-5 col-lg-4 text-center mb-4 mb-md-0">
           <div style="background:#f8f9fa;border-radius:14px;padding:32px;display:inline-block;box-shadow:0 4px 18px rgba(0,0,0,0.08);">
-            <div id="membership-qr" style="width:200px;height:200px;margin:0 auto 14px;"></div>
-            <p style="margin:0;font-size:0.82rem;color:#6c757d;">Scan with your phone camera to pay £3</p>
+            <a href="https://buy.stripe.com/8x214p2RI2is0ck6XrefC04" target="_blank">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=006526&bgcolor=ffffff&data=https%3A%2F%2Fbuy.stripe.com%2F8x214p2RI2is0ck6XrefC04"
+                   alt="QR code — scan to pay £3 membership"
+                   width="200" height="200"
+                   style="display:block;border-radius:8px;">
+            </a>
+            <p style="margin:10px 0 0;font-size:0.82rem;color:#6c757d;">Scan with your phone camera to pay £3</p>
           </div>
         </div>
         <div class="col-md-5 col-lg-4 text-center">
@@ -318,8 +323,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li>First notification of new items</li>
               <li>No referral or proof of need required</li>
             </ul>
-            <a href="https://buy.stripe.com/PLACEHOLDER" target="_blank"
-               class="btn btn-success btn-lg btn-block font-weight-bold" id="membership-pay-btn"
+            <a href="https://buy.stripe.com/8x214p2RI2is0ck6XrefC04" target="_blank"
+               class="btn btn-success btn-lg btn-block font-weight-bold"
                style="background:#006526;border-color:#006526;">
               <i class="fas fa-credit-card mr-2"></i>Pay £3 Membership
             </a>
@@ -494,24 +499,5 @@ $(document).ready(function() {
 </script>
 
 <script src="/js/footer-loader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script>
-(function() {
-  var STRIPE_LINK = 'https://buy.stripe.com/PLACEHOLDER';
-  var el = document.getElementById('membership-qr');
-  var btn = document.getElementById('membership-pay-btn');
-  if (el) {
-    new QRCode(el, {
-      text: STRIPE_LINK,
-      width: 200,
-      height: 200,
-      colorDark: '#006526',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  }
-  if (btn) btn.href = STRIPE_LINK;
-})();
-</script>
 </body>
 </html>
