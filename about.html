@@ -140,7 +140,27 @@
     /* ── Team full photo ── */
     .abt-team-banner { width:100%; height:auto; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,.1); display:block; }
 
-    @media(max-width:767px){ .abt-intro-img img { height:260px; } .abt-team-photo { height:180px; } .abt-vol-avatar { width:110px; height:110px; } }
+    /* ── Founding story ── */
+    .abt-story-card { background:#fff; border-radius:12px; padding:36px 40px; box-shadow:0 2px 14px rgba(0,60,20,.07); border:1px solid #ddeee2; margin-bottom:20px; }
+    .abt-story-card p { color:#4a5e4c; font-size:.97rem; line-height:1.8; margin:0; }
+    .abt-journey-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px; }
+    .abt-journey-card { background:#fff; border-radius:12px; padding:24px 22px; box-shadow:0 2px 10px rgba(0,60,20,.06); border:1px solid #ddeee2; border-top:4px solid #006526; }
+    .abt-journey-year { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#006526; margin-bottom:8px; }
+    .abt-journey-card h4 { font-size:1rem; font-weight:700; color:#003d14; margin-bottom:10px; line-height:1.35; }
+    .abt-journey-card p { color:#4a5e4c; font-size:.875rem; line-height:1.65; margin:0; }
+    .abt-pull-quote { border-left:4px solid #006526; background:#edf5ef; border-radius:0 10px 10px 0; padding:18px 24px; margin-bottom:20px; font-size:1.05rem; font-style:italic; color:#003d14; line-height:1.6; }
+    .abt-pull-quote small { font-style:normal; font-size:.8rem; opacity:.65; }
+    .abt-story-eyebrow { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#006526; margin-bottom:10px; }
+    .abt-story-heading { font-size:1.65rem; font-weight:800; color:#003d14; line-height:1.2; margin-bottom:16px; }
+    .abt-story-divider { width:48px; height:4px; background:#006526; border-radius:2px; margin-bottom:24px; }
+
+    @media(max-width:767px){
+      .abt-intro-img img { height:260px; }
+      .abt-team-photo { height:180px; }
+      .abt-vol-avatar { width:110px; height:110px; }
+      .abt-journey-grid { grid-template-columns:1fr; }
+      .abt-story-card { padding:24px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -423,47 +443,65 @@
       </div>
     </section>
 
-    <!-- ══ EXECUTIVE TEAM ══════════════════════════════════════ -->
+    <!-- ══ FOUNDING STORY ═════════════════════════════════════ -->
     <section class="abt-section alt">
       <div class="container">
         <div class="text-center mb-5">
           <div class="abt-divider mx-auto"></div>
-          <h2 class="abt-section-title">Executive Team &amp; Board of Trustees</h2>
-          <p class="abt-section-sub" style="margin-bottom:0;">The people leading Joybringers' mission.</p>
+          <h2 class="abt-section-title">Our Founder's Story</h2>
+          <p class="abt-section-sub" style="margin-bottom:0;">Built from lived experience, and an unshakable belief</p>
         </div>
-        <div class="row">
-          <div class="col-md-4 col-sm-6 mb-4">
-            <div class="abt-team-card">
-              <img src="images/team/beatrice.JPG" alt="Beatrice U. Egwu" class="abt-team-photo">
-              <h4 class="abt-team-name">Beatrice U. Egwu</h4>
-              <span class="abt-team-role">Founder &amp; CEO</span>
-            </div>
+
+        <!-- Hook -->
+        <div class="abt-story-card">
+          <p>Beatrice Uchenna Egwu knows what it means to be left behind — she lived it. Growing up without opportunities, without a safety net, she made a decision that has shaped everything since: that no one she could reach should feel that way too. For over a decade before Joybringers was even a name, she was already living that decision.</p>
+        </div>
+
+        <!-- Journey cards -->
+        <div class="abt-journey-grid">
+          <div class="abt-journey-card">
+            <div class="abt-journey-year">Since 2010</div>
+            <h4>A life of giving before a charity existed</h4>
+            <p>Beatrice cared for widows, paid children's school fees from her own pocket, trained young people for free, and sheltered the homeless. Not as a programme — just as a way of living.</p>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4">
-            <div class="abt-team-card">
-              <img src="images/team/EVIDENCE.png" alt="Halliday Evidence Ajeyedigha" class="abt-team-photo">
-              <h4 class="abt-team-name">Halliday Evidence Ajeyedigha</h4>
-              <span class="abt-team-role">Director of Program Delivery</span>
-            </div>
+          <div class="abt-journey-card">
+            <div class="abt-journey-year">2015 &amp; 2016</div>
+            <h4>Tested by grief, she gave more — not less</h4>
+            <p>Beatrice lost two of her sons in consecutive years. Grief of that magnitude can break a person. For her, it deepened a resolve that was already unshakable.</p>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4">
-            <div class="abt-team-card">
-              <img src="images/team/nnamdi.jpg" alt="Engr. Nnamdi MacOkolinta" class="abt-team-photo">
-              <h4 class="abt-team-name">Engr. Nnamdi MacOkolinta</h4>
-              <span class="abt-team-role">Director of Food &amp; Essentials · Trustee</span>
-            </div>
+          <div class="abt-journey-card">
+            <div class="abt-journey-year">COVID-19</div>
+            <h4>She got in her car when everyone else stayed home</h4>
+            <p>When families across Newcastle were too ill to leave the house, Beatrice drove door to door delivering food. No funding, no organisation behind her — just her and the same conviction she always had.</p>
           </div>
         </div>
+
+        <!-- Pull quote -->
+        <div class="abt-pull-quote">
+          "No one should be left behind. Every child deserves the opportunity to fulfil their potential."
+          <br><small>— Beatrice Uchenna Egwu, Founder</small>
+        </div>
+
+        <!-- Closing -->
+        <div class="abt-story-card">
+          <div class="abt-story-eyebrow">2024 — Joybringers registered</div>
+          <p>After more than a decade of this quiet, determined giving, Beatrice formalised the mission. Joybringers became a registered charity (No. 1212606) — a structure to match what the community had already become. Today, 36+ volunteers and 578+ people supported later, Beatrice still shows up every week. Not just to give, but to say: <em style="color:#006526;font-weight:600;">if I kept going, so can you.</em></p>
+        </div>
+
       </div>
     </section>
 
-    <!-- ══ VOLUNTEER TEAM ══════════════════════════════════════ -->
+    <!-- ══ OUR TEAM ════════════════════════════════════════════ -->
     <section class="abt-section light">
       <div class="container">
-        <!-- Team banner -->
+        <div class="text-center mb-4">
+          <div class="abt-divider mx-auto"></div>
+          <h2 class="abt-section-title">Our Team</h2>
+          <p class="abt-section-sub" style="margin-bottom:24px;">36+ volunteers who show up every week because they believe in what this community can become.</p>
+        </div>
         <div class="text-center">
-          <img src="images/v6.JPG" alt="The Joybringers team" class="abt-team-banner">
-          <p class="mt-3" style="color:#555;font-size:.9rem;">Our amazing team brings a wealth of experience and passion for young people's development.</p>
+          <img src="images/v6.JPG" alt="The Joybringers volunteer team" class="abt-team-banner">
+          <p class="mt-3" style="color:#555;font-size:.9rem;">Our work is overseen by a <strong>board of trustees</strong> who ensure Joybringers is well-governed, accountable, and true to the mission it was founded on.</p>
         </div>
       </div>
     </section>
