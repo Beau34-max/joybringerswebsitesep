@@ -438,17 +438,12 @@
 
   <!-- ── Libraries ──────────────────────────────────────── -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
   <script>
     /* ── Config ──────────────────────────────────────────── */
     const SUPABASE_URL      = "https://roofompdejyndlpqfrjl.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ys9Vq0Akl7BW6VXVVgy65g_MBuXloNO";
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    emailjs.init("6xlIRBT96J-bKz7s3");
-    const EJ_SERVICE  = 'service_xpkh5fc';
-    const EJ_TEMPLATE = 'template_expense';
 
     /* ── State ───────────────────────────────────────────── */
     let transportType = '';
@@ -676,36 +671,21 @@
         const { error: dbErr } = await sb.from('volunteer_expenses').insert([payload]);
         if (dbErr) console.error('[Supabase]', dbErr.message); // non-fatal if email succeeds
 
-        /* 4 — Send email notification */
-        const transportLabel = { car: 'Own car', public: 'Bus / Train', both: 'Both' }[transportType] || transportType;
+        /* 4 — Send email notification via Resend */
+        const ref = `EXP-${Date.now().toString(36).toUpperCase()}`;
         try {
-          await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, {
-            volunteer_name:   `${payload.first_name} ${payload.last_name}`,
-            volunteer_email:  payload.email,
-            volunteer_phone:  payload.phone,
-            account_number:   payload.account_number || 'Not provided',
-            sort_code:        payload.sort_code       || 'Not provided',
-            period_start:     payload.period_start,
-            period_end:       payload.period_end,
-            transport_type:   transportLabel,
-            from_location:    payload.from_location   || '—',
-            to_location:      payload.to_location      || '—',
-            total_miles:      payload.total_miles      ? `${payload.total_miles} miles` : '—',
-            car_amount:       `£${carAmt.toFixed(2)}`,
-            public_amount:    `£${pub.toFixed(2)}`,
-            total_amount:     `£${total.toFixed(2)}`,
-            receipt_url:      receiptUrl              || 'No receipt uploaded',
-            notes:            payload.notes           || 'None',
-            journey_desc:     document.getElementById('pubDesc').value.trim() || '—',
+          await fetch('/api/expenses-notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...payload, ref })
           });
-        } catch (ejErr) {
-          console.error('[EmailJS]', ejErr); // non-fatal — data is in DB
+        } catch (emailErr) {
+          console.error('[Resend]', emailErr); // non-fatal — data is in DB
         }
 
         /* 5 — Show success */
         document.getElementById('expense-form').style.display  = 'none';
         document.getElementById('exp-success').style.display   = 'block';
-        const ref = `EXP-${Date.now().toString(36).toUpperCase()}`;
         document.getElementById('success-ref').textContent = `Reference: ${ref}`;
 
       } catch (e) {
