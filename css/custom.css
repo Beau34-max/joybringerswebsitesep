@@ -1103,3 +1103,35 @@ img.shadow-sm {
     padding-bottom: 16px !important;
   }
 }
+
+/* ══ Topbar + Navbar alignment ═══════════════════════════════
+   Topbar is fixed at top:0 (set in topbar-loader.js).
+   Shift body content down by topbar height (38px) so nothing
+   hides under it, then make page-wrapper a positioned ancestor
+   so the absolute navbar anchors to it (not the viewport).     */
+body { padding-top: 38px !important; }
+
+.page-wrapper { position: relative !important; }
+
+/* Navbar initial position: below the fixed topbar */
+.ftco-navbar-light { top: 38px !important; }
+
+/* Navbar after scroll: fixed, but still below topbar */
+.ftco-navbar-light.scrolled { top: 38px !important; }
+
+/* Inner-page hero clearance: navbar height (66px) + topbar (38px) */
+.abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero {
+  padding-top: 104px !important;
+}
+@media (max-width: 991px) {
+  .abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero {
+    padding-top: 108px !important;
+  }
+}
+
+/* ── Navbar items: reduce padding to fit single line ─────── */
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+  padding-left:  12px !important;
+  padding-right: 12px !important;
+  font-size:     14px !important;
+}

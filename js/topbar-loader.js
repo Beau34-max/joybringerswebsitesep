@@ -5,7 +5,7 @@
    ============================================================ */
 (function () {
   var CSS = [
-    '.jb-topbar{background:#006526;padding:7px 0;font-size:0.82rem;z-index:1100;border-bottom:2px solid #004d1a;}',
+    '.jb-topbar{background:#006526;padding:7px 0;font-size:0.82rem;z-index:10000;border-bottom:2px solid #004d1a;position:fixed;top:0;left:0;right:0;width:100%;}',
     '.jb-topbar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}',
     '.jb-topbar-socials{display:flex;align-items:center;gap:10px;}',
     '.jb-topbar-socials a{color:rgba(255,255,255,0.82);font-size:0.9rem;transition:color 0.15s;line-height:1;}',
