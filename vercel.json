@@ -36,7 +36,8 @@
     { "source": "/policies", "destination": "/policies.html" },
     { "source": "/api/send-confirmation", "destination": "/api/send-confirmation.js" },
     { "source": "/api/success-stories", "destination": "/api/success-stories.js" },
-    { "source": "/api/generate-story-cron", "destination": "/api/generate-story-cron.js" }
+    { "source": "/api/generate-story-cron", "destination": "/api/generate-story-cron.js" },
+    { "source": "/api/digital-learning-checkout", "destination": "/api/digital-learning-checkout.js" }
   ],
   "crons": [
     {

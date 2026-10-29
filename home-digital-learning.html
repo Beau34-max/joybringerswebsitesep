@@ -629,7 +629,7 @@
             <li><i class="fas fa-check"></i>Post-session parent summary</li>
             <li><i class="fas fa-check"></i>Meet your tutor first</li>
           </ul>
-          <a href="#register" class="btn-jb-outline d-block text-center mt-4" style="border-radius:10px;padding:12px;">Book a trial</a>
+          <button onclick="dlPay('trial')" class="btn-jb-outline d-block text-center mt-4 w-100" style="border-radius:10px;padding:12px;cursor:pointer;">Pay £35 &amp; book trial</button>
         </div>
       </div>
       <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="60">
@@ -645,7 +645,7 @@
             <li><i class="fas fa-check"></i>Priority tutor matching</li>
             <li><i class="fas fa-check"></i>Saves £10 vs pay-as-you-go</li>
           </ul>
-          <a href="#register" class="btn-jb-primary d-block text-center mt-4" style="border-radius:10px;padding:12px;">Register for monthly</a>
+          <button onclick="dlPay('monthly')" class="btn-jb-primary d-block text-center mt-4 w-100" style="border-radius:10px;padding:12px;cursor:pointer;">Pay £190 &amp; register</button>
         </div>
       </div>
       <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="120">
@@ -659,7 +659,7 @@
             <li><i class="fas fa-check"></i>Groups up to 4: from £20/child</li>
             <li><i class="fas fa-check"></i>Great value for families</li>
           </ul>
-          <a href="#register" class="btn-jb-outline d-block text-center mt-4" style="border-radius:10px;padding:12px;">Enquire about groups</a>
+          <button onclick="dlPay('sibling')" class="btn-jb-outline d-block text-center mt-4 w-100" style="border-radius:10px;padding:12px;cursor:pointer;">Pay £65 &amp; book sibling session</button>
         </div>
       </div>
     </div>
@@ -1042,6 +1042,28 @@
     this.querySelectorAll('input,select,textarea,button').forEach(function(el){ el.disabled = true; });
     document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
+
+  // Stripe Checkout — Digital Learning packages
+  async function dlPay(pkg) {
+    var btn = event.currentTarget;
+    var orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Setting up payment…';
+    try {
+      var r = await fetch('/api/digital-learning-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ package: pkg })
+      });
+      var data = await r.json();
+      if (data.error) throw new Error(data.error);
+      window.location.href = data.url;
+    } catch (err) {
+      alert('Sorry, payment could not be started: ' + err.message + '\nPlease try again or contact us at info@joybringerscharity.org');
+      btn.disabled = false;
+      btn.textContent = orig;
+    }
+  }
 </script>
 </body>
 </html>
