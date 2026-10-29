@@ -32,6 +32,16 @@
     { "source": "/complaints", "destination": "/complaints.html" },
     { "source": "/accessibility", "destination": "/accessibility.html" },
     { "source": "/home-learning", "destination": "/home-learning.html" },
-    { "source": "/api/send-confirmation", "destination": "/api/send-confirmation.js" }
+    { "source": "/home-digital-learning", "destination": "/home-digital-learning.html" },
+    { "source": "/policies", "destination": "/policies.html" },
+    { "source": "/api/send-confirmation", "destination": "/api/send-confirmation.js" },
+    { "source": "/api/success-stories", "destination": "/api/success-stories.js" },
+    { "source": "/api/generate-story-cron", "destination": "/api/generate-story-cron.js" }
+  ],
+  "crons": [
+    {
+      "path": "/api/generate-story-cron",
+      "schedule": "0 10 * * *"
+    }
   ]
 }

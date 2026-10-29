@@ -1056,13 +1056,16 @@ img.shadow-sm {
 .ftco_navbar .navbar-brand img,
 .ftco_navbar.scrolled .navbar-brand img { height:46px; width:auto; }
 .jb-brand-text {
-  display:flex; flex-direction:row; align-items:center; gap:5px;
-  font-family:'Poppins',sans-serif;
+  display:flex; flex-direction:column; align-items:flex-start; gap:1px;
+  font-family:'Dosis','Overpass',sans-serif; margin-left:8px;
 }
-.jb-brand-text strong,
+.jb-brand-text strong {
+  font-size:1rem; font-weight:800; letter-spacing:0.06em;
+  text-transform:uppercase; color:#fff; line-height:1;
+}
 .jb-brand-text small {
-  font-size:0.88rem; font-weight:700; letter-spacing:0.05em;
-  text-transform:uppercase; color:#fff; opacity:1; line-height:1;
+  font-size:0.68rem; font-weight:600; letter-spacing:0.1em;
+  text-transform:uppercase; color:rgba(255,255,255,0.7); line-height:1;
 }
 /* ── Navbar z-index: always above hero/carousel overlays ── */
 .ftco_navbar {

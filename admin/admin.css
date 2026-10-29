@@ -475,3 +475,19 @@ body {
   border-top: 2px solid #006526 !important;
   background: #f0fdf4;
 }
+
+/* Export tab active state — clear visual distinction */
+#exports-nav .exp-tab-active {
+  box-shadow: 0 2px 8px rgba(25, 135, 84, .35);
+  border-color: #146c43 !important;
+}
+#exports-nav .exp-tab-active::before {
+  content: '✓ ';
+  font-weight: 900;
+}
+#exports-nav .exp-tab-inactive {
+  opacity: 0.6;
+}
+#exports-nav .exp-tab-inactive:hover {
+  opacity: 1;
+}

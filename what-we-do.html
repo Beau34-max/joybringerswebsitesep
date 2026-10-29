@@ -159,6 +159,7 @@
             <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
             <li class="nav-item active"><a href="/what-we-do" class="nav-link">What We Do</a></li>
             <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+          <li class="nav-item"><a href="/home-digital-learning" class="nav-link">Digital Learning</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Involved</a>
               <div class="dropdown-menu">
@@ -440,7 +441,84 @@
         <h2 class="wwd-section-title">Success Stories</h2>
         <p class="wwd-section-sub">Real programmes. Real people. Real impact.</p>
 
-        <!-- R-Programming Bootcamp -->
+        <div id="stories-container">
+          <div id="stories-loading" class="text-center py-5">
+            <div class="spinner-border text-success" role="status"></div>
+            <p class="mt-3 text-muted">Loading stories...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      var CATEGORY_MAP = {
+        'Digital Skills': { cls: 'digital',  icon: 'fa-laptop-code' },
+        'Well-being':     { cls: 'wellbeing', icon: 'fa-apple-alt'   },
+        'Community':      { cls: 'community', icon: 'fa-users'       },
+        'Outdoor Adventures': { cls: 'outdoor', icon: 'fa-tree'      },
+        'Milestone':      { cls: 'milestone', icon: 'fa-star'        },
+        'Skills':         { cls: 'career',    icon: 'fa-star'        },
+        'Family':         { cls: 'community', icon: 'fa-heart'       },
+      };
+      function catInfo(cat) {
+        return CATEGORY_MAP[cat] || { cls: 'community', icon: 'fa-calendar-check' };
+      }
+      function fmtDate(iso) {
+        var d = new Date(iso); if (isNaN(d)) return iso;
+        return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      }
+      function buildCarousel(images, idx) {
+        if (!images || !images.length) return '<div class="wwd-story-img-placeholder"><i class="fas fa-images fa-3x text-muted"></i></div>';
+        var id = 'carousel-story-' + idx;
+        var items = images.map(function (src, i) {
+          return '<div class="carousel-item' + (i === 0 ? ' active' : '') + '"><img src="' + src + '" alt="Story photo"></div>';
+        }).join('');
+        return '<div id="' + id + '" class="carousel slide carousel-fade h-100" data-ride="carousel" data-interval="2500">'
+          + '<div class="carousel-inner h-100">' + items + '</div></div>';
+      }
+      function renderStory(story, idx) {
+        var ci  = catInfo(story.category);
+        var rev = idx % 2 === 1 ? ' flex-md-row-reverse' : '';
+        var paragraphs = (story.story_text || '').split(/\n\n+/).filter(Boolean).map(function (p) {
+          return '<p class="wwd-story-text">' + p + '</p>';
+        }).join('');
+        var quote = story.quote
+          ? '<div class="wwd-story-quote"><i class="fas fa-quote-left"></i> ' + story.quote + '</div>'
+          : '';
+        return '<div class="wwd-story" data-aos="fade-up">'
+          + '<div class="row no-gutters' + rev + '">'
+          + '<div class="col-md-6 wwd-story-img">' + buildCarousel(story.images, idx) + '</div>'
+          + '<div class="col-md-6 wwd-story-body">'
+          + '<div class="wwd-story-badges">'
+          + '<span class="wwd-badge ' + ci.cls + '"><i class="fas ' + ci.icon + ' mr-1"></i>' + (story.category || 'Event') + '</span>'
+          + '<span class="wwd-badge date"><i class="fas fa-calendar mr-1"></i>' + fmtDate(story.event_date) + '</span>'
+          + '</div>'
+          + '<h3 class="wwd-story-title">' + story.title + '</h3>'
+          + paragraphs + quote
+          + '</div></div></div>';
+      }
+      fetch('/api/success-stories')
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (stories) {
+          var container = document.getElementById('stories-container');
+          if (!stories.length) {
+            container.innerHTML = '<p class="text-center text-muted py-5">No stories yet — check back soon.</p>';
+            return;
+          }
+          container.innerHTML = stories.map(renderStory).join('');
+          if (typeof $ !== 'undefined') { $('.carousel').carousel(); }
+          if (typeof AOS !== 'undefined') { AOS.refresh(); }
+        })
+        .catch(function () {
+          var c = document.getElementById('stories-container');
+          if (c) c.innerHTML = '<p class="text-center text-muted py-5">Stories temporarily unavailable.</p>';
+        });
+    })();
+    </script>
+
+    <!-- stories-legacy: hidden; content served dynamically by /api/success-stories -->
+    <section id="stories-legacy" style="display:none"><div class="container">
         <div class="wwd-story">
           <div class="row no-gutters">
             <div class="col-md-6 wwd-story-img">

@@ -93,6 +93,9 @@
       <a href="#" class="sidebar-link" data-tab="content" data-roles="admin,editor" onclick="switchTab('content');return false;">
         <i class="fas fa-pen-to-square"></i> Website Content
       </a>
+      <a href="#" class="sidebar-link" data-tab="stories" data-roles="admin,editor" onclick="switchTab('stories');return false;">
+        <i class="fas fa-newspaper"></i> Success Stories
+      </a>
       <a href="#" class="sidebar-link" data-tab="dataentry" onclick="switchTab('dataentry');return false;">
         <i class="fas fa-clipboard-list"></i> Data Entry
       </a>
@@ -497,6 +500,90 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ============ SUCCESS STORIES TAB ============ -->
+    <div id="tab-stories" class="admin-tab" style="display:none">
+      <div class="tab-header">
+        <div>
+          <h2 class="mb-1"><i class="fas fa-newspaper text-success"></i> Success Stories</h2>
+          <p class="text-muted mb-0 small">Stories auto-expire after 1 year. AI-generated stories are created daily from recent events.</p>
+        </div>
+        <button class="btn btn-success" onclick="openStoryModal()">
+          <i class="fas fa-plus"></i> Add Story
+        </button>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body p-0">
+          <div id="stories-table-wrap" class="text-center py-5 text-muted">
+            <div class="spinner-border text-success" role="status"></div>
+            <p class="mt-2">Loading stories…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story Modal -->
+    <div class="modal fade" id="storyModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="storyModalTitle">Add Story</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="story-id">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Event Name</label>
+                <input type="text" class="form-control" id="story-event-name" placeholder="e.g. 6-Week Coding Bootcamp">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Event Date</label>
+                <input type="date" class="form-control" id="story-event-date">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Category</label>
+                <select class="form-select" id="story-category">
+                  <option>Digital Skills</option>
+                  <option>Well-being</option>
+                  <option>Community</option>
+                  <option>Outdoor Adventures</option>
+                  <option>Milestone</option>
+                  <option>Skills</option>
+                  <option>Family</option>
+                  <option>Event</option>
+                </select>
+              </div>
+              <div class="col-md-6 d-flex align-items-end">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="story-published" checked>
+                  <label class="form-check-label fw-semibold" for="story-published">Published</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Headline</label>
+                <input type="text" class="form-control" id="story-title" placeholder="A compelling headline">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Story Text</label>
+                <textarea class="form-control" id="story-text" rows="5" placeholder="Two paragraphs. Separate with a blank line."></textarea>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Quote <span class="text-muted fw-normal">(optional)</span></label>
+                <input type="text" class="form-control" id="story-quote" placeholder="Short inspiring quote or reflection">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success" onclick="saveStory()">
+              <i class="fas fa-save"></i> Save Story
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -947,14 +1034,14 @@
       <div class="card mb-3">
         <div class="card-body py-3">
           <div class="d-flex flex-wrap gap-2 mb-3" id="exports-nav">
-            <button class="btn btn-success btn-sm"          id="exp-tab-registrations" onclick="switchExportSection('registrations')"><i class="fas fa-clipboard-check"></i> Event Registrations</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-attendance"    onclick="switchExportSection('attendance')"><i class="fas fa-user-check"></i> Attendance</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-grants"        onclick="switchExportSection('grants')"><i class="fas fa-hand-holding-dollar"></i> Grants &amp; Income</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-foodbank"      onclick="switchExportSection('foodbank')"><i class="fas fa-shopping-basket"></i> Foodbank</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-assets"        onclick="switchExportSection('assets')"><i class="fas fa-box-open"></i> Assets</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-visitors"      onclick="switchExportSection('visitors')"><i class="fas fa-id-badge"></i> Visitors</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-volunteer_applications" onclick="switchExportSection('volunteer_applications')"><i class="fas fa-hand-holding-heart"></i> Volunteer Applications</button>
-            <button class="btn btn-outline-secondary btn-sm" id="exp-tab-volunteer_expenses"     onclick="switchExportSection('volunteer_expenses')"><i class="fas fa-receipt"></i> Volunteer Expenses</button>
+            <button class="btn btn-success btn-sm fw-bold exp-tab-active"   id="exp-tab-registrations" onclick="switchExportSection('registrations')"><i class="fas fa-clipboard-check"></i> Event Registrations</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-attendance"    onclick="switchExportSection('attendance')"><i class="fas fa-user-check"></i> Attendance</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-grants"        onclick="switchExportSection('grants')"><i class="fas fa-hand-holding-dollar"></i> Grants &amp; Income</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-foodbank"      onclick="switchExportSection('foodbank')"><i class="fas fa-shopping-basket"></i> Foodbank</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-assets"        onclick="switchExportSection('assets')"><i class="fas fa-box-open"></i> Assets</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-visitors"      onclick="switchExportSection('visitors')"><i class="fas fa-id-badge"></i> Visitors</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-volunteer_applications" onclick="switchExportSection('volunteer_applications')"><i class="fas fa-hand-holding-heart"></i> Volunteer Applications</button>
+            <button class="btn btn-outline-secondary btn-sm exp-tab-inactive" id="exp-tab-volunteer_expenses"     onclick="switchExportSection('volunteer_expenses')"><i class="fas fa-receipt"></i> Volunteer Expenses</button>
           </div>
           <div class="row g-2 align-items-end">
             <div class="col-md-3">
@@ -968,9 +1055,9 @@
             <div class="col-md-4">
               <label class="form-label small fw-semibold mb-1">Quick presets</label>
               <div class="d-flex gap-1 flex-wrap">
-                <button class="btn btn-outline-secondary btn-sm" onclick="setExportRange('month')">This Month</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="setExportRange('year')">This Year</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="setExportRange('all')">All Time</button>
+                <button class="btn btn-outline-secondary btn-sm" id="exp-preset-month" onclick="setExportRange('month')">This Month</button>
+                <button class="btn btn-success btn-sm fw-bold"   id="exp-preset-year"  onclick="setExportRange('year')">This Year</button>
+                <button class="btn btn-outline-secondary btn-sm" id="exp-preset-all"   onclick="setExportRange('all')">All Time</button>
               </div>
             </div>
             <div class="col-md-2">

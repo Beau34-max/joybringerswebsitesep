@@ -4,12 +4,20 @@
     .then(function (d) {
       var el;
 
-      // Footer address (short, one-line, linked)
+      // Footer address — two addresses: correspondence + registered
       el = document.getElementById('footer-address');
-      if (el && d.address) {
-        el.innerHTML = d.map_url
-          ? '<a href="' + d.map_url + '" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.9);text-decoration:none;">' + d.address + '</a>'
-          : d.address;
+      if (el) {
+        var corrLink = d.map_url
+          ? '<a href="' + d.map_url + '" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.9);text-decoration:none;">' + (d.address || '') + '</a>'
+          : (d.address || '');
+        var html = '';
+        if (d.address) {
+          html += '<span style="display:block;font-size:0.78rem;font-weight:700;color:#a7f3c5;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;">Correspondence Address</span>' + corrLink;
+        }
+        if (d.registered_address) {
+          html += '<span style="display:block;margin-top:10px;font-size:0.78rem;font-weight:700;color:#a7f3c5;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;">Registered Address</span>' + d.registered_address;
+        }
+        el.innerHTML = html;
       }
 
       // Contact page main-body address link
