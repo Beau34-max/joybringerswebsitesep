@@ -69,21 +69,24 @@
 	};
 	carousel();
 
-	var dropdownTimer;
-	$('nav .dropdown').hover(function(){
-		var $this = $(this);
-		clearTimeout(dropdownTimer);
-		$this.addClass('show');
-		$this.find('> a').attr('aria-expanded', true);
-		$this.find('.dropdown-menu').addClass('show');
-	}, function(){
-		var $this = $(this);
-		dropdownTimer = setTimeout(function(){
-			$this.removeClass('show');
-			$this.find('> a').attr('aria-expanded', false);
-			$this.find('.dropdown-menu').removeClass('show');
-		}, 300);
-	});
+	/* Hover-open dropdown — desktop only (touch devices use Bootstrap's click toggle) */
+	if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+		var dropdownTimer;
+		$('nav .dropdown').hover(function(){
+			var $this = $(this);
+			clearTimeout(dropdownTimer);
+			$this.addClass('show');
+			$this.find('> a').attr('aria-expanded', true);
+			$this.find('.dropdown-menu').addClass('show');
+		}, function(){
+			var $this = $(this);
+			dropdownTimer = setTimeout(function(){
+				$this.removeClass('show');
+				$this.find('> a').attr('aria-expanded', false);
+				$this.find('.dropdown-menu').removeClass('show');
+			}, 300);
+		});
+	}
 
 
 	$('#dropdown04').on('show.bs.dropdown', function () {

@@ -1124,11 +1124,11 @@ body { padding-top: 38px !important; }
 .ftco-navbar-light.scrolled { top: 38px !important; }
 
 /* Inner-page hero clearance: navbar height (66px) + topbar (38px) */
-.abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero, .fb-hero {
+.abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero, .fb-hero, .vh-hero {
   padding-top: 104px !important;
 }
 @media (max-width: 991px) {
-  .abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero {
+  .abt-hero, .con-hero, .ev-hero, .wwd-hero, .vol-hero, .don-hero, .par-hero, .fb-hero, .vh-hero {
     padding-top: 108px !important;
   }
 }
