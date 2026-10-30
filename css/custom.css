@@ -1155,3 +1155,16 @@ body { padding-top: 38px !important; }
   padding-right: 12px !important;
   font-size:     14px !important;
 }
+
+/* ── Phone menu: keep the link labels readable after a tap ──
+   On a touch screen a tapped link stays in its :hover state, and the hover style above turns the background white
+   while the link text is also white, so "Get Involved" vanished once opened. On phones and tablets (where the menu is
+   the hamburger list) the menu links keep a transparent background and white text whatever their state. */
+@media (max-width: 991.98px) {
+  .ftco_navbar .navbar-nav > .nav-item > .nav-link:hover,
+  .ftco_navbar .navbar-nav > .nav-item > .nav-link:focus,
+  .ftco_navbar .navbar-nav > .nav-item.show > .nav-link {
+    background-color: transparent !important;
+    color: #fff !important;
+  }
+}

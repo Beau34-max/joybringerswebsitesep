@@ -220,11 +220,14 @@
 
 	// navigation
 	var OnePageNav = function() {
-		$(".smoothscroll[href^='#'], #ftco-nav ul li a[href^='#']").on('click', function(e) {
-		 	e.preventDefault();
-
+		// A dropdown toggle (such as "Get Involved", whose link is just "#") is not a scroll link: leave it to Bootstrap, so
+		// opening it does not scroll the page or close the mobile menu. A link only scrolls when it points at a real section.
+		$(".smoothscroll[href^='#'], #ftco-nav ul li a[href^='#']").not('.dropdown-toggle').on('click', function(e) {
 		 	var hash = this.hash,
 		 			navToggler = $('.navbar-toggler');
+		 	if (!hash || hash === '#' || !$(hash).length) { return; }
+		 	e.preventDefault();
+
 		 	$('html, body').animate({
 		    scrollTop: $(hash).offset().top
 		  }, 700, 'easeInOutExpo', function(){
