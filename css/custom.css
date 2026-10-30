@@ -1073,6 +1073,13 @@ img.shadow-sm {
 }
 
 /* ── Get Involved dropdown ── */
+/* Desktop: open on hover via CSS (no JS interference with Bootstrap click toggle) */
+@media (min-width: 992px) {
+  .ftco_navbar .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
 .ftco_navbar .dropdown-menu {
   background:#006526 !important; border:none !important; border-radius:8px;
   box-shadow:0 8px 24px rgba(0,0,0,0.25); min-width:160px; margin-top:6px;
