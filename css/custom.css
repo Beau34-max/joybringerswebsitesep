@@ -1116,10 +1116,11 @@ body { padding-top: 38px !important; }
 
 .page-wrapper { position: relative !important; }
 
-/* Navbar initial position: below the fixed topbar */
-.ftco-navbar-light { top: 38px !important; }
+/* Navbar initial position: page-wrapper already starts 38px down (body padding),
+   so top:0 places the navbar flush against the topbar. */
+.ftco-navbar-light { top: 0 !important; }
 
-/* Navbar after scroll: fixed, but still below topbar */
+/* When scrolled the navbar becomes position:fixed and must clear the topbar */
 .ftco-navbar-light.scrolled { top: 38px !important; }
 
 /* Inner-page hero clearance: navbar height (66px) + topbar (38px) */
