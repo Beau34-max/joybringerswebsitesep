@@ -800,12 +800,7 @@
 
   <script>
   $(document).ready(function () {
-    var $nav = $('.ftco_navbar');
-    $nav.addClass('scrolled awake');
-    $(window).on('scroll', function () {
-      if (!$nav.hasClass('scrolled')) $nav.addClass('scrolled awake');
-      if (!$nav.hasClass('awake'))    $nav.addClass('awake');
-    });
+  $('.ftco_navbar').addClass('jb-solid');
   });
 
   document.getElementById('partner-form').addEventListener('submit', async function (e) {

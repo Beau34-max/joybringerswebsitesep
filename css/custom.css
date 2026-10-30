@@ -1138,6 +1138,17 @@ body { padding-top: 38px !important; }
   }
 }
 
+/* Inner pages: solid navbar from page-load without triggering scrolled state */
+.ftco-navbar-light.jb-solid {
+  background: #006526 !important;
+}
+.ftco-navbar-light.jb-solid .navbar-nav > .nav-item > .nav-link {
+  color: #ffffff !important;
+}
+.ftco-navbar-light.jb-solid .navbar-nav > .nav-item.active > .nav-link {
+  color: #FFD700 !important;
+}
+
 /* ── Navbar items: reduce padding to fit single line ─────── */
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
   padding-left:  12px !important;

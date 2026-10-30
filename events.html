@@ -693,13 +693,7 @@ function eventCard(e, isUpcoming) {
 }
 
 $(document).ready(() => {
-  /* ── Sticky navbar ── */
-  var $nav = $('.ftco_navbar');
-  $nav.addClass('scrolled awake');
-  $(window).on('scroll', function() {
-    if (!$nav.hasClass('scrolled')) $nav.addClass('scrolled awake');
-    if (!$nav.hasClass('awake'))    $nav.addClass('awake');
-  });
+  $('.ftco_navbar').addClass('jb-solid');
 
   fetch('/data/events.json')
     .then(r => r.json())

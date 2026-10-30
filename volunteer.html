@@ -858,15 +858,8 @@ document.getElementById('volunteerForm').addEventListener('submit', async functi
   btnText.style.display = 'inline'; btnLoad.style.display = 'none'; btn.disabled = false;
 });
 
-// Sticky navbar — fix to top immediately on inner pages so it follows scroll
 $(document).ready(function() {
-  var $nav = $('.ftco_navbar');
-  $nav.addClass('scrolled awake');
-  $(window).on('scroll', function() {
-    // Keep it fixed at all scroll positions (override main.js 150px threshold)
-    if (!$nav.hasClass('scrolled')) $nav.addClass('scrolled awake');
-    if (!$nav.hasClass('awake'))    $nav.addClass('awake');
-  });
+  $('.ftco_navbar').addClass('jb-solid');
 });
 </script>
 

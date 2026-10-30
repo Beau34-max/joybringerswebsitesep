@@ -967,14 +967,7 @@ initStripeExpressCheckout();
 // Safety net: ensure the loader is always hidden even if main.js has any issue
 $(document).ready(function() {
   $('#ftco-loader').delay(200).fadeOut('slow');
-  // Sticky navbar — fix to top immediately on inner pages so it follows scroll
-  var $nav = $('.ftco_navbar');
-  $nav.addClass('scrolled awake');
-  $(window).on('scroll', function() {
-    // Keep it fixed at all scroll positions (override main.js 150px threshold)
-    if (!$nav.hasClass('scrolled')) $nav.addClass('scrolled awake');
-    if (!$nav.hasClass('awake'))    $nav.addClass('awake');
-  });
+  $('.ftco_navbar').addClass('jb-solid');
 });
 </script>
 

@@ -482,14 +482,8 @@ fetch('/data/foodbank-impact.json').then(r => r.json()).then(d => {
 </script>
 
 <script>
-// Sticky navbar — fix to top immediately on inner pages so it follows scroll
 $(document).ready(function() {
-  var $nav = $('.ftco_navbar');
-  $nav.addClass('scrolled awake');
-  $(window).on('scroll', function() {
-    if (!$nav.hasClass('scrolled')) $nav.addClass('scrolled awake');
-    if (!$nav.hasClass('awake'))    $nav.addClass('awake');
-  });
+  $('.ftco_navbar').addClass('jb-solid');
 });
 </script>
 
