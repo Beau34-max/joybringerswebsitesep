@@ -596,6 +596,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </svg>
 </div>
 
+<script>
+  // Force-dismiss the loader within 1.5s regardless of slow external scripts (Stripe/PayPal CDN)
+  (function() {
+    function hideLoader() {
+      var l = document.getElementById('ftco-loader');
+      if (l) { l.classList.remove('show'); l.style.display = 'none'; }
+    }
+    setTimeout(hideLoader, 1500);
+    window.addEventListener('DOMContentLoaded', function() { setTimeout(hideLoader, 50); });
+  })();
+</script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
 <script src="js/popper.min.js"></script>
@@ -611,7 +623,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Stripe.js — loaded before PayPal so wallet detection runs early -->
 <script src="https://js.stripe.com/v3/"></script>
 <!-- PayPal SDK — loaded here (not in <head>) so it never blocks page render -->
-<script src="https://www.paypal.com/sdk/js?client-id=AWhztww01sTTQ3t6C3dLu2DRxIACPGIOvt6uj3RifSXZ2scFnep5uyaVRD0kUu_MjE-gCr8gDFR3GpPh&currency=GBP&components=buttons"></script>
+<script async src="https://www.paypal.com/sdk/js?client-id=AWhztww01sTTQ3t6C3dLu2DRxIACPGIOvt6uj3RifSXZ2scFnep5uyaVRD0kUu_MjE-gCr8gDFR3GpPh&currency=GBP&components=buttons" onload="renderPayPal()"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
