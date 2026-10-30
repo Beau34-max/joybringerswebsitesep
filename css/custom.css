@@ -1110,17 +1110,22 @@ img.shadow-sm {
 /* ══ Topbar + Navbar alignment ═══════════════════════════════
    Topbar is fixed at top:0 (set in topbar-loader.js).
    Shift body content down by topbar height (38px) so nothing
-   hides under it, then make page-wrapper a positioned ancestor
-   so the absolute navbar anchors to it (not the viewport).     */
+   hides under it. On desktop the navbar is always fixed at 38px
+   below the viewport top (= flush under the topbar), regardless
+   of whether the page has a .page-wrapper div or not.          */
 body { padding-top: 38px !important; }
 
 .page-wrapper { position: relative !important; }
 
-/* Navbar initial position: page-wrapper already starts 38px down (body padding),
-   so top:0 places the navbar flush against the topbar. */
-.ftco-navbar-light { top: 0 !important; }
+/* Desktop: navbar always fixed, sitting flush below topbar */
+@media (min-width: 992px) {
+  .ftco-navbar-light {
+    position: fixed !important;
+    top: 38px !important;
+  }
+}
 
-/* When scrolled the navbar becomes position:fixed and must clear the topbar */
+/* When scrolled the navbar is still fixed; keep same top */
 .ftco-navbar-light.scrolled { top: 38px !important; }
 
 /* Inner-page hero clearance: navbar height (66px) + topbar (38px) */
