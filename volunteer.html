@@ -796,6 +796,7 @@ document.getElementById('volunteerForm').addEventListener('submit', async functi
   btn.disabled = true;
 
   const fd = new FormData(this);
+  const rawDob = fd.get('dob');
   const payload = {
     role:       fd.get('role'),
     name:       fd.get('name'),
@@ -804,7 +805,8 @@ document.getElementById('volunteerForm').addEventListener('submit', async functi
     motivation: fd.get('motivation'),
     referral:   fd.get('referral'),
     consent:    fd.get('consent') === 'on',
-    source:     'joybringerscharity.org/volunteer'
+    source:     'joybringerscharity.org/volunteer',
+    ...(rawDob ? { dob: rawDob } : {})
   };
 
   // 1) Upload CV to Supabase Storage (optional — graceful if bucket not set up)
