@@ -36,7 +36,7 @@
     },
     {
       "id": "company-secretary",
-      "title": "Company Secretary",
+      "title": "Company Secretary Volunteer",
       "category": "operations",
       "catLabel": "Leadership & Ops",
       "catColor": "#006526",
@@ -44,7 +44,6 @@
       "location": "Newcastle / Hybrid",
       "commitment": "3–5 hrs/week",
       "tier": "trustee",
-      "open": true,
       "urgent": false,
       "summary": "Fulfil the statutory duties of Company Secretary for Joybringers Ltd, ensuring compliance with Companies House and Charity Commission requirements.",
       "about": "The Company Secretary is a key governance role responsible for ensuring Joybringers Ltd meets its legal obligations as a registered company and charity. You will work closely with the Board of Trustees and senior leadership to keep statutory records up to date, manage filings, and support good governance practice across the organisation.",
