@@ -714,7 +714,7 @@
     },
     {
       "id": "marketing-manager",
-      "title": "Marketing Manager",
+      "title": "Marketing Manager Volunteer",
       "category": "marketing",
       "catLabel": "Marketing & Fundraising",
       "catColor": "#be185d",
@@ -744,8 +744,7 @@
         "Portfolio of campaign work across multiple channels",
         "Professional reference from the Charity Director",
         "Certificate of volunteering"
-      ],
-      "open": true
+      ]
     },
     {
       "id": "graphic-designer",
