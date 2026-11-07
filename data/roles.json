@@ -505,7 +505,7 @@
     },
     {
       "id": "business-analyst",
-      "title": "Business Analyst",
+      "title": "Business Analyst Volunteer",
       "category": "finance",
       "catLabel": "Finance & Business",
       "catColor": "#1e40af",
@@ -535,8 +535,7 @@
         "Portfolio of real business improvement work",
         "Professional reference from the Charity Director",
         "Certificate of volunteering"
-      ],
-      "open": true
+      ]
     },
     {
       "id": "website-designer",
