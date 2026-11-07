@@ -401,7 +401,7 @@
     },
     {
       "id": "compliance-manager",
-      "title": "Compliance Manager",
+      "title": "Compliance Manager Volunteer",
       "category": "operations",
       "catLabel": "Leadership & Ops",
       "catColor": "#006526",
@@ -431,8 +431,7 @@
         "Portfolio of real policy and governance work",
         "Professional reference from the Charity Director",
         "Certificate of volunteering"
-      ],
-      "open": true
+      ]
     },
     {
       "id": "project-manager",
