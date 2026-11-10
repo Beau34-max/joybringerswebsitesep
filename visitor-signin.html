@@ -657,6 +657,13 @@
       border-radius: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; color: #fff;
     }
 
+    /* ── IMPLICIT CONSENT ── */
+    .implicit-consent {
+      font-size: 0.72rem; color: var(--muted); line-height: 1.55;
+      border-top: 1px solid var(--border); padding-top: 10px;
+    }
+    .implicit-consent a { color: var(--green); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .welcome-title { font-size: 1.5rem; }
@@ -729,8 +736,6 @@
             <div class="step-dot current" id="dot-1">1</div>
             <div class="step-line" id="line-1"></div>
             <div class="step-dot" id="dot-2">2</div>
-            <div class="step-line" id="line-2"></div>
-            <div class="step-dot" id="dot-3">3</div>
           </div>
 
           <!-- STEP 1: About you -->
@@ -817,30 +822,7 @@
           <div class="dbs-note"><i class="fas fa-circle-info" style="margin-top:1px;flex-shrink:0;"></i> For safeguarding purposes, volunteers and contractors working with young people must hold a valid Enhanced DBS.</div>
         </div>
 
-            <div class="form-nav">
-              <button class="btn-next" onclick="goStep(3)">Continue <i class="fas fa-arrow-right"></i></button>
-            </div>
-          </div>
-
-          <!-- STEP 3: Confirmation -->
-          <div class="step-panel" id="step-3">
-            <div class="check-group">
-          <label class="check-item">
-            <input type="checkbox" id="chk-safeguarding">
-            <span class="check-item-text"><strong>Safeguarding:</strong> I confirm I have read and understood the safeguarding information displayed at reception and agree to abide by the Joybringers Safeguarding Policy.</span>
-          </label>
-          <label class="check-item" style="display:none;">
-            <input type="checkbox" id="chk-badge" checked>
-            <span class="check-item-text"><strong>Visitor Badge:</strong> I agree to wear my visitor badge visibly at all times during my visit and return it when I leave.</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="chk-gdpr">
-            <span class="check-item-text"><strong>Data Consent:</strong> I consent to my details being stored securely for safeguarding and security purposes in accordance with UK GDPR.</span>
-          </label>
-        </div>
-        <div class="gdpr-box">
-          <strong>Privacy Notice:</strong> Your name, organisation, host and visit details will be stored securely by Joybringers Charity (Reg. 1212606). Data is retained for <strong>12 months</strong> then securely deleted. This is used solely for safeguarding, security and emergency evacuation purposes. You have the right to request access, correction or deletion of your data at <strong>info@joybringerscharity.org</strong>.
-        </div>
+            <p class="implicit-consent">By clicking Sign In you confirm you have read and agree to the <strong>Joybringers Safeguarding Policy</strong>, and consent to your name and visit details being stored securely for 12 months under UK GDPR (Reg. 1212606). Contact <a href="mailto:info@joybringerscharity.org">info@joybringerscharity.org</a> to request access or deletion.</p>
             <div class="form-nav">
               <button class="btn-submit" id="btn-submit-signin" onclick="submitSignIn()">
                 <span id="submit-label"><i class="fas fa-check"></i> Sign In</span>
@@ -897,8 +879,6 @@
             <div class="step-dot current" id="s-dot-1">1</div>
             <div class="step-line" id="s-line-1"></div>
             <div class="step-dot" id="s-dot-2">2</div>
-            <div class="step-line" id="s-line-2"></div>
-            <div class="step-dot" id="s-dot-3">3</div>
           </div>
 
           <!-- S-STEP 1: Your details -->
@@ -988,26 +968,7 @@
             <option value="Volunteer Manager">
           </datalist>
         </div>
-            <div class="form-nav">
-              <button class="btn-next" onclick="sGoStep(3)">Continue <i class="fas fa-arrow-right"></i></button>
-            </div>
-          </div>
-
-          <!-- S-STEP 3: Confirmation -->
-          <div class="step-panel" id="s-step-3">
-            <div class="check-group">
-          <label class="check-item">
-            <input type="checkbox" id="s-chk-safeguarding">
-            <span class="check-item-text"><strong>Safeguarding:</strong> I confirm I have read and understood the Joybringers Safeguarding Policy and agree to abide by it during my time on the premises.</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="s-chk-gdpr">
-            <span class="check-item-text"><strong>Data Consent:</strong> I consent to my details being stored securely for safeguarding and security purposes in accordance with UK GDPR.</span>
-          </label>
-        </div>
-        <div class="gdpr-box">
-          <strong>Privacy Notice:</strong> Your name, organisation, role and contact details will be stored securely by Joybringers Charity (Reg. 1212606). Data is retained for <strong>12 months</strong> then securely deleted. Contact <strong>info@joybringerscharity.org</strong> to request access, correction or deletion.
-        </div>
+            <p class="implicit-consent">By clicking Sign In you confirm you have read and will follow the <strong>Joybringers Safeguarding Policy</strong>, and consent to your name, role and contact details being stored securely for 12 months under UK GDPR (Reg. 1212606). Contact <a href="mailto:info@joybringerscharity.org">info@joybringerscharity.org</a> to request access or deletion.</p>
             <div class="form-nav">
               <button class="btn-submit" id="s-btn-submit" onclick="submitStaff()">
                 <span id="s-submit-label"><i class="fas fa-check"></i> Sign In</span>
@@ -1146,9 +1107,6 @@ function resetForm() {
   ['f-name-search','f-first','f-last','f-org','f-host','f-purpose','f-dbs'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
-  ['chk-safeguarding','chk-badge','chk-gdpr'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.checked = false;
-  });
   const res = document.getElementById('f-search-results'); if (res) res.innerHTML = '';
   document.getElementById('dbs-section').classList.remove('visible');
   goToStep(1, false);
@@ -1158,13 +1116,10 @@ function resetStaffForm() {
   ['s-name-search','s-first','s-last','s-email','s-phone','s-org','s-role','s-dbs','s-host'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
-  ['s-chk-safeguarding','s-chk-gdpr'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.checked = false;
-  });
   const res = document.getElementById('s-search-results'); if (res) res.innerHTML = '';
   sCurrentStep = 1;
   document.querySelectorAll('#screen-staff .step-panel').forEach((p, i) => p.classList.toggle('active', i === 0));
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const dot = document.getElementById(`s-dot-${i}`); const line = document.getElementById(`s-line-${i}`);
     if (dot) { dot.classList.remove('done','current'); if (i === 1) dot.classList.add('current'); }
     if (line) line.classList.remove('done');
@@ -1183,9 +1138,10 @@ function goToStep(n, validate = true) {
   });
   updateVCardHeader(n);
   // Update dots
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const dot  = document.getElementById(`dot-${i}`);
     const line = document.getElementById(`line-${i}`);
+    if (!dot) continue;
     dot.classList.remove('done', 'current');
     if (i < n)  dot.classList.add('done');
     if (i === n) dot.classList.add('current');
@@ -1223,14 +1179,12 @@ function onPurposeChange() {
 let sCurrentStep = 1;
 
 const V_CARD_HEADERS = [
-  ['Visitor Sign In',   'Search your name or fill in your details'],
-  ['Your Visit',        'Tell us about the purpose of your visit'],
-  ['Confirm & Sign In', 'Please read and confirm before signing in'],
+  ['Visitor Sign In', 'Search your name or fill in your details'],
+  ['Your Visit',      'Tell us about the purpose of your visit'],
 ];
 const S_CARD_HEADERS = [
   ['Staff / Volunteer Sign In', 'Search your name or fill in your details'],
   ['Safeguarding Details',      'DBS check and reporting line'],
-  ['Confirm & Sign In',         'Please read and confirm before signing in'],
 ];
 
 function updateVCardHeader(n) {
@@ -1253,8 +1207,9 @@ function staffCardBack() {
   const n = sCurrentStep - 1;
   sCurrentStep = n;
   document.querySelectorAll('#screen-staff .step-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const dot = document.getElementById(`s-dot-${i}`); const line = document.getElementById(`s-line-${i}`);
+    if (!dot) continue;
     dot.classList.remove('done','current');
     if (i < n) dot.classList.add('done');
     if (i === n) dot.classList.add('current');
@@ -1270,8 +1225,9 @@ function sGoStep(n) {
   if (err) { showToast(err, 'error'); return; }
   sCurrentStep = n;
   document.querySelectorAll('#screen-staff .step-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const dot = document.getElementById(`s-dot-${i}`); const line = document.getElementById(`s-line-${i}`);
+    if (!dot) continue;
     dot.classList.remove('done','current');
     if (i < n) dot.classList.add('done');
     if (i === n) dot.classList.add('current');
@@ -1360,10 +1316,6 @@ function fillStaffFromSearch(index) {
 }
 
 async function submitStaff() {
-  if (!document.getElementById('s-chk-safeguarding').checked)
-    return showToast('Please confirm you have read the safeguarding policy.', 'error');
-  if (!document.getElementById('s-chk-gdpr').checked)
-    return showToast('Please consent to data storage to proceed.', 'error');
 
   const btn = document.getElementById('s-btn-submit');
   const lbl = document.getElementById('s-submit-label');
@@ -1507,10 +1459,6 @@ function closeAlreadyInModal() {
 function startSignIn() { resetForm(); showScreen('screen-signin'); updateVCardHeader(1); }
 
 async function submitSignIn() {
-  if (!document.getElementById('chk-safeguarding').checked)
-    return showToast('Please confirm you have read the safeguarding information.', 'error');
-  if (!document.getElementById('chk-gdpr').checked)
-    return showToast('Please consent to data storage to proceed.', 'error');
 
   const btn     = document.getElementById('btn-submit-signin');
   const label   = document.getElementById('submit-label');
