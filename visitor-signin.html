@@ -530,6 +530,55 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── CARD SHELL ── */
+    .form-card-wrap {
+      flex: 1; overflow-y: auto;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 16px;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      width: 100%; max-width: 560px;
+      overflow: hidden;
+    }
+    .form-card-header {
+      background: var(--green-d);
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .form-card-back-btn {
+      width: 36px; height: 36px; min-width: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      font-size: 0.95rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .form-card-back-btn:hover { background: rgba(255,255,255,0.28); }
+    .form-card-title { color: #fff; font-size: 1rem; font-weight: 800; line-height: 1.2; }
+    .form-card-subtitle { color: rgba(255,255,255,0.65); font-size: 0.75rem; margin-top: 2px; }
+    .form-card-body {
+      padding: 18px 20px 20px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .form-card-body .field-group label {
+      font-size: 0.65rem; font-weight: 700;
+      color: #374151; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .form-card-body .field-group input,
+    .form-card-body .field-group select,
+    .form-card-body .field-group textarea { border-color: #e5e7eb; border-radius: 12px; }
+    .form-card-body .step-panel { gap: 10px; }
+    .form-card-body .progress-row { margin-bottom: 2px; }
+    .form-card-body .btn-next,
+    .form-card-body .btn-submit {
+      width: 100%; border-radius: 12px; padding: 13px; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-card-body .form-nav { justify-content: flex-end; margin-top: 0; }
+
     /* ── NAME SEARCH ── */
     .name-search-section {
       background: var(--green-l); border: 1.5px solid var(--green-m);
@@ -664,24 +713,29 @@
 
   <!-- ═══════════════ SIGN IN FORM ═══════════════ -->
   <div class="screen" id="screen-signin">
-    <div class="form-body">
-
-      <!-- Progress -->
-      <div class="progress-row">
-        <div class="step-dot current" id="dot-1">1</div>
-        <div class="step-line" id="line-1"></div>
-        <div class="step-dot" id="dot-2">2</div>
-        <div class="step-line" id="line-2"></div>
-        <div class="step-dot" id="dot-3">3</div>
-      </div>
-
-      <!-- STEP 1: About you -->
-      <div class="step-panel active" id="step-1">
-        <div>
-          <div class="step-heading">About you</div>
-          <div class="step-sub">Search your name to sign in faster, or fill in your details below</div>
+    <div class="form-card-wrap">
+      <div class="form-card">
+        <div class="form-card-header">
+          <button class="form-card-back-btn" onclick="visitorCardBack()"><i class="fas fa-arrow-left"></i></button>
+          <div>
+            <div class="form-card-title" id="v-card-title">Visitor Sign In</div>
+            <div class="form-card-subtitle" id="v-card-sub">Search your name or fill in your details</div>
+          </div>
         </div>
-        <div class="name-search-section">
+        <div class="form-card-body">
+
+          <!-- Progress -->
+          <div class="progress-row">
+            <div class="step-dot current" id="dot-1">1</div>
+            <div class="step-line" id="line-1"></div>
+            <div class="step-dot" id="dot-2">2</div>
+            <div class="step-line" id="line-2"></div>
+            <div class="step-dot" id="dot-3">3</div>
+          </div>
+
+          <!-- STEP 1: About you -->
+          <div class="step-panel active" id="step-1">
+            <div class="name-search-section">
           <div class="name-search-label"><i class="fas fa-search"></i> Returning visitor? Search your name</div>
           <div class="name-search-row">
             <input type="text" id="f-name-search" placeholder="e.g. Sarah Johnson" autocomplete="off"
@@ -710,19 +764,14 @@
             <option value="Other">Other</option>
           </select>
         </div>
-        <div class="form-nav">
-          <button class="btn-cancel" onclick="goWelcome()"><i class="fas fa-arrow-left"></i> Back</button>
-          <button class="btn-next" onclick="goStep(2)">Next <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
+            <div class="form-nav">
+              <button class="btn-next" onclick="goStep(2)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
 
-      <!-- STEP 2: Your visit -->
-      <div class="step-panel" id="step-2">
-        <div>
-          <div class="step-heading">Your visit</div>
-          <div class="step-sub">Tell us about the purpose of your visit</div>
-        </div>
-        <div class="field-group">
+          <!-- STEP 2: Your visit -->
+          <div class="step-panel" id="step-2">
+            <div class="field-group">
           <label>Who are you here to see? <span class="req">*</span></label>
           <input type="text" id="f-host" list="host-list" placeholder="Enter staff member's name" autocomplete="off">
           <datalist id="host-list">
@@ -768,19 +817,14 @@
           <div class="dbs-note"><i class="fas fa-circle-info" style="margin-top:1px;flex-shrink:0;"></i> For safeguarding purposes, volunteers and contractors working with young people must hold a valid Enhanced DBS.</div>
         </div>
 
-        <div class="form-nav">
-          <button class="btn-back" onclick="goStep(1)"><i class="fas fa-arrow-left"></i></button>
-          <button class="btn-next" onclick="goStep(3)">Next <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
+            <div class="form-nav">
+              <button class="btn-next" onclick="goStep(3)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
 
-      <!-- STEP 3: Confirmation -->
-      <div class="step-panel" id="step-3">
-        <div>
-          <div class="step-heading">Confirmation</div>
-          <div class="step-sub">Please read and confirm the following before signing in</div>
-        </div>
-        <div class="check-group">
+          <!-- STEP 3: Confirmation -->
+          <div class="step-panel" id="step-3">
+            <div class="check-group">
           <label class="check-item">
             <input type="checkbox" id="chk-safeguarding">
             <span class="check-item-text"><strong>Safeguarding:</strong> I confirm I have read and understood the safeguarding information displayed at reception and agree to abide by the Joybringers Safeguarding Policy.</span>
@@ -797,15 +841,16 @@
         <div class="gdpr-box">
           <strong>Privacy Notice:</strong> Your name, organisation, host and visit details will be stored securely by Joybringers Charity (Reg. 1212606). Data is retained for <strong>12 months</strong> then securely deleted. This is used solely for safeguarding, security and emergency evacuation purposes. You have the right to request access, correction or deletion of your data at <strong>info@joybringerscharity.org</strong>.
         </div>
-        <div class="form-nav">
-          <button class="btn-back" onclick="goStep(2)"><i class="fas fa-arrow-left"></i></button>
-          <button class="btn-submit" id="btn-submit-signin" onclick="submitSignIn()">
-            <span id="submit-label"><i class="fas fa-check"></i> Sign In</span>
-            <div class="spinner" id="submit-spinner"></div>
-          </button>
+            <div class="form-nav">
+              <button class="btn-submit" id="btn-submit-signin" onclick="submitSignIn()">
+                <span id="submit-label"><i class="fas fa-check"></i> Sign In</span>
+                <div class="spinner" id="submit-spinner"></div>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
   </div>
 
@@ -836,24 +881,29 @@
 
   <!-- ═══════════════ STAFF / VOLUNTEER SIGN IN ═══════════════ -->
   <div class="screen" id="screen-staff">
-    <div class="form-body">
-
-      <!-- Progress -->
-      <div class="progress-row">
-        <div class="step-dot current" id="s-dot-1">1</div>
-        <div class="step-line" id="s-line-1"></div>
-        <div class="step-dot" id="s-dot-2">2</div>
-        <div class="step-line" id="s-line-2"></div>
-        <div class="step-dot" id="s-dot-3">3</div>
-      </div>
-
-      <!-- S-STEP 1: Your details -->
-      <div class="step-panel active" id="s-step-1">
-        <div>
-          <div class="step-heading">Your Details</div>
-          <div class="step-sub">Search your name to sign in faster, or fill in your details below</div>
+    <div class="form-card-wrap">
+      <div class="form-card">
+        <div class="form-card-header">
+          <button class="form-card-back-btn" onclick="staffCardBack()"><i class="fas fa-arrow-left"></i></button>
+          <div>
+            <div class="form-card-title" id="s-card-title">Staff / Volunteer Sign In</div>
+            <div class="form-card-subtitle" id="s-card-sub">Search your name or fill in your details</div>
+          </div>
         </div>
-        <div class="name-search-section">
+        <div class="form-card-body">
+
+          <!-- Progress -->
+          <div class="progress-row">
+            <div class="step-dot current" id="s-dot-1">1</div>
+            <div class="step-line" id="s-line-1"></div>
+            <div class="step-dot" id="s-dot-2">2</div>
+            <div class="step-line" id="s-line-2"></div>
+            <div class="step-dot" id="s-dot-3">3</div>
+          </div>
+
+          <!-- S-STEP 1: Your details -->
+          <div class="step-panel active" id="s-step-1">
+            <div class="name-search-section">
           <div class="name-search-label"><i class="fas fa-search"></i> Returning? Search your name</div>
           <div class="name-search-row">
             <input type="text" id="s-name-search" placeholder="e.g. James Williams" autocomplete="off"
@@ -907,19 +957,14 @@
             <option>Other</option>
           </select>
         </div>
-        <div class="form-nav">
-          <button class="btn-back" onclick="goWelcome()"><i class="fas fa-arrow-left"></i></button>
-          <button class="btn-next" onclick="sGoStep(2)">Next <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
+            <div class="form-nav">
+              <button class="btn-next" onclick="sGoStep(2)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
 
-      <!-- S-STEP 2: DBS + Reporting -->
-      <div class="step-panel" id="s-step-2">
-        <div>
-          <div class="step-heading">Safeguarding</div>
-          <div class="step-sub">DBS check and reporting line</div>
-        </div>
-        <div class="field-group">
+          <!-- S-STEP 2: DBS + Reporting -->
+          <div class="step-panel" id="s-step-2">
+            <div class="field-group">
           <label>DBS Certificate Status <span class="req">*</span></label>
           <select id="s-dbs">
             <option value="">— Select DBS status —</option>
@@ -943,19 +988,14 @@
             <option value="Volunteer Manager">
           </datalist>
         </div>
-        <div class="form-nav">
-          <button class="btn-back" onclick="sGoStep(1)"><i class="fas fa-arrow-left"></i></button>
-          <button class="btn-next" onclick="sGoStep(3)">Next <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
+            <div class="form-nav">
+              <button class="btn-next" onclick="sGoStep(3)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
 
-      <!-- S-STEP 3: Confirmation -->
-      <div class="step-panel" id="s-step-3">
-        <div>
-          <div class="step-heading">Confirmation</div>
-          <div class="step-sub">Please read and confirm the following before signing in</div>
-        </div>
-        <div class="check-group">
+          <!-- S-STEP 3: Confirmation -->
+          <div class="step-panel" id="s-step-3">
+            <div class="check-group">
           <label class="check-item">
             <input type="checkbox" id="s-chk-safeguarding">
             <span class="check-item-text"><strong>Safeguarding:</strong> I confirm I have read and understood the Joybringers Safeguarding Policy and agree to abide by it during my time on the premises.</span>
@@ -968,15 +1008,16 @@
         <div class="gdpr-box">
           <strong>Privacy Notice:</strong> Your name, organisation, role and contact details will be stored securely by Joybringers Charity (Reg. 1212606). Data is retained for <strong>12 months</strong> then securely deleted. Contact <strong>info@joybringerscharity.org</strong> to request access, correction or deletion.
         </div>
-        <div class="form-nav">
-          <button class="btn-back" onclick="sGoStep(2)"><i class="fas fa-arrow-left"></i></button>
-          <button class="btn-submit" id="s-btn-submit" onclick="submitStaff()">
-            <span id="s-submit-label"><i class="fas fa-check"></i> Sign In</span>
-            <div class="spinner" id="s-spinner"></div>
-          </button>
+            <div class="form-nav">
+              <button class="btn-submit" id="s-btn-submit" onclick="submitStaff()">
+                <span id="s-submit-label"><i class="fas fa-check"></i> Sign In</span>
+                <div class="spinner" id="s-spinner"></div>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1137,9 +1178,10 @@ function goToStep(n, validate = true) {
     if (err) { showToast(err, 'error'); return; }
   }
   currentStep = n;
-  document.querySelectorAll('.step-panel').forEach((p, i) => {
+  document.querySelectorAll('#screen-signin .step-panel').forEach((p, i) => {
     p.classList.toggle('active', i + 1 === n);
   });
+  updateVCardHeader(n);
   // Update dots
   for (let i = 1; i <= 3; i++) {
     const dot  = document.getElementById(`dot-${i}`);
@@ -1180,7 +1222,48 @@ function onPurposeChange() {
 /* ── STAFF / VOLUNTEER FLOW ───────────────────────── */
 let sCurrentStep = 1;
 
-function startStaff() { resetStaffForm(); showScreen('screen-staff'); }
+const V_CARD_HEADERS = [
+  ['Visitor Sign In',   'Search your name or fill in your details'],
+  ['Your Visit',        'Tell us about the purpose of your visit'],
+  ['Confirm & Sign In', 'Please read and confirm before signing in'],
+];
+const S_CARD_HEADERS = [
+  ['Staff / Volunteer Sign In', 'Search your name or fill in your details'],
+  ['Safeguarding Details',      'DBS check and reporting line'],
+  ['Confirm & Sign In',         'Please read and confirm before signing in'],
+];
+
+function updateVCardHeader(n) {
+  const [t, s] = V_CARD_HEADERS[n - 1];
+  document.getElementById('v-card-title').textContent = t;
+  document.getElementById('v-card-sub').textContent   = s;
+}
+function visitorCardBack() {
+  if (currentStep === 1) { goWelcome(); return; }
+  goToStep(currentStep - 1, false);
+}
+
+function updateSCardHeader(n) {
+  const [t, s] = S_CARD_HEADERS[n - 1];
+  document.getElementById('s-card-title').textContent = t;
+  document.getElementById('s-card-sub').textContent   = s;
+}
+function staffCardBack() {
+  if (sCurrentStep === 1) { goWelcome(); return; }
+  const n = sCurrentStep - 1;
+  sCurrentStep = n;
+  document.querySelectorAll('#screen-staff .step-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById(`s-dot-${i}`); const line = document.getElementById(`s-line-${i}`);
+    dot.classList.remove('done','current');
+    if (i < n) dot.classList.add('done');
+    if (i === n) dot.classList.add('current');
+    if (line) line.classList.toggle('done', i < n);
+  }
+  updateSCardHeader(n);
+}
+
+function startStaff() { resetStaffForm(); showScreen('screen-staff'); updateSCardHeader(1); }
 
 function sGoStep(n) {
   const err = sValidateStep(sCurrentStep);
@@ -1194,6 +1277,7 @@ function sGoStep(n) {
     if (i === n) dot.classList.add('current');
     if (line) line.classList.toggle('done', i < n);
   }
+  updateSCardHeader(n);
 }
 
 function sValidateStep(n) {
@@ -1420,7 +1504,7 @@ function closeAlreadyInModal() {
 }
 
 /* ── SIGN IN ──────────────────────────────────────── */
-function startSignIn() { resetForm(); showScreen('screen-signin'); }
+function startSignIn() { resetForm(); showScreen('screen-signin'); updateVCardHeader(1); }
 
 async function submitSignIn() {
   if (!document.getElementById('chk-safeguarding').checked)
