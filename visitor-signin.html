@@ -711,6 +711,9 @@
           <i class="fas fa-sign-out-alt"></i> Sign Out
         </button>
       </div>
+      <button onclick="toggleFullscreen()" title="Toggle fullscreen" style="position:absolute;bottom:14px;right:16px;background:rgba(0,0,0,0.08);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:#555;font-size:0.8rem;display:flex;align-items:center;gap:6px;">
+        <i class="fas fa-expand"></i> Fullscreen
+      </button>
       <div class="safeguard-note">
         <i class="fas fa-shield-halved"></i>
         <span>Joybringers Charity (Reg. 1212606) is committed to safeguarding. All visitors must sign in and wear a badge during their visit. Your data is stored securely and retained for 12 months in accordance with UK GDPR.</span>
@@ -1085,6 +1088,24 @@ function goWelcome() {
   showScreen('screen-welcome');
 }
 
+/* ── Fullscreen ──────────────────────────────────────── */
+function requestKioskFullscreen() {
+  const el = document.documentElement;
+  const req = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+  if (req) req.call(el).catch(() => {});
+}
+function exitKioskFullscreen() {
+  const ex = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+  if (ex) ex.call(document).catch(() => {});
+}
+function toggleFullscreen() {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    exitKioskFullscreen();
+  } else {
+    requestKioskFullscreen();
+  }
+}
+
 /* ── Badge countdown timer ────────────────────────── */
 let badgeCountdownTimer;
 let signoutSuccessTimer;
@@ -1208,7 +1229,7 @@ function staffCardBack() {
   updateSCardHeader(n);
 }
 
-function startStaff() { resetStaffForm(); showScreen('screen-staff'); updateSCardHeader(1); }
+function startStaff() { requestKioskFullscreen(); resetStaffForm(); showScreen('screen-staff'); updateSCardHeader(1); }
 
 function sGoStep(n) {
   const err = sValidateStep(sCurrentStep);
@@ -1445,7 +1466,7 @@ function closeAlreadyInModal() {
 }
 
 /* ── SIGN IN ──────────────────────────────────────── */
-function startSignIn() { resetForm(); showScreen('screen-signin'); updateVCardHeader(1); }
+function startSignIn() { requestKioskFullscreen(); resetForm(); showScreen('screen-signin'); updateVCardHeader(1); }
 
 async function submitSignIn() {
 
@@ -1532,6 +1553,7 @@ function generateBadgeId(prefix = 'JB') {
 let _signoutSearchTimer = null;
 
 function startSignOut() {
+  requestKioskFullscreen();
   showScreen('screen-signout');
   document.getElementById('signout-search').value = '';
   document.getElementById('visitor-list').innerHTML = '';
